@@ -1,9 +1,9 @@
 Crop Segmentation
-
-The system is designed to segment crops from the background in images collected by Unmanned Aerial Vehicles.
 ==============================
 
-The system is designed to segment crops from the background in images collected by Unmanned Aerial Vehicles
+The system is designed to segment crops from the background in images collected by Unmanned Aerial Vehicles, (UAVs). It employs a Deep Neural Network (DNN) with a U-NET model, an encoder-decoder cascade structure, for semantic segmentation. The system also utilizes the K-means algorithm for further segmentation of crops in RGB color images. It is capable of processing images from different datasets and generalizing its performance across them. The system has demonstrated more accurate segmentation and convincing results compared to traditional approaches, making it a valuable tool for precision farming and sustainable agriculture.
+
+The model has been realized for the Computer Vision exam, a.y. 2022-2023.
 
 Project Organization
 ------------
