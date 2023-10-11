@@ -5,6 +5,25 @@ The system is designed to segment crops from the background in images collected 
 
 The model has been realized for the Computer Vision exam, a.y. 2022-2023.
 
+For further details on U-NET, read __U-Net: Convolutional Networks for Biomedical Image Segmentation__
+```
+@article{DBLP:journals/corr/RonnebergerFB15,
+  author       = {Olaf Ronneberger and
+                  Philipp Fischer and
+                  Thomas Brox},
+  title        = {U-Net: Convolutional Networks for Biomedical Image Segmentation},
+  journal      = {CoRR},
+  volume       = {abs/1505.04597},
+  year         = {2015},
+  url          = {http://arxiv.org/abs/1505.04597},
+  eprinttype    = {arXiv},
+  eprint       = {1505.04597},
+  timestamp    = {Mon, 13 Aug 2018 16:46:52 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/RonnebergerFB15.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+```
+
 Project Organization
 ------------
 
