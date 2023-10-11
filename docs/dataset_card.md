@@ -1,4 +1,4 @@
-﻿U-NET for Semantic Crop Segmentation - Data Card
+﻿U-NET for Semantic Crop Segmentation - Dataset Card
 ==============================
 
 # Training Dataset
