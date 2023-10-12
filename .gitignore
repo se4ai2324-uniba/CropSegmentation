@@ -77,7 +77,7 @@ target/
 
 # exclude data from source control by default OK
 !data/
-data/*
+data/*/
 !data/README.md
 
 # Mac OS-specific storage files
