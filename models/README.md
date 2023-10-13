@@ -1,3 +1,53 @@
+---
+language:
+- en
+
+tags:
+- computer-vision
+- semantic-segmentation
+- deep-learning
+- u-net
+- precision-agriculture
+
+datasets:
+- uav_sugar_beets_2015_16
+- remote_sensing_2018_weed_map
+
+metrics:
+- pixel_accuracy
+- intersection_over_union
+
+model-index:
+- name: u-net_for_semantic_crop_segmentation
+  results:
+  - task:
+      type: semantic-segmentation
+      name: Semantic Segmentation
+    dataset:
+      type: uav_sugar_beets_2015_16
+      name: UAV Sugar Beets 2015-16
+    metrics:
+      - type: pixel_accuracy
+        value: 76.22
+        name: Mean Accuracy (no black)
+      - type: intersection_over_union
+        value: 63.00
+        name: Mean IoU (no black)
+  - task:
+      type: semantic-segmentation
+      name: Semantic Segmentation
+    dataset:
+      type: remote_sensing_2018_weed_map
+      name: Remote Sensing 2018 Weed Map
+    metrics:
+      - type: pixel_accuracy
+        value: 89.57
+        name: Mean Accuracy
+      - type: intersection_over_union
+        value: 83.76
+        name: Mean IoU
+---
+
 U-NET for Semantic Crop Segmentation - Model Card
 ==============================
 
