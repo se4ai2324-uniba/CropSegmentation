@@ -64,11 +64,14 @@ Project Organization
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
+    │   │   ├── saved      
     │   │   ├── predict_model.py
     │   │   └── train_model.py
     │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
+    │   │── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │   │    └── visualize.py
+    │   │── config.py      <- Global configurations
+    │   └── utils.py       <- Utility functions
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
