@@ -28,7 +28,7 @@ CONFIG = {
     'PROCESSED_ARCHIVE_PATH':           'data/processed/datasets_processed',
 
     # train_model.py
-    'SAVED_MODEL_PATH':                 'models/saved',
+    'SAVED_MODEL_PATH':                 'models/saved/',
     'NUM_EPOCHS':                       10,
     'BATCH_SIZE':                       50,
     'INIT_LR':                          .001,

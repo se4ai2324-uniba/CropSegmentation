@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  extract_data:
+    cmd: python3 src/data/extract_data.py
+    deps:
+    - path: data/raw/datasets.zip
+      hash: md5
+      md5: 47fcc6fa67d6e390810205cd13884ff2
+      size: 2332182734
+    - path: src/data/extract_data.py
+      hash: md5
+      md5: a162d8cfc5ffa79fd9b9b703109fd098
+      size: 727
+  make_dataset:
+    cmd: python3 src/data/make_dataset.py
+    deps:
+    - path: data/processed/datasets_processed
+      hash: md5
+      md5: 26f7c50de6d6c03f11c9e893ad95ffd5.dir
+      size: 2111937822
+      nfiles: 71417
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: a97010e40c436ff9ffbfb9dfe137acf2
+      size: 3986
+    outs:
+    - path: data/processed/datasets_processed.zip
+      hash: md5
+      md5: 8a2ead336a61d0fbd1502cf745b27fc4
+      size: 2048543648
+  train_model:
+    cmd: python3 src/models/train_model.py
+    deps:
+    - path: src/models/train_model.py
+      hash: md5
+      md5: dadc3fa60625301bf050451a0ed411e4
+      size: 6092
+  predict_model:
+    cmd: python3 src/models/predict_model.py
+    deps:
+    - path: models/saved
+      hash: md5
+      md5: 9ada7af050d5076de52cbef77a169d29.dir
+      size: 484479
+      nfiles: 2
+    - path: src/models/predict_model.py
+      hash: md5
+      md5: 951dc048a7e54a4ac2adfc6c7927fce5
+      size: 5089
+    outs:
+    - path: models/metrics/acc.metrics
+      hash: md5
+      md5: 6ce2e5dac525fcf04cf826e8fb793ecf
+      size: 20
+    - path: models/metrics/iou.metrics
+      hash: md5
+      md5: e1ceac6c9ed4fbd1f6ce9864157bda86
+      size: 20
