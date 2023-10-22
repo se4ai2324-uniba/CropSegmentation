@@ -1,5 +1,0 @@
-outs:
-- md5: 197a00f11f159bc60bf7eff86339105e
-  size: 484479
-  hash: md5
-  path: 10_50_0.001_0.25_cpu_unet_model.pth

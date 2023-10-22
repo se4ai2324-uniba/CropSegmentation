@@ -1,0 +1,26 @@
+stages:
+  extract_data:
+    cmd: python3 src/data/extract_data.py
+    deps:
+    - src/data/extract_data.py
+    outs:
+    - data/raw/datasets
+  make_dataset:
+    cmd: python3 src/data/make_dataset.py
+    deps:
+    - src/data/make_dataset.py
+    outs:
+    - data/processed/datasets_processed
+  train_model:
+    cmd: python3 src/models/train_model.py
+    deps:
+    - src/models/train_model.py
+    outs:
+    - models/saved
+  predict_model:
+    cmd: python3 src/models/predict_model.py
+    deps:
+    - models/saved
+    - src/models/predict_model.py
+    metrics:
+    - models/metrics
