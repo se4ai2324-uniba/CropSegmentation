@@ -4,9 +4,12 @@ stages:
     deps:
     - src/data/extract_data.py
     - data/raw/datasets.zip
+    outs:
+    - data/raw/datasets
   make_dataset:
     cmd: python3 src/data/make_dataset.py
     deps:
+    - data/raw/datasets
     - src/data/make_dataset.py
     - data/processed/datasets_processed
     outs:
@@ -14,11 +17,14 @@ stages:
   train_model:
     cmd: python3 src/models/train_model.py
     deps:
+    - data/processed/datasets_processed.zip
     - src/models/train_model.py
+    # outs:
+    # - models/saved
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
-    - models/saved
+    # - models/saved
     - src/models/predict_model.py
     metrics:
     - models/metrics/acc.metrics
