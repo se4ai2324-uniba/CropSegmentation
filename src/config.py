@@ -1,9 +1,9 @@
 CONFIG = {
-    # make_dataset.py
+    # extract_data.py
     'RAW_DATA_SOURCE_PATH':             'data/raw/datasets.zip',
     'RAW_DATA_DEST_PATH':               'data/raw/',
 
-    # build_features.py
+    # make_dataset.py
     'TILE_WIDTH':                       480,
     'TILE_HEIGHT':                      360,
     'RAW_TRAINING_PATH':                'data/raw/datasets/training/',
@@ -21,10 +21,11 @@ CONFIG = {
                                             'weedmap/Tiles/RedEdge/003/mask/',
                                             'weedmap/Tiles/RedEdge/003/tile/RGB/'
                                         ],
-    'PROCESSED_TRAINING_DATA_PATH':     'data/processed/training_data/',
-    'PROCESSED_TRAINING_LABELS_PATH':   'data/processed/training_labels/',
-    'PROCESSED_TESTING_DATA_PATH':      'data/processed/testing_data/',
-    'PROCESSED_TESTING_LABELS_PATH':    'data/processed/testing_labels/',
+    'PROCESSED_TRAINING_DATA_PATH':     'data/processed/datasets_processed/training_data/',
+    'PROCESSED_TRAINING_LABELS_PATH':   'data/processed/datasets_processed/training_labels/',
+    'PROCESSED_TESTING_DATA_PATH':      'data/processed/datasets_processed/testing_data/',
+    'PROCESSED_TESTING_LABELS_PATH':    'data/processed/datasets_processed/testing_labels/',
+    'PROCESSED_ARCHIVE_PATH':           'data/processed/datasets_processed',
 
     # train_model.py
     'SAVED_MODEL_PATH':                 'src/models/saved/',

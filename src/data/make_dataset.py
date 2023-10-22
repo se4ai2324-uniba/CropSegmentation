@@ -5,6 +5,8 @@ sys.path.append('src')
 from utils import getTiles, applyLowLevelSegmentation, applyRandomDistorsion, merge_labels
 from pathlib import Path
 from config import get_global_config
+import shutil
+
 
 config = get_global_config()
 TILE_WIDTH = config.get('TILE_WIDTH')
@@ -17,6 +19,7 @@ TRAINING_DATA_DEST_PATH = config.get('PROCESSED_TRAINING_DATA_PATH')
 TESTING_DATA_DEST_PATH = config.get('PROCESSED_TESTING_DATA_PATH')
 TRAINING_LABELS_DEST_PATH = config.get('PROCESSED_TRAINING_LABELS_PATH')
 TESTING_LABELS_DEST_PATH = config.get('PROCESSED_TESTING_LABELS_PATH')
+ARCHIVE_PATH = config.get('PROCESSED_ARCHIVE_PATH')
 
 
 def training_set_preprocessing():
@@ -74,3 +77,4 @@ def testing_set_preprocessing():
 if __name__ == "__main__":
     training_set_preprocessing()
     testing_set_preprocessing()
+    shutil.make_archive(ARCHIVE_PATH, 'zip', ARCHIVE_PATH)
