@@ -19,6 +19,9 @@ DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 THRESHOLD =  config.get('THRESHOLD')
 TESTING_DATA_SOURCE_PATH = config.get('PROCESSED_TESTING_DATA_PATH')
 TESTING_LABELS_SOURCE_PATH = config.get('PROCESSED_TESTING_LABELS_PATH')
+ACC_FILE = config.get('ACCURACY_FILE_PATH')
+IOU_FILE = config.get('JACCARD_FILE_PATH')
+
 
 def get_saved_model():
     saved_model = False
@@ -86,6 +89,13 @@ def evaluate():
         print(f'{"the mean accuracy is: ".upper()}\033[32m \033[01m{accuracy["unet_redu"].mean():.2f}%\033[30m \033[0m{" for test set minus all black images.".upper()}')
         print(f'{"the mean IoU is: ".upper()}\033[32m \033[01m{jaccard["unet"].mean():.2f}%\033[30m \033[0m{" for the whole test set.".upper()}')
         print(f'{"the mean IoU is: ".upper()}\033[32m \033[01m{jaccard["unet_redu"].mean():.2f}%\033[30m \033[0m{" for test set minus all black images.".upper()}')
+        try:
+            with open(ACC_FILE, 'w') as fd:
+                fd.write('MEAN AUC: {:4f}\n'.format(accuracy["unet"].mean()))
+            with open(IOU_FILE, 'w') as fd:
+                fd.write('MEAN IOU: {:4f}\n'.format(jaccard["unet"].mean()))
+        except Exception as e:
+            print(e)
     else:
         print('\n'+''.join(['> ' for i in range(25)]))
         print(f'\n{"WARNING: Saved model does not exist!":<35}\n')

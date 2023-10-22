@@ -38,7 +38,8 @@ Project Organization
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── models             <- Trained and serialized models or model summaries
+    │   └── metrics        <- Model predictions
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -64,7 +65,6 @@ Project Organization
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
-    │   │   ├── saved      
     │   │   ├── predict_model.py
     │   │   └── train_model.py
     │   │

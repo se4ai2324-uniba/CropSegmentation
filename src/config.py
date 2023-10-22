@@ -28,15 +28,16 @@ CONFIG = {
     'PROCESSED_ARCHIVE_PATH':           'data/processed/datasets_processed',
 
     # train_model.py
-    'SAVED_MODEL_PATH':                 'src/models/saved/',
+    'SAVED_MODEL_PATH':                 'models/',
     'NUM_EPOCHS':                       10,
     'BATCH_SIZE':                       50,
     'INIT_LR':                          .001,
     'RATIO':                            .25,
 
     # predict_model.py
-    'THRESHOLD':                        .5
-    
+    'THRESHOLD':                        .5,
+    'ACCURACY_FILE_PATH':               'models/metrics/acc.metrics',
+    'JACCARD_FILE_PATH':                'models/metrics/iou.metrics'    
 }
 
 def get_global_config():
