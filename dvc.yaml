@@ -5,7 +5,8 @@ stages:
     - src/data/extract_data.py
     - data/raw/datasets.zip
     outs:
-    - data/raw/datasets
+    - data/raw/datasets:
+        cache: false
   make_dataset:
     cmd: python3 src/data/make_dataset.py
     deps:
@@ -19,7 +20,8 @@ stages:
     - data/processed/datasets_processed.zip
     - src/models/train_model.py
     outs:
-    - models/saved/10_50_0.001_0.25_cpu_unet_model.pth
+    - models/saved/10_50_0.001_0.25_cpu_unet_model.pth:
+        persist: true
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
