@@ -1,4 +1,5 @@
 import torch
+torch.manual_seed(0)
 import torchvision.transforms as transforms
 from sklearn.metrics import jaccard_score
 import sys
@@ -8,6 +9,7 @@ from skimage import io
 import numpy as np
 import os
 from model import *
+import mlflow
 
 config = get_global_config()
 SAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')
@@ -67,6 +69,13 @@ def pixelAccuracy(predictions, labels):
     return tp_tn / all * 100
 
 def evaluate():
+    mlflow.start_run()
+    mlflow.log_params({
+                "NUM_EPOCHS":   NUM_EPOCHS,
+                "BATCH_SIZE":   BATCH_SIZE,
+                "INIT_LR":      INIT_LR,
+                "RATIO":        RATIO
+            })
     model = get_saved_model()
     if model != False:
         testImages, testMasks = get_testing_data()
@@ -89,11 +98,18 @@ def evaluate():
         print(f'{"the mean accuracy is: ".upper()}\033[32m \033[01m{accuracy["unet_redu"].mean():.2f}%\033[30m \033[0m{" for test set minus all black images.".upper()}')
         print(f'{"the mean IoU is: ".upper()}\033[32m \033[01m{jaccard["unet"].mean():.2f}%\033[30m \033[0m{" for the whole test set.".upper()}')
         print(f'{"the mean IoU is: ".upper()}\033[32m \033[01m{jaccard["unet_redu"].mean():.2f}%\033[30m \033[0m{" for test set minus all black images.".upper()}')
+        mlflow.log_metrics(
+            {
+                "MEAN_AUC": accuracy["unet"].mean(),
+                "MEAN_IOU": jaccard["unet"].mean(),
+            }
+        )
+        mlflow.end_run()
         try:
             with open(ACC_FILE, 'w') as fd:
-                fd.write('MEAN AUC: {:4f}\n'.format(accuracy["unet"].mean()))
+                fd.write('MEAN_AUC: {:4f}\n'.format(accuracy["unet"].mean()))
             with open(IOU_FILE, 'w') as fd:
-                fd.write('MEAN IOU: {:4f}\n'.format(jaccard["unet"].mean()))
+                fd.write('MEAN_IOU: {:4f}\n'.format(jaccard["unet"].mean()))
         except Exception as e:
             print(e)
     else:
