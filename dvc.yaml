@@ -11,7 +11,6 @@ stages:
     deps:
     - data/raw/datasets
     - src/data/make_dataset.py
-    - data/processed/datasets_processed
     outs:
     - data/processed/datasets_processed.zip
   train_model:
@@ -19,12 +18,12 @@ stages:
     deps:
     - data/processed/datasets_processed.zip
     - src/models/train_model.py
-    # outs:
-    # - models/saved
+    outs:
+    - models/saved/10_50_0.001_0.25_cpu_unet_model.pth
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
-    # - models/saved
+    - models/saved/10_50_0.001_0.25_cpu_unet_model.pth
     - src/models/predict_model.py
     metrics:
     - models/metrics/acc.metrics
