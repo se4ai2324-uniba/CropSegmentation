@@ -4,6 +4,7 @@ sys.path.append('src')
 from sklearn.model_selection import train_test_split
 from model import MyCustomDataset, UNet
 import torch
+torch.manual_seed(0)
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from torch.nn import BCEWithLogitsLoss
