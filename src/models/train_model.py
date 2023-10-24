@@ -12,12 +12,12 @@ from torch.optim import Adam
 from tqdm import tqdm
 from pathlib import Path
 from config import get_global_config
+import torch.multiprocessing
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 config = get_global_config()
 TRAINING_DATA_SOURCE_PATH = config.get('PROCESSED_TRAINING_DATA_PATH')
 TRAINING_LABELS_SOURCE_PATH = config.get('PROCESSED_TRAINING_LABELS_PATH')
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-PIN_MEMORY = True if DEVICE == 'cuda' else False
 INPUT_IMAGE_WIDTH = config.get('TILE_WIDTH')
 INPUT_IMAGE_HEIGHT = config.get('TILE_HEIGHT')
 SAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')
@@ -25,6 +25,14 @@ NUM_EPOCHS = config.get('NUM_EPOCHS')
 BATCH_SIZE = config.get('BATCH_SIZE')
 INIT_LR = config.get('INIT_LR')
 RATIO = config.get('RATIO')
+
+if torch.backends.mps.is_available():
+    DEVICE = 'mps'
+elif torch.cuda.is_available():
+    DEVICE = 'cuda'
+else:
+    DEVICE = 'cpu'
+PIN_MEMORY = True if DEVICE == 'cuda' else False
 
 
 def prepare_data():
