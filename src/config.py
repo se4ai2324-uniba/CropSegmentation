@@ -33,11 +33,14 @@ CONFIG = {
     'BATCH_SIZE':                       50,
     'INIT_LR':                          .001,
     'RATIO':                            .25,
+    'PARAMS_SEARCH':                    {
+                                            'BATCH_SIZE':   [25, 50],
+                                            'INIT_LR':      [0.1, 0.001]
+                                        },
 
     # predict_model.py
     'THRESHOLD':                        .5,
-    'ACCURACY_FILE_PATH':               'models/metrics/acc.metrics',
-    'JACCARD_FILE_PATH':                'models/metrics/iou.metrics'    
+    'METRICS_BASE_PATH':                'models/metrics/'
 }
 
 def get_global_config():

@@ -43,30 +43,62 @@ stages:
       size: 2048543648
     - path: src/models/train_model.py
       hash: md5
-      md5: a4c40c8ec8d5b3e789f2115652fe3811
-      size: 6113
+      md5: c5362d4aae749afb8eb7c1800dedd600
+      size: 6560
     outs:
-    - path: models/saved/10_50_0.001_0.25_cpu_unet_model.pth
+    - path: models/saved/10_25_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: e0883c89036d602b899ed7d0f90d1181
+      size: 484663
+    - path: models/saved/10_25_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 18d96310dd0ccc55276e5a63b74d5cd4
+      size: 484607
+    - path: models/saved/10_50_0.001_0.25_unet_model.pth
       hash: md5
       md5: 197a00f11f159bc60bf7eff86339105e
       size: 484479
+    - path: models/saved/10_50_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 07b0301a7d21796b54563e4c84bdad62
+      size: 484607
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
-    - path: models/saved/10_50_0.001_0.25_cpu_unet_model.pth
+    - path: models/saved/10_25_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: e0883c89036d602b899ed7d0f90d1181
+      size: 484663
+    - path: models/saved/10_25_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 18d96310dd0ccc55276e5a63b74d5cd4
+      size: 484607
+    - path: models/saved/10_50_0.001_0.25_unet_model.pth
       hash: md5
       md5: 197a00f11f159bc60bf7eff86339105e
       size: 484479
+    - path: models/saved/10_50_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 07b0301a7d21796b54563e4c84bdad62
+      size: 484607
     - path: src/models/predict_model.py
       hash: md5
-      md5: 4dd6200dbb4591fecd084ff48716a1f2
-      size: 5549
+      md5: 8f32da201ddabb3d89a06d4a0cb58b0f
+      size: 6545
     outs:
-    - path: models/metrics/acc.metrics
+    - path: models/metrics/10_25_0.001_0.25.metrics
       hash: md5
-      md5: f32bafef64e057c65be4b68203ea4f25
-      size: 20
-    - path: models/metrics/iou.metrics
+      md5: 9ad5f736e882fc5da7827d3885f11189
+      size: 96
+    - path: models/metrics/10_25_0.1_0.25.metrics
       hash: md5
-      md5: 67cd45916818b2179ac4f204957bccf8
-      size: 20
+      md5: 939af9571960a911ae97f4b5700080ed
+      size: 96
+    - path: models/metrics/10_50_0.001_0.25.metrics
+      hash: md5
+      md5: 5f68c5398b0bcc8d7a82f7ba962d4eb0
+      size: 96
+    - path: models/metrics/10_50_0.1_0.25.metrics
+      hash: md5
+      md5: 939af9571960a911ae97f4b5700080ed
+      size: 96

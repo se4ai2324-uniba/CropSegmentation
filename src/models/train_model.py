@@ -25,6 +25,7 @@ NUM_EPOCHS = config.get('NUM_EPOCHS')
 BATCH_SIZE = config.get('BATCH_SIZE')
 INIT_LR = config.get('INIT_LR')
 RATIO = config.get('RATIO')
+PARAMS_SEARCH = config.get('PARAMS_SEARCH')
 
 if torch.backends.mps.is_available():
     DEVICE = 'mps'
@@ -81,7 +82,7 @@ def prepare_data():
 def train():
     if not os.path.isdir(SAVED_MODEL_PATH):
         Path(SAVED_MODEL_PATH).mkdir(parents=True, exist_ok=True)
-    pth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)+'_'+str(DEVICE)+'_unet_model.pth'
+    pth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)+'_unet_model.pth'
 
     if not os.path.isfile(SAVED_MODEL_PATH+pth):
         trainingDS, validationDS, trainLoader, valLoader  = prepare_data()
@@ -136,14 +137,21 @@ def train():
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    keys = [i.split('=')[0].upper() for i in args]
-    values = [float(i.split('=')[1]) for i in args]
-    if 'NUM_EPOCHS' in keys:
-        NUM_EPOCHS = values[keys.index('NUM_EPOCHS')]
-    if 'BATCH_SIZE' in keys:
-        BATCH_SIZE = values[keys.index('BATCH_SIZE')]
-    if 'INIT_LR' in keys:
-        INIT_LR = values[keys.index('INIT_LR')]
-    if 'RATIO' in keys:
-        RATIO = values[keys.index('RATIO')]
-    train()
+    if len(args) == 0:
+        for s in PARAMS_SEARCH['BATCH_SIZE']:
+            for r in PARAMS_SEARCH['INIT_LR']:
+                BATCH_SIZE = s
+                INIT_LR = r
+                train()
+    else:
+        keys = [i.split('=')[0].upper() for i in args]
+        values = [float(i.split('=')[1]) for i in args]
+        if 'NUM_EPOCHS' in keys:
+            NUM_EPOCHS = values[keys.index('NUM_EPOCHS')]
+        if 'BATCH_SIZE' in keys:
+            BATCH_SIZE = values[keys.index('BATCH_SIZE')]
+        if 'INIT_LR' in keys:
+            INIT_LR = values[keys.index('INIT_LR')]
+        if 'RATIO' in keys:
+            RATIO = values[keys.index('RATIO')]
+        train()
