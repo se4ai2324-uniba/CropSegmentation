@@ -12,6 +12,7 @@ import numpy as np
 import os
 from model import *
 import mlflow
+import dagshub
 
 config = get_global_config()
 SAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')
@@ -77,6 +78,7 @@ def pixelAccuracy(predictions, labels):
     return tp_tn / all * 100
 
 def evaluate():
+    dagshub.init("CropSegmentation", "se4ai2324-uniba", mlflow=True)
     mlflow.start_run()
     mlflow.log_params({
                 "NUM_EPOCHS":   NUM_EPOCHS,
