@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   extract_data:
-    cmd: python3 src/data/extract_data.py
+    cmd: python src/data/extract_data.py
     deps:
     - path: data/raw/datasets.zip
       hash: md5
@@ -9,8 +9,8 @@ stages:
       size: 2332182734
     - path: src/data/extract_data.py
       hash: md5
-      md5: a162d8cfc5ffa79fd9b9b703109fd098
-      size: 727
+      md5: 3bc4b0966bb41fb6cf9de1959df49988
+      size: 755
     outs:
     - path: data/raw/datasets
       hash: md5
@@ -18,7 +18,7 @@ stages:
       size: 2360199167
       nfiles: 1549
   make_dataset:
-    cmd: python3 src/data/make_dataset.py
+    cmd: python src/data/make_dataset.py
     deps:
     - path: data/raw/datasets
       hash: md5
@@ -27,24 +27,24 @@ stages:
       nfiles: 1549
     - path: src/data/make_dataset.py
       hash: md5
-      md5: a97010e40c436ff9ffbfb9dfe137acf2
-      size: 3986
+      md5: 9098e38b6e5b215b9f4048bb4eaad083
+      size: 4065
     outs:
     - path: data/processed/datasets_processed.zip
       hash: md5
-      md5: 8a2ead336a61d0fbd1502cf745b27fc4
+      md5: 42a8dd874f989c610c180dfd537e511b
       size: 2048543648
   train_model:
-    cmd: python3 src/models/train_model.py
+    cmd: python src/models/train_model.py
     deps:
     - path: data/processed/datasets_processed.zip
       hash: md5
-      md5: 8a2ead336a61d0fbd1502cf745b27fc4
+      md5: 42a8dd874f989c610c180dfd537e511b
       size: 2048543648
     - path: src/models/train_model.py
       hash: md5
-      md5: c5362d4aae749afb8eb7c1800dedd600
-      size: 6560
+      md5: 03eea812e1206b8503ab00b9e6f9d0a6
+      size: 6717
     outs:
     - path: models/saved/10_25_0.001_0.25_unet_model.pth
       hash: md5
@@ -63,7 +63,7 @@ stages:
       md5: 07b0301a7d21796b54563e4c84bdad62
       size: 484607
   predict_model:
-    cmd: python3 src/models/predict_model.py
+    cmd: python src/models/predict_model.py
     deps:
     - path: models/saved/10_25_0.001_0.25_unet_model.pth
       hash: md5
@@ -83,22 +83,22 @@ stages:
       size: 484607
     - path: src/models/predict_model.py
       hash: md5
-      md5: 8f32da201ddabb3d89a06d4a0cb58b0f
-      size: 6545
+      md5: b52468fa50687559c1229a79b53680cc
+      size: 6698
     outs:
     - path: models/metrics/10_25_0.001_0.25.metrics
       hash: md5
-      md5: 9ad5f736e882fc5da7827d3885f11189
-      size: 96
+      md5: 7328868edff72481816aef3e11ed6411
+      size: 100
     - path: models/metrics/10_25_0.1_0.25.metrics
       hash: md5
-      md5: 939af9571960a911ae97f4b5700080ed
-      size: 96
+      md5: 973b640c082d73a8b3ae9880fbac0d1d
+      size: 100
     - path: models/metrics/10_50_0.001_0.25.metrics
       hash: md5
-      md5: 5f68c5398b0bcc8d7a82f7ba962d4eb0
-      size: 96
+      md5: ab647c045c2fecd60b9b598b49809a12
+      size: 100
     - path: models/metrics/10_50_0.1_0.25.metrics
       hash: md5
-      md5: 939af9571960a911ae97f4b5700080ed
-      size: 96
+      md5: 973b640c082d73a8b3ae9880fbac0d1d
+      size: 100

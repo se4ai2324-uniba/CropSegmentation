@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/seai/CropSegmentation/mlruns/0/406331ef62de47f99f5d097c41077bd9/artifacts
+end_time: 1698231278516
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 406331ef62de47f99f5d097c41077bd9
+run_name: 10_25_0.1_0.25_unet_model.pth
+run_uuid: 406331ef62de47f99f5d097c41077bd9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1698231167094
+status: 3
+tags: []
+user_id: Panun
