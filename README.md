@@ -38,7 +38,8 @@ Project Organization
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── mlruns             <- MLFlow              
+    ├── mlartifacts        <- MLFlow artifacts
+    ├── mlruns             <- MLFlow runs             
     │
     ├── models             
     │   ├── saved          <- Trained and serialized models
@@ -58,6 +59,7 @@ Project Organization
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     ├── src                <- Source code for use in this project.
+    ├── tests              <- Code for testing.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
     │   ├── data           <- Scripts to download or generate data
