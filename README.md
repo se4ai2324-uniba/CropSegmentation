@@ -59,7 +59,6 @@ Project Organization
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     ├── src                <- Source code for use in this project.
-    ├── tests              <- Code for testing.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
     │   ├── data           <- Scripts to download or generate data
@@ -79,6 +78,7 @@ Project Organization
     │   │   
     │   │── config.py      <- Global configurations
     │   └── utils.py       <- Utility functions
+    ├── tests              <- Code for testing.
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
