@@ -1,0 +1,13 @@
+aliases: []
+creation_timestamp: 1698402185884
+current_stage: Staging
+description: ''
+last_updated_timestamp: 1698402205099
+name: CropSegmentationModel
+run_id: 7f7f4500dfa540a89ebf601c7b0c6707
+run_link: ''
+source: mlflow-artifacts:/573f29555a864459bcc756e3c21ab33d/7f7f4500dfa540a89ebf601c7b0c6707/artifacts/10_50_0.1_0.25_unet_model.pth
+status: READY
+status_message: null
+user_id: null
+version: 1
