@@ -38,9 +38,6 @@ Project Organization
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── mlartifacts        <- MLFlow artifacts
-    ├── mlruns             <- MLFlow runs             
-    │
     ├── models             
     │   ├── saved          <- Trained and serialized models
     │   └── metrics        <- Model predictions or model summaries

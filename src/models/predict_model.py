@@ -78,7 +78,7 @@ def pixelAccuracy(predictions, labels):
     return tp_tn / all * 100
 
 def evaluate():
-    dagshub.init("CropSegmentation", "se4ai2324-uniba", mlflow=True)
+    #dagshub.init(repo_owner='se4ai2324-uniba', repo_name='CropSegmentation', mlflow=True)
     mlflow.start_run()
     mlflow.log_params({
                 "NUM_EPOCHS":   NUM_EPOCHS,
@@ -88,7 +88,7 @@ def evaluate():
             })
     model, pth = get_saved_model()
     mlflow.set_tag("mlflow.runName", pth)
-    mlflow.pytorch.log_model(model, pth)
+    mlflow.pytorch.autolog()
     if model != False:
         testImages, testMasks = get_testing_data()
         testPred = []
