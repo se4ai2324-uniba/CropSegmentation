@@ -78,7 +78,7 @@ Project Organization
     │   │   
     │   │── config.py      <- Global configurations
     │   └── utils.py       <- Utility functions
-    ├── tests              <- Code for testing.
+    ├── tests              <- Code for testing
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 

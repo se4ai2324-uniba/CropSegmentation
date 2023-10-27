@@ -79,7 +79,6 @@ def pixelAccuracy(predictions, labels):
 
 def evaluate():
     dagshub.init("CropSegmentation", "se4ai2324-uniba", mlflow=True)
-    mlflow.set_tracking_uri('http://127.0.0.1:5000')
     mlflow.start_run()
     mlflow.log_params({
                 "NUM_EPOCHS":   NUM_EPOCHS,
