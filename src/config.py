@@ -37,20 +37,22 @@ CONFIG = {
 	'INIT_LR':							.1,
 	'RATIO':							.25,
 	'PARAMS_SEARCH':					{
-											'BATCH_SIZE':   [25, 50],
-											'INIT_LR':      [0.1, 0.001]
+											'BATCH_SIZE':	[25, 50],
+											'INIT_LR':		[0.1, 0.001]
 										},
 
 	# predict_model.py
 	'THRESHOLD':						.5,
 	'METRICS_BASE_PATH':				'models/metrics/'
-	}
+}
+
 
 def get_global_config():
 	"""
 	The getter method
 	"""
 	return CONFIG
+
 
 def set_global_config(key, value):
 	"""

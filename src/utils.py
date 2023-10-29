@@ -7,6 +7,7 @@ import cv2
 from skimage import io
 import torch
 
+
 def getTiles(img, H, W):
 	"""Returns a set of patches of size H x W
 	Args:
@@ -18,13 +19,14 @@ def getTiles(img, H, W):
 	imgW = img.shape[1]
 	padH = int(imgH % H / 2)
 	padW = int(imgW % W / 2)
-	X = np.arange(0+padH, imgH-padH, H)
-	Y = np.arange(0+padW, imgW-padW, W)
-	return [img[x:x+H,y:y+W] for x in X for y in Y]
+	X = np.arange(0 + padH, imgH - padH, H)
+	Y = np.arange(0 + padW, imgW - padW, W)
+	return [img[x: x + H, y: y + W] for x in X for y in Y]
 
 
 def applyLowLevelSegmentation(imgList, algorithm='clustering'):
-	"""Returns a segmented image based on Clustering or Thresholding (aka Otsu) algorithms
+	"""Returns a segmented image based on
+	Clustering or Thresholding (aka Otsu) algorithms
 	Args:
 	imgList: A list of images
 	algorithm: Algorithm to apply (Clustering or Thresholding)
@@ -41,7 +43,8 @@ def applyLowLevelSegmentation(imgList, algorithm='clustering'):
 
 
 def applyRandomDistorsion(imgList, maskList, percentage, maskFolder):
-	"""Returns a sample of distorted images by applying a black mask (see Weedmap dataset for details)
+	"""Returns a sample of distorted images by applying
+	a black mask (see Weedmap dataset for details)
 	Args:
 	imgList: A list of images
 	maskList: A list of corresponding segmentation
@@ -50,14 +53,17 @@ def applyRandomDistorsion(imgList, maskList, percentage, maskFolder):
 	"""
 	masks = os.listdir(maskFolder)
 	sampleSize = int(len(imgList) * percentage)
-	randomId = np.random.choice(list(range(len(imgList))), size=sampleSize, replace=False)
+	randomId = np.random.choice(
+		list(range(len(imgList))), size=sampleSize, replace=False)
 	sampleMasks = np.random.choice(masks, size=sampleSize, replace=False)
 
 	for i, filename in enumerate(sampleMasks):
 		if filename != '.DS_Store':
-			mask = io.imread(maskFolder+filename)
-			imgList[randomId[i]] = cv2.bitwise_and(imgList[randomId[i]], imgList[randomId[i]], mask=mask)
-			maskList[randomId[i]] = cv2.bitwise_and(maskList[randomId[i]], maskList[randomId[i]], mask=mask)
+			mask = io.imread(maskFolder + filename)
+			imgList[randomId[i]] = cv2.bitwise_and(
+				imgList[randomId[i]], imgList[randomId[i]], mask=mask)
+			maskList[randomId[i]] = cv2.bitwise_and(
+				maskList[randomId[i]], maskList[randomId[i]], mask=mask)
 	return (imgList, maskList)
 
 
@@ -79,14 +85,16 @@ def clustering_segmentation(img):
 	Args:
 	img: RGB image
 	Returns:
-	segmented: Segmented image in which all pixels are of the color of the centroid 
+	segmented: Segmented image in which all pixels
+	are of the color of the centroid
 	mask: Black and Green mask (Black=NoCrops, Green=Crops)
 	"""
 	criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
 	k = 2
-	img = cv2.blur(img, ksize = (15, 15))
+	img = cv2.blur(img, ksize=(15, 15))
 	_, labels, (centers) = cv2.kmeans(
-		np.float32(img.reshape((-1, 3))), k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS
+		np.float32(img.reshape((-1, 3))), k, None,
+		criteria, 10, cv2.KMEANS_RANDOM_CENTERS
 	)
 	# convert all pixels to the color of the centroids
 	centers = np.uint8(centers)
@@ -112,17 +120,17 @@ def thresholding_segmentation(img, rgb=True, inverse=False):
 	img: Image
 	rgb: Whether if the Image is RGB or not
 	Returns:
-	threshold: Threshold to separate pixel 
+	threshold: Threshold to separate pixel
 	mask: Black and Green mask (Black=NoCrops, Green=Crops)
 	"""
 	if rgb:
 		img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-	img = cv2.blur(img, ksize = (15, 15))
+	img = cv2.blur(img, ksize=(15, 15))
 	# OTSU'S ALGORITHM
 	hist, bins = np.histogram(img, bins=256)
 	# Calculate centers of bins
 	bins_mids = (bins[:-1] + bins[1:]) / 2.
-	# Iterate over all thresholds (indices) and get the probabilities w1(t), w2(t)
+	# Loop over all thresholds (indices) and get probabilities w1(t), w2(t)
 	w1 = np.cumsum(hist)
 	w2 = np.cumsum(hist[::-1])[::-1]
 	# Get the classes means mu0(t) and mu1(t)
@@ -132,13 +140,15 @@ def thresholding_segmentation(img, rgb=True, inverse=False):
 	index_of_max_val = np.argmax(inter_class_variance)
 	threshold = bins_mids[:-1][index_of_max_val]
 	_, mask = cv2.threshold(
-		img, threshold, 255, cv2.THRESH_BINARY_INV if inverse else cv2.THRESH_BINARY
+		img, threshold, 255,
+		cv2.THRESH_BINARY_INV if inverse else cv2.THRESH_BINARY
 	)
 	return threshold, mask
 
 
 def applyGreenFilter(img):
-	"""Returns a masked image in which the background is removed and green channel is 'highlighted'
+	"""Returns a masked image in which the background
+	is removed and green channel is 'highlighted'
 	Args:
 	img: RGB image to which apply the filter
 	"""
@@ -158,6 +168,7 @@ def get2Dmask(mask):
 			if mask[i][j].any():
 				binary_mask[i][j] = 255
 	return binary_mask
+
 
 def getDevice():
 	"""Returns the device available on the current machine

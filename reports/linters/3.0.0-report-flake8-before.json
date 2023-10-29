@@ -1,0 +1,1999 @@
+{
+  "src/__init__.py": [],
+  "src/config.py": [
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 6,
+      "column_number": 25,
+      "text": "tab after ':'",
+      "physical_line": "\t'RAW_DATA_SOURCE_PATH':\t\t\t\t'data/raw/datasets.zip',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 7,
+      "column_number": 23,
+      "text": "tab after ':'",
+      "physical_line": "\t'RAW_DATA_DEST_PATH':\t\t\t\t'data/raw/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 10,
+      "column_number": 15,
+      "text": "tab after ':'",
+      "physical_line": "\t'TILE_WIDTH':\t\t\t\t\t\t480,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 11,
+      "column_number": 16,
+      "text": "tab after ':'",
+      "physical_line": "\t'TILE_HEIGHT':\t\t\t\t\t\t360,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 12,
+      "column_number": 22,
+      "text": "tab after ':'",
+      "physical_line": "\t'RAW_TRAINING_PATH':\t\t\t\t'data/raw/datasets/training/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 13,
+      "column_number": 21,
+      "text": "tab after ':'",
+      "physical_line": "\t'RAW_TESTING_PATH':\t\t\t\t\t'data/raw/datasets/testing/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 14,
+      "column_number": 21,
+      "text": "tab after ':'",
+      "physical_line": "\t'TRAINING_FOLDERS':\t\t\t\t\t[\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 15,
+      "column_number": 12,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t'Field_A/Ses1/',\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 21,
+      "column_number": 11,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t],\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 22,
+      "column_number": 20,
+      "text": "tab after ':'",
+      "physical_line": "\t'TESTING_FOLDERS':\t\t\t\t\t[\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 23,
+      "column_number": 12,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t'weedmap/Tiles/RedEdge/003/groundtruth/',\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 26,
+      "column_number": 11,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t],\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 27,
+      "column_number": 33,
+      "text": "tab after ':'",
+      "physical_line": "\t'PROCESSED_TRAINING_DATA_PATH':\t\t'data/processed/datasets_processed/training_data/',\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/config.py",
+      "line_number": 27,
+      "column_number": 80,
+      "text": "line too long (85 > 79 characters)",
+      "physical_line": "\t'PROCESSED_TRAINING_DATA_PATH':\t\t'data/processed/datasets_processed/training_data/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 28,
+      "column_number": 35,
+      "text": "tab after ':'",
+      "physical_line": "\t'PROCESSED_TRAINING_LABELS_PATH':\t'data/processed/datasets_processed/training_labels/',\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/config.py",
+      "line_number": 28,
+      "column_number": 80,
+      "text": "line too long (88 > 79 characters)",
+      "physical_line": "\t'PROCESSED_TRAINING_LABELS_PATH':\t'data/processed/datasets_processed/training_labels/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 29,
+      "column_number": 32,
+      "text": "tab after ':'",
+      "physical_line": "\t'PROCESSED_TESTING_DATA_PATH':\t\t'data/processed/datasets_processed/testing_data/',\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/config.py",
+      "line_number": 29,
+      "column_number": 80,
+      "text": "line too long (83 > 79 characters)",
+      "physical_line": "\t'PROCESSED_TESTING_DATA_PATH':\t\t'data/processed/datasets_processed/testing_data/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 30,
+      "column_number": 34,
+      "text": "tab after ':'",
+      "physical_line": "\t'PROCESSED_TESTING_LABELS_PATH':\t'data/processed/datasets_processed/testing_labels/',\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/config.py",
+      "line_number": 30,
+      "column_number": 80,
+      "text": "line too long (86 > 79 characters)",
+      "physical_line": "\t'PROCESSED_TESTING_LABELS_PATH':\t'data/processed/datasets_processed/testing_labels/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 31,
+      "column_number": 27,
+      "text": "tab after ':'",
+      "physical_line": "\t'PROCESSED_ARCHIVE_PATH':\t\t\t'data/processed/datasets_processed',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 34,
+      "column_number": 21,
+      "text": "tab after ':'",
+      "physical_line": "\t'SAVED_MODEL_PATH':\t\t\t\t\t'models/saved/',\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 35,
+      "column_number": 15,
+      "text": "tab after ':'",
+      "physical_line": "\t'NUM_EPOCHS':\t\t\t\t\t\t10,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 36,
+      "column_number": 15,
+      "text": "tab after ':'",
+      "physical_line": "\t'BATCH_SIZE':\t\t\t\t\t\t50,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 37,
+      "column_number": 12,
+      "text": "tab after ':'",
+      "physical_line": "\t'INIT_LR':\t\t\t\t\t\t\t.1,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 38,
+      "column_number": 10,
+      "text": "tab after ':'",
+      "physical_line": "\t'RATIO':\t\t\t\t\t\t\t.25,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 39,
+      "column_number": 18,
+      "text": "tab after ':'",
+      "physical_line": "\t'PARAMS_SEARCH':\t\t\t\t\t{\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 40,
+      "column_number": 12,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t'BATCH_SIZE':   [25, 50],\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/config.py",
+      "line_number": 40,
+      "column_number": 25,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t'BATCH_SIZE':   [25, 50],\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/config.py",
+      "line_number": 41,
+      "column_number": 22,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t'INIT_LR':      [0.1, 0.001]\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/config.py",
+      "line_number": 42,
+      "column_number": 11,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t},\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 45,
+      "column_number": 14,
+      "text": "tab after ':'",
+      "physical_line": "\t'THRESHOLD':\t\t\t\t\t\t.5,\n"
+    },
+    {
+      "code": "E242",
+      "filename": "src/config.py",
+      "line_number": 46,
+      "column_number": 22,
+      "text": "tab after ':'",
+      "physical_line": "\t'METRICS_BASE_PATH':\t\t\t\t'models/metrics/'\n"
+    },
+    {
+      "code": "E123",
+      "filename": "src/config.py",
+      "line_number": 47,
+      "column_number": 2,
+      "text": "closing bracket does not match indentation of opening bracket's line",
+      "physical_line": "\t}\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/config.py",
+      "line_number": 49,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def get_global_config():\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/config.py",
+      "line_number": 55,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def set_global_config(key, value):\n"
+    }
+  ],
+  "src/data/__init__.py": [],
+  "src/data/extract_data.py": [
+    {
+      "code": "E402",
+      "filename": "src/data/extract_data.py",
+      "line_number": 9,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from config import get_global_config\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/data/extract_data.py",
+      "line_number": 15,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def extract():\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/extract_data.py",
+      "line_number": 23,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(20)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/extract_data.py",
+      "line_number": 25,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(20)])+'\\n')\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/extract_data.py",
+      "line_number": 27,
+      "column_number": 29,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tif os.path.isdir(DEST_PATH+'/__MACOSX'):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/extract_data.py",
+      "line_number": 28,
+      "column_number": 27,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tshutil.rmtree(DEST_PATH+'/__MACOSX')\n"
+    },
+    {
+      "code": "E305",
+      "filename": "src/data/extract_data.py",
+      "line_number": 33,
+      "column_number": 1,
+      "text": "expected 2 blank lines after class or function definition, found 1",
+      "physical_line": "if __name__ == \"__main__\":\n"
+    }
+  ],
+  "src/data/make_dataset.py": [
+    {
+      "code": "E402",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 7,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from pathlib import Path\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 8,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import shutil\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 9,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import cv2\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 10,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from utils import getTiles, applyLowLevelSegmentation, applyRandomDistorsion, merge_labels\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 10,
+      "column_number": 80,
+      "text": "line too long (90 > 79 characters)",
+      "physical_line": "from utils import getTiles, applyLowLevelSegmentation, applyRandomDistorsion, merge_labels\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 11,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from config import get_global_config\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 32,
+      "column_number": 80,
+      "text": "line too long (96 > 79 characters)",
+      "physical_line": "\tif not os.path.isdir(TRAINING_DATA_DEST_PATH) and not os.path.isdir(TRAINING_LABELS_DEST_PATH):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 36,
+      "column_number": 50,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\timages_names = os.listdir(TRAINING_SOURCE_PATH+folder)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 37,
+      "column_number": 80,
+      "text": "line too long (85 > 79 characters)",
+      "physical_line": "\t\t\tprint(f'\\n{\"FOLDER: \"+folder:<25}{\"PROCESSED: \"+\"0/\"+str(len(images_names)):<15}')\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 42,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\timg = cv2.imread(TRAINING_SOURCE_PATH+folder+img_name)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 42,
+      "column_number": 50,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\timg = cv2.imread(TRAINING_SOURCE_PATH+folder+img_name)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 46,
+      "column_number": 9,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\ttiles,\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 49,
+      "column_number": 39,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\t\t\t\tmaskFolder=TESTING_SOURCE_PATH+TESTING_FOLDERS[1]\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 50,
+      "column_number": 8,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 53,
+      "column_number": 42,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\t\tcv2.imwrite(TRAINING_DATA_DEST_PATH+name, v)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 54,
+      "column_number": 44,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\t\tcv2.imwrite(TRAINING_LABELS_DEST_PATH+name, y[j])\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 56,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(25)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 58,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 65,
+      "column_number": 80,
+      "text": "line too long (94 > 79 characters)",
+      "physical_line": "\tif not os.path.isdir(TESTING_DATA_DEST_PATH) and not os.path.isdir(TESTING_LABELS_DEST_PATH):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 68,
+      "column_number": 48,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\timages_names = os.listdir(TESTING_SOURCE_PATH+TESTING_FOLDERS[2])\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 71,
+      "column_number": 80,
+      "text": "line too long (87 > 79 characters)",
+      "physical_line": "\t\t\t\tprint(f'{\"TESTING DATA\":<25}{\"PROCESSED: \"+str(k)+\"/\"+str(len(images_names)):<15}')\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 73,
+      "column_number": 41,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\timg = cv2.imread(TESTING_SOURCE_PATH+TESTING_FOLDERS[2]+img_name)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 73,
+      "column_number": 60,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\timg = cv2.imread(TESTING_SOURCE_PATH+TESTING_FOLDERS[2]+img_name)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 74,
+      "column_number": 22,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tmaskname = '003_'+img_name[:-4]+'_GroundTruth_color.png'\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 74,
+      "column_number": 36,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tmaskname = '003_'+img_name[:-4]+'_GroundTruth_color.png'\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 75,
+      "column_number": 42,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tmask = cv2.imread(TESTING_SOURCE_PATH+TESTING_FOLDERS[0]+maskname)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 75,
+      "column_number": 61,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tmask = cv2.imread(TESTING_SOURCE_PATH+TESTING_FOLDERS[0]+maskname)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 78,
+      "column_number": 39,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tcv2.imwrite(TESTING_DATA_DEST_PATH+name, img)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 79,
+      "column_number": 41,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\tcv2.imwrite(TESTING_LABELS_DEST_PATH+name, mask)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 81,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(25)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/data/make_dataset.py",
+      "line_number": 83,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    }
+  ],
+  "src/features/__init__.py": [],
+  "src/features/build_features.py": [],
+  "src/models/__init__.py": [],
+  "src/models/model.py": [
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 21,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef forward(self, x):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/model.py",
+      "line_number": 27,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "class Encoder(nn.Module):\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 37,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef forward(self, x):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/model.py",
+      "line_number": 48,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "class Decoder(nn.Module):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/model.py",
+      "line_number": 56,
+      "column_number": 47,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t[nn.ConvTranspose2d(channels[i], channels[i+1],2,2) for i in range(len(channels)-1)]\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/model.py",
+      "line_number": 56,
+      "column_number": 50,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t[nn.ConvTranspose2d(channels[i], channels[i+1],2,2) for i in range(len(channels)-1)]\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/model.py",
+      "line_number": 56,
+      "column_number": 52,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t[nn.ConvTranspose2d(channels[i], channels[i+1],2,2) for i in range(len(channels)-1)]\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/model.py",
+      "line_number": 56,
+      "column_number": 80,
+      "text": "line too long (87 > 79 characters)",
+      "physical_line": "\t\t\t[nn.ConvTranspose2d(channels[i], channels[i+1],2,2) for i in range(len(channels)-1)]\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/model.py",
+      "line_number": 56,
+      "column_number": 84,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t[nn.ConvTranspose2d(channels[i], channels[i+1],2,2) for i in range(len(channels)-1)]\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 61,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef forward(self, x, encFeatures):\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 71,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef crop(self, encFeatures, x):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/model.py",
+      "line_number": 79,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "class UNet(nn.Module):\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/model.py",
+      "line_number": 83,
+      "column_number": 80,
+      "text": "line too long (100 > 79 characters)",
+      "physical_line": "\tdef __init__(self, outSize, encChannels=(3, 16, 32, 64), decChannels=(64, 32, 16), retainDim=True):\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 90,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef forward(self, x):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/model.py",
+      "line_number": 101,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "class MyCustomDataset(Dataset):\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 109,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef __len__(self):\n"
+    },
+    {
+      "code": "E301",
+      "filename": "src/models/model.py",
+      "line_number": 111,
+      "column_number": 2,
+      "text": "expected 1 blank line, found 0",
+      "physical_line": "\tdef __getitem__(self, idx):\n"
+    }
+  ],
+  "src/models/predict_model.py": [
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 7,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import torch\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 9,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import torch.multiprocessing\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 11,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from torchvision import transforms\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 12,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from sklearn.metrics import jaccard_score\n"
+    },
+    {
+      "code": "F403",
+      "filename": "src/models/predict_model.py",
+      "line_number": 13,
+      "column_number": 1,
+      "text": "'from model import *' used; unable to detect undefined names",
+      "physical_line": "from model import *\n"
+    },
+    {
+      "code": "F401",
+      "filename": "src/models/predict_model.py",
+      "line_number": 13,
+      "column_number": 1,
+      "text": "'model.*' imported but unused",
+      "physical_line": "from model import *\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 13,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from model import *\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 14,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from skimage import io\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 15,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import numpy as np\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 16,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import mlflow\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 18,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from utils import getDevice\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/predict_model.py",
+      "line_number": 19,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from config import get_global_config\n"
+    },
+    {
+      "code": "E222",
+      "filename": "src/models/predict_model.py",
+      "line_number": 27,
+      "column_number": 12,
+      "text": "multiple spaces after operator",
+      "physical_line": "THRESHOLD =  config.get('THRESHOLD')\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/predict_model.py",
+      "line_number": 34,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def get_saved_model():\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 32,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 53,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 57,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 70,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 74,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 39,
+      "column_number": 80,
+      "text": "line too long (84 > 79 characters)",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 41,
+      "column_number": 36,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tif os.path.isfile(SAVED_MODEL_PATH+pth):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 43,
+      "column_number": 45,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tsaved_model = torch.load(SAVED_MODEL_PATH+pth,  map_location=torch.device(DEVICE))\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/models/predict_model.py",
+      "line_number": 43,
+      "column_number": 50,
+      "text": "multiple spaces after ','",
+      "physical_line": "\t\t\tsaved_model = torch.load(SAVED_MODEL_PATH+pth,  map_location=torch.device(DEVICE))\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 43,
+      "column_number": 80,
+      "text": "line too long (85 > 79 characters)",
+      "physical_line": "\t\t\tsaved_model = torch.load(SAVED_MODEL_PATH+pth,  map_location=torch.device(DEVICE))\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/predict_model.py",
+      "line_number": 49,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def get_testing_data():\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 55,
+      "column_number": 30,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\ttestImages = [TEST_DATA_PATH+i for i in os.listdir(TEST_DATA_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 57,
+      "column_number": 41,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\ttestMasks = [io.imread(TEST_LABELS_PATH+i) for i in os.listdir(TEST_LABELS_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 57,
+      "column_number": 80,
+      "text": "line too long (93 > 79 characters)",
+      "physical_line": "\ttestMasks = [io.imread(TEST_LABELS_PATH+i) for i in os.listdir(TEST_LABELS_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/predict_model.py",
+      "line_number": 60,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def make_predictions(model, testImgPath):\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 67,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\ttransforms.ToPILImage(),\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 70,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t])\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/predict_model.py",
+      "line_number": 83,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def pixelAccuracy(predictions, labels):\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/predict_model.py",
+      "line_number": 92,
+      "column_number": 28,
+      "text": "missing whitespace after ','",
+      "physical_line": "\ttp_tn = np.array([1 for (i,v) in enumerate(predictions) if v == labels[i]]).sum()\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 92,
+      "column_number": 80,
+      "text": "line too long (82 > 79 characters)",
+      "physical_line": "\ttp_tn = np.array([1 for (i,v) in enumerate(predictions) if v == labels[i]]).sum()\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/predict_model.py",
+      "line_number": 95,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def evaluate():\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 99,
+      "column_number": 80,
+      "text": "line too long (88 > 79 characters)",
+      "physical_line": "\t# dagshub.init(repo_owner='se4ai2324-uniba', repo_name='CropSegmentation', mlflow=True)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 102,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\"NUM_EPOCHS\":   NUM_EPOCHS,\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/models/predict_model.py",
+      "line_number": 102,
+      "column_number": 18,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\"NUM_EPOCHS\":   NUM_EPOCHS,\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/models/predict_model.py",
+      "line_number": 103,
+      "column_number": 18,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\"BATCH_SIZE\":   BATCH_SIZE,\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/models/predict_model.py",
+      "line_number": 104,
+      "column_number": 15,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\"INIT_LR\":      INIT_LR,\n"
+    },
+    {
+      "code": "E241",
+      "filename": "src/models/predict_model.py",
+      "line_number": 105,
+      "column_number": 13,
+      "text": "multiple spaces after ':'",
+      "physical_line": "\t\t\t\t\"RATIO\":        RATIO\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 106,
+      "column_number": 4,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t})\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/predict_model.py",
+      "line_number": 119,
+      "column_number": 59,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t'unet': np.array([pixelAccuracy(v, testMasks[i]) for (i,v) in enumerate(testPred)]),\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 119,
+      "column_number": 80,
+      "text": "line too long (87 > 79 characters)",
+      "physical_line": "\t\t\t'unet': np.array([pixelAccuracy(v, testMasks[i]) for (i,v) in enumerate(testPred)]),\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 121,
+      "column_number": 8,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\tpixelAccuracy(v, testMasks[i]) for (i,v) in enumerate(testPred)\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/predict_model.py",
+      "line_number": 121,
+      "column_number": 45,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t\t\t\t\tpixelAccuracy(v, testMasks[i]) for (i,v) in enumerate(testPred)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 123,
+      "column_number": 7,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t])\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/predict_model.py",
+      "line_number": 127,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t'unet': np.array([\n"
+    },
+    {
+      "code": "E122",
+      "filename": "src/models/predict_model.py",
+      "line_number": 128,
+      "column_number": 6,
+      "text": "continuation line missing indentation or outdented",
+      "physical_line": "\t\t\t\t\tjaccard_score(\n"
+    },
+    {
+      "code": "E123",
+      "filename": "src/models/predict_model.py",
+      "line_number": 130,
+      "column_number": 7,
+      "text": "closing bracket does not match indentation of opening bracket's line",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 130,
+      "column_number": 8,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred)\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/predict_model.py",
+      "line_number": 130,
+      "column_number": 19,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred)\n"
+    },
+    {
+      "code": "E122",
+      "filename": "src/models/predict_model.py",
+      "line_number": 133,
+      "column_number": 6,
+      "text": "continuation line missing indentation or outdented",
+      "physical_line": "\t\t\t\t\tjaccard_score(\n"
+    },
+    {
+      "code": "E123",
+      "filename": "src/models/predict_model.py",
+      "line_number": 135,
+      "column_number": 7,
+      "text": "closing bracket does not match indentation of opening bracket's line",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred) if not np.all(testMasks[i] == 0)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 135,
+      "column_number": 8,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred) if not np.all(testMasks[i] == 0)\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/models/predict_model.py",
+      "line_number": 135,
+      "column_number": 19,
+      "text": "missing whitespace after ','",
+      "physical_line": "\t\t\t\t\t\t)*100 for (i,v) in enumerate(testPred) if not np.all(testMasks[i] == 0)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 138,
+      "column_number": 31,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('RUNNED: NUM_EPOCHS: '+str(NUM_EPOCHS))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 139,
+      "column_number": 31,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('RUNNED: BATCH_SIZE: '+str(BATCH_SIZE))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 140,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('RUNNED: INIT_LR: '+str(INIT_LR))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 141,
+      "column_number": 26,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('RUNNED: RATIO: '+str(RATIO))\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 145,
+      "column_number": 80,
+      "text": "line too long (97 > 79 characters)",
+      "physical_line": "\t\tprint(f'{\"ACCURACY\":<20}{accuracy[\"unet\"].mean():<18.2f}{accuracy[\"unet_redu\"].mean():<18.2f}')\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 146,
+      "column_number": 80,
+      "text": "line too long (94 > 79 characters)",
+      "physical_line": "\t\tprint(f'{\"JACCARD\":<20}{jaccard[\"unet\"].mean():<18.2f}{jaccard[\"unet_redu\"].mean():<18.2f}')\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 147,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 30,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 34,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 50,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 54,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 67,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 71,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/predict_model.py",
+      "line_number": 158,
+      "column_number": 80,
+      "text": "line too long (81 > 79 characters)",
+      "physical_line": "\t\t\tfilename = str(NUM_EPOCHS)+'_'+str(BATCH_SIZE)+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 159,
+      "column_number": 26,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\twith open(METRICS_PATH+filename+'.metrics', 'w', encoding='utf-8') as fd:\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 159,
+      "column_number": 35,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\twith open(METRICS_PATH+filename+'.metrics', 'w', encoding='utf-8') as fd:\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 167,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(25)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/predict_model.py",
+      "line_number": 169,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    }
+  ],
+  "src/models/train_model.py": [
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 7,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from pathlib import Path\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 8,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from sklearn.model_selection import train_test_split\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 9,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import torch\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 11,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from torchvision import transforms\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 12,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from torch.utils.data import DataLoader\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 13,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from torch.nn import BCEWithLogitsLoss\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 14,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from torch.optim import Adam\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 15,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "import torch.multiprocessing\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 17,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from tqdm import tqdm\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 18,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from model import MyCustomDataset, UNet\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 19,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from utils import getDevice\n"
+    },
+    {
+      "code": "E402",
+      "filename": "src/models/train_model.py",
+      "line_number": 20,
+      "column_number": 1,
+      "text": "module level import not at top of file",
+      "physical_line": "from config import get_global_config\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/train_model.py",
+      "line_number": 37,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def compute_iou(pred, target):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/train_model.py",
+      "line_number": 50,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def train_single_batch(unet, lossFunc, opt, x, y):\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 66,
+      "column_number": 80,
+      "text": "line too long (86 > 79 characters)",
+      "physical_line": "\tiou = compute_iou(pred > 0.5, y)  # assuming 0.5 as threshold for binary segmentation\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/train_model.py",
+      "line_number": 69,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def prepare_data():\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 74,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\ttransforms.ToPILImage(),\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 77,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t])\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 79,
+      "column_number": 31,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\timagePaths = [TRAIN_DATA_PATH+i for i in os.listdir(TRAIN_DATA_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 79,
+      "column_number": 80,
+      "text": "line too long (81 > 79 characters)",
+      "physical_line": "\timagePaths = [TRAIN_DATA_PATH+i for i in os.listdir(TRAIN_DATA_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 80,
+      "column_number": 32,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tmaskPaths = [TRAIN_LABELS_PATH+i for i in os.listdir(TRAIN_LABELS_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 80,
+      "column_number": 80,
+      "text": "line too long (84 > 79 characters)",
+      "physical_line": "\tmaskPaths = [TRAIN_LABELS_PATH+i for i in os.listdir(TRAIN_LABELS_PATH) if i != ko]\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 82,
+      "column_number": 13,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\timagePaths,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 84,
+      "column_number": 23,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\ttrain_size = .8,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 84,
+      "column_number": 25,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\ttrain_size = .8,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 85,
+      "column_number": 22,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\ttest_size = .2,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 85,
+      "column_number": 24,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\ttest_size = .2,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 86,
+      "column_number": 25,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\trandom_state = 3,\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/models/train_model.py",
+      "line_number": 86,
+      "column_number": 27,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\t\t\t\t\t\t\t\t\t\t\t\trandom_state = 3,\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 88,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tsampleT = int(len(X_train)*RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 89,
+      "column_number": 26,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tsampleV = int(len(X_val)*RATIO)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 91,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\timagePaths=X_train[:sampleT],\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 94,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 96,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\timagePaths=X_val[:sampleV],\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 99,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 101,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\ttrainingDS,\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 106,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t)\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 108,
+      "column_number": 6,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t\tvalidationDS,\n"
+    },
+    {
+      "code": "E126",
+      "filename": "src/models/train_model.py",
+      "line_number": 113,
+      "column_number": 5,
+      "text": "continuation line over-indented for hanging indent",
+      "physical_line": "\t\t\t\t)\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/train_model.py",
+      "line_number": 116,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt):\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/models/train_model.py",
+      "line_number": 148,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def train():\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 149,
+      "column_number": 80,
+      "text": "line too long (98 > 79 characters)",
+      "physical_line": "\t\"\"\"Model training function, returns the loss history, final learning rate and the model save path\n\tArgs: None\n\t\"\"\"\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 32,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 53,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 57,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 70,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 74,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 154,
+      "column_number": 80,
+      "text": "line too long (84 > 79 characters)",
+      "physical_line": "\tpth = str(int(NUM_EPOCHS))+'_'+str(int(BATCH_SIZE))+'_'+str(INIT_LR)+'_'+str(RATIO)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 161,
+      "column_number": 40,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tif not os.path.isfile(SAVED_MODEL_PATH+pth):\n"
+    },
+    {
+      "code": "E221",
+      "filename": "src/models/train_model.py",
+      "line_number": 162,
+      "column_number": 51,
+      "text": "multiple spaces before operator",
+      "physical_line": "\t\ttrainingDS, validationDS, trainLoader, valLoader  = prepare_data()\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 164,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(25)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 174,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/models/train_model.py",
+      "line_number": 181,
+      "column_number": 80,
+      "text": "line too long (93 > 79 characters)",
+      "physical_line": "\t\t\tavgTrainLoss, avgValLoss = run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 189,
+      "column_number": 13,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint('\\n'+''.join(['> ' for i in range(25)]))\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/models/train_model.py",
+      "line_number": 191,
+      "column_number": 43,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\tprint(''.join(['> ' for i in range(25)])+'\\n')\n"
+    },
+    {
+      "code": "E305",
+      "filename": "src/models/train_model.py",
+      "line_number": 194,
+      "column_number": 1,
+      "text": "expected 2 blank lines after class or function definition, found 1",
+      "physical_line": "if __name__ == \"__main__\":\n"
+    }
+  ],
+  "src/utils.py": [
+    {
+      "code": "E302",
+      "filename": "src/utils.py",
+      "line_number": 10,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def getTiles(img, H, W):\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 21,
+      "column_number": 17,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tX = np.arange(0+padH, imgH-padH, H)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 21,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tX = np.arange(0+padH, imgH-padH, H)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 22,
+      "column_number": 17,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tY = np.arange(0+padW, imgW-padW, W)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 22,
+      "column_number": 28,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\tY = np.arange(0+padW, imgW-padW, W)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 23,
+      "column_number": 17,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\treturn [img[x:x+H,y:y+W] for x in X for y in Y]\n"
+    },
+    {
+      "code": "E231",
+      "filename": "src/utils.py",
+      "line_number": 23,
+      "column_number": 19,
+      "text": "missing whitespace after ','",
+      "physical_line": "\treturn [img[x:x+H,y:y+W] for x in X for y in Y]\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 23,
+      "column_number": 23,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\treturn [img[x:x+H,y:y+W] for x in X for y in Y]\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 27,
+      "column_number": 80,
+      "text": "line too long (87 > 79 characters)",
+      "physical_line": "\t\"\"\"Returns a segmented image based on Clustering or Thresholding (aka Otsu) algorithms\n\tArgs:\n\timgList: A list of images\n\talgorithm: Algorithm to apply (Clustering or Thresholding)\n\t\"\"\"\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 44,
+      "column_number": 80,
+      "text": "line too long (99 > 79 characters)",
+      "physical_line": "\t\"\"\"Returns a sample of distorted images by applying a black mask (see Weedmap dataset for details)\n\tArgs:\n\timgList: A list of images\n\tmaskList: A list of corresponding segmentation\n\tpercentage: Percentage of distorsion\n\tmaskFolder: Path where are stored the masks\n\t\"\"\"\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 53,
+      "column_number": 80,
+      "text": "line too long (87 > 79 characters)",
+      "physical_line": "\trandomId = np.random.choice(list(range(len(imgList))), size=sampleSize, replace=False)\n"
+    },
+    {
+      "code": "E226",
+      "filename": "src/utils.py",
+      "line_number": 58,
+      "column_number": 31,
+      "text": "missing whitespace around arithmetic operator",
+      "physical_line": "\t\t\tmask = io.imread(maskFolder+filename)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 59,
+      "column_number": 80,
+      "text": "line too long (96 > 79 characters)",
+      "physical_line": "\t\t\timgList[randomId[i]] = cv2.bitwise_and(imgList[randomId[i]], imgList[randomId[i]], mask=mask)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 60,
+      "column_number": 80,
+      "text": "line too long (99 > 79 characters)",
+      "physical_line": "\t\t\tmaskList[randomId[i]] = cv2.bitwise_and(maskList[randomId[i]], maskList[randomId[i]], mask=mask)\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 82,
+      "column_number": 80,
+      "text": "line too long (80 > 79 characters)",
+      "physical_line": "\t\"\"\"Applies image segmentation based on pixel clustering and k-Means algorithm\n\tArgs:\n\timg: RGB image\n\tReturns:\n\tsegmented: Segmented image in which all pixels are of the color of the centroid \n\tmask: Black and Green mask (Black=NoCrops, Green=Crops)\n\t\"\"\"\n"
+    },
+    {
+      "code": "W291",
+      "filename": "src/utils.py",
+      "line_number": 82,
+      "column_number": 81,
+      "text": "trailing whitespace",
+      "physical_line": "\t\"\"\"Applies image segmentation based on pixel clustering and k-Means algorithm\n\tArgs:\n\timg: RGB image\n\tReturns:\n\tsegmented: Segmented image in which all pixels are of the color of the centroid \n\tmask: Black and Green mask (Black=NoCrops, Green=Crops)\n\t\"\"\"\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/utils.py",
+      "line_number": 87,
+      "column_number": 27,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\timg = cv2.blur(img, ksize = (15, 15))\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/utils.py",
+      "line_number": 87,
+      "column_number": 29,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\timg = cv2.blur(img, ksize = (15, 15))\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 89,
+      "column_number": 80,
+      "text": "line too long (84 > 79 characters)",
+      "physical_line": "\t\tnp.float32(img.reshape((-1, 3))), k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS\n"
+    },
+    {
+      "code": "W291",
+      "filename": "src/utils.py",
+      "line_number": 115,
+      "column_number": 40,
+      "text": "trailing whitespace",
+      "physical_line": "\t\"\"\"Applies image segmentation based on thresholding and Otsu's algorithm\n\tArgs:\n\timg: Image\n\trgb: Whether if the Image is RGB or not\n\tReturns:\n\tthreshold: Threshold to separate pixel \n\tmask: Black and Green mask (Black=NoCrops, Green=Crops)\n\t\"\"\"\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/utils.py",
+      "line_number": 120,
+      "column_number": 27,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\timg = cv2.blur(img, ksize = (15, 15))\n"
+    },
+    {
+      "code": "E251",
+      "filename": "src/utils.py",
+      "line_number": 120,
+      "column_number": 29,
+      "text": "unexpected spaces around keyword / parameter equals",
+      "physical_line": "\timg = cv2.blur(img, ksize = (15, 15))\n"
+    },
+    {
+      "code": "E501",
+      "filename": "src/utils.py",
+      "line_number": 141,
+      "column_number": 80,
+      "text": "line too long (96 > 79 characters)",
+      "physical_line": "\t\"\"\"Returns a masked image in which the background is removed and green channel is 'highlighted'\n\tArgs:\n\timg: RGB image to which apply the filter\n\t\"\"\"\n"
+    },
+    {
+      "code": "E302",
+      "filename": "src/utils.py",
+      "line_number": 162,
+      "column_number": 1,
+      "text": "expected 2 blank lines, found 1",
+      "physical_line": "def getDevice():\n"
+    }
+  ],
+  "src/visualization/__init__.py": [],
+  "src/visualization/visualize.py": []
+}

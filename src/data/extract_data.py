@@ -12,6 +12,7 @@ config = get_global_config()
 FILE_PATH = config.get('RAW_DATA_SOURCE_PATH')
 DEST_PATH = config.get('RAW_DATA_DEST_PATH')
 
+
 def extract():
 	"""
 	The extraction step
@@ -20,15 +21,16 @@ def extract():
 		with zipfile.ZipFile(FILE_PATH, 'r') as zip_ref:
 			zip_ref.extractall(DEST_PATH)
 
-		print('\n'+''.join(['> ' for i in range(20)]))
+		print('\n' + ''.join(['> ' for i in range(20)]))
 		print(f'\n{"SUCCESS: Files correctly extracted!":<35}\n')
-		print(''.join(['> ' for i in range(20)])+'\n')
+		print(''.join(['> ' for i in range(20)]) + '\n')
 
-		if os.path.isdir(DEST_PATH+'/__MACOSX'):
-			shutil.rmtree(DEST_PATH+'/__MACOSX')
+		if os.path.isdir(DEST_PATH + '/__MACOSX'):
+			shutil.rmtree(DEST_PATH + '/__MACOSX')
 
 	except OSError as e:
 		print(e)
+
 
 if __name__ == "__main__":
 	extract()
