@@ -162,8 +162,8 @@ def train():
 	"""
 	if not os.path.isdir(SAVED_MODEL_PATH):
 		Path(SAVED_MODEL_PATH).mkdir(parents=True, exist_ok=True)
-	pth = str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) + \
-		+ '_' + str(INIT_LR) + '_' + str(RATIO)
+	pth = (str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) + \
+		'_' + str(INIT_LR) + '_' + str(RATIO))
 	pth = pth + '_unet_model.pth'
 
 	H = {'train_loss': [], 'val_loss': [], 'test_loss': []}

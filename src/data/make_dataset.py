@@ -42,8 +42,8 @@ def training_set_preprocessing():
 				{"PROCESSED: " + "0/" + str(len(images_names)):<15}')
 			for k, img_name in enumerate(images_names):
 				if k % 10 == 0 and k != 0:
-					print(f'{"":<25} \
-						{"PROCESSED: " + str(k) + "/" + str(len(images_names)):<15}')
+					print(f'{"":<25}'
+						f'{"PROCESSED: " + str(k) + "/" + str(len(images_names)):<15}')
 				if img_name != '.DS_Store':
 					img = cv2.imread(TRAINING_SOURCE_PATH + folder + img_name)
 					tiles = getTiles(img, H=TILE_HEIGHT, W=TILE_WIDTH)
@@ -77,8 +77,8 @@ def testing_set_preprocessing():
 		images_names = os.listdir(TESTING_SOURCE_PATH + TESTING_FOLDERS[2])
 		for k, img_name in enumerate(images_names):
 			if k % 10 == 0:
-				print(f'{"TESTING DATA":<25} \
-					{"PROCESSED: " + str(k) + "/" + str(len(images_names)):<15}')
+				print(f'{"TESTING DATA":<25}'
+					f'{"PROCESSED: " + str(k) + "/" + str(len(images_names)):<15}')
 			if img_name != '.DS_Store':
 				img = cv2.imread(TESTING_SOURCE_PATH + TESTING_FOLDERS[2] + img_name)
 				maskname = '003_' + img_name[:-4] + '_GroundTruth_color.png'

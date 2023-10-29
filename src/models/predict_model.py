@@ -38,8 +38,8 @@ def get_saved_model():
 	Args: None
 	"""
 	saved_model = False
-	pth = str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) + \
-		+ '_' + str(INIT_LR) + '_' + str(RATIO)
+	pth = (str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) +
+		'_' + str(INIT_LR) + '_' + str(RATIO))
 	pth = pth + '_unet_model.pth'
 	if os.path.isfile(SAVED_MODEL_PATH + pth):
 		try:
@@ -115,9 +115,9 @@ def evaluate():
 	Args: None
 	"""
 	# dagshub.init(
-	# 			repo_owner='se4ai2324-uniba',
-	# 			repo_name='CropSegmentation',
-	# 			mlflow=True
+	# 	repo_owner='se4ai2324-uniba',
+	# 	repo_name='CropSegmentation',
+	# 	mlflow=True
 	# )
 	mlflow.start_run()
 	mlflow.log_params({
@@ -169,12 +169,12 @@ def evaluate():
 		print(''.join(['> ' for i in range(25)]))
 		print(f'\n{"METRIC":<20}{"ALL":<18}{"NO_BLACK":<18}\n')
 		print(''.join(['> ' for i in range(25)]))
-		print(f'{"ACCURACY":<20} \
-			{accuracy["unet"].mean():<18.2f}\
-			{accuracy["unet_redu"].mean():<18.2f}')
-		print(f'{"JACCARD":<20} \
-			{jaccard["unet"].mean():<18.2f} \
-			{jaccard["unet_redu"].mean():<18.2f}')
+		print(f'{"ACCURACY":<20}'
+			f'{accuracy["unet"].mean():<18.2f}'
+			f'{accuracy["unet_redu"].mean():<18.2f}')
+		print(f'{"JACCARD":<20}'
+			f'{jaccard["unet"].mean():<18.2f}'
+			f'{jaccard["unet_redu"].mean():<18.2f}')
 		print(''.join(['> ' for i in range(25)]) + '\n')
 		mlflow.log_metrics(
 			{
@@ -186,8 +186,8 @@ def evaluate():
 		)
 		mlflow.end_run()
 		try:
-			fn = str(NUM_EPOCHS) + '_' + str(BATCH_SIZE) + \
-				+ '_' + str(INIT_LR) + '_' + str(RATIO)
+			fn = (str(NUM_EPOCHS) + '_' + str(BATCH_SIZE) +
+				'_' + str(INIT_LR) + '_' + str(RATIO))
 			with open(METRICS_PATH + fn + '.metrics', 'w', encoding='utf-8') as fd:
 				fd.write(f'MEAN_AUC: {accuracy["unet"].mean():4f}\n')
 				fd.write(f'MEAN_AUC_NOBLACK: {accuracy["unet_redu"].mean():4f}\n')
