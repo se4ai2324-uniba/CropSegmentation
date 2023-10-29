@@ -1,0 +1,80 @@
+[
+    {
+        "type": "warning",
+        "module": "src.models.predict_model",
+        "obj": "",
+        "line": 13,
+        "column": 0,
+        "endLine": 13,
+        "endColumn": 19,
+        "path": "src/models/predict_model.py",
+        "symbol": "wildcard-import",
+        "message": "Wildcard import model",
+        "message-id": "W0401"
+    },
+    {
+        "type": "warning",
+        "module": "src.models.predict_model",
+        "obj": "",
+        "line": 13,
+        "column": 0,
+        "endLine": 13,
+        "endColumn": 19,
+        "path": "src/models/predict_model.py",
+        "symbol": "unused-wildcard-import",
+        "message": "Unused import(s) Block, Encoder, Decoder, UNet, MyCustomDataset, nn, F, CenterCrop and Dataset from wildcard import of model",
+        "message-id": "W0614"
+    },
+    {
+        "type": "convention",
+        "module": "src.models.model",
+        "obj": "",
+        "line": 8,
+        "column": 0,
+        "endLine": 8,
+        "endColumn": 36,
+        "path": "src/models/model.py",
+        "symbol": "ungrouped-imports",
+        "message": "Imports from package torch are not grouped",
+        "message-id": "C0412"
+    },
+    {
+        "type": "refactor",
+        "module": "src.data.extract_data",
+        "obj": "",
+        "line": 1,
+        "column": 0,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/data/extract_data.py",
+        "symbol": "duplicate-code",
+        "message": "Similar lines in 2 files\n==src.models.predict_model:[179:190]\n==src.models.train_model:[201:212]\n\telse:\n\t\tkeys = [i.split('=')[0].upper() for i in args]\n\t\tvalues = [float(i.split('=')[1]) for i in args]\n\t\tif 'NUM_EPOCHS' in keys:\n\t\t\tNUM_EPOCHS = values[keys.index('NUM_EPOCHS')]\n\t\tif 'BATCH_SIZE' in keys:\n\t\t\tBATCH_SIZE = values[keys.index('BATCH_SIZE')]\n\t\tif 'INIT_LR' in keys:\n\t\t\tINIT_LR = values[keys.index('INIT_LR')]\n\t\tif 'RATIO' in keys:\n\t\t\tRATIO = values[keys.index('RATIO')]",
+        "message-id": "R0801"
+    },
+    {
+        "type": "refactor",
+        "module": "src.data.extract_data",
+        "obj": "",
+        "line": 1,
+        "column": 0,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/data/extract_data.py",
+        "symbol": "duplicate-code",
+        "message": "Similar lines in 2 files\n==src.models.predict_model:[171:178]\n==src.models.train_model:[193:200]\nif __name__ == \"__main__\":\n\targs = sys.argv[1:]\n\tif len(args) == 0:\n\t\tfor s in PARAMS_SEARCH['BATCH_SIZE']:\n\t\t\tfor r in PARAMS_SEARCH['INIT_LR']:\n\t\t\t\tBATCH_SIZE = s\n\t\t\t\tINIT_LR = r",
+        "message-id": "R0801"
+    },
+    {
+        "type": "refactor",
+        "module": "src.data.extract_data",
+        "obj": "",
+        "line": 1,
+        "column": 0,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/data/extract_data.py",
+        "symbol": "duplicate-code",
+        "message": "Similar lines in 2 files\n==src.models.predict_model:[21:26]\n==src.models.train_model:[26:31]\nSAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')\nNUM_EPOCHS = config.get('NUM_EPOCHS')\nBATCH_SIZE = config.get('BATCH_SIZE')\nINIT_LR = config.get('INIT_LR')\nRATIO = config.get('RATIO')",
+        "message-id": "R0801"
+    }
+]
