@@ -76,7 +76,7 @@ Project Organization
     │   │   
     │   │── config.py      <- Global configurations
     │   └── utils.py       <- Utility functions
-    │   │
+    │   
     ├── tests              <- Code for testing 
     |   ├── test_model_training  
     |   │   ├── test_device_training.py  
