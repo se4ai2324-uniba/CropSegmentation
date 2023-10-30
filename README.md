@@ -76,7 +76,14 @@ Project Organization
     │   │   
     │   │── config.py      <- Global configurations
     │   └── utils.py       <- Utility functions
-    ├── tests              <- Code for testing
+    │   │
+    ├── tests              <- Code for testing 
+    |   ├── test_model_training  
+    |   │   ├── test_device_training.py  
+    |   │   ├── test_loss_decrease.py  
+    |   │   ├── test_overfit_batch.py  
+    |   │   └── test_training_completion.py  
+    |   └── behavioral_testing  
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
