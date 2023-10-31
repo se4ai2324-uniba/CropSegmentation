@@ -33,13 +33,13 @@ PARAMS_SEARCH = config.get('PARAMS_SEARCH')
 DEVICE = getDevice()
 
 
-def get_saved_model():
+def get_saved_model(num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, init_lr=INIT_LR, ratio=RATIO):
 	"""Returns an instance of the saved model and the relative path
 	Args: None
 	"""
 	saved_model = False
-	pth = (str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) +
-		'_' + str(INIT_LR) + '_' + str(RATIO))
+	pth = (str(int(num_epochs)) + '_' + str(int(batch_size)) +
+		'_' + str(init_lr) + '_' + str(ratio))
 	pth = pth + '_unet_model.pth'
 	if os.path.isfile(SAVED_MODEL_PATH + pth):
 		try:
@@ -70,18 +70,22 @@ def get_testing_data():
 	return testImages, testMasks
 
 
-def make_predictions(model, testImgPath):
+def make_predictions(model, input):
 	"""Returns the predicted mask
 	Args:
 	model: the saved model
-	testImgPath: image to segment
+	input: path to an image or an actual image array
 	"""
 	transform = transforms.Compose([
 		transforms.ToPILImage(),
 		transforms.PILToTensor(),
 		transforms.ConvertImageDtype(torch.float)
 	])
-	image = io.imread(testImgPath)
+	# Check if the input is a string (path)
+	if isinstance(input, str):
+		image = io.imread(input)
+	else:
+		image = input
 	image = transform(image)
 	image = image.unsqueeze(0)
 	model.eval()
@@ -110,7 +114,7 @@ def pixelAccuracy(predictions, labels):
 	return tp_tn / all_v * 100
 
 
-def evaluate():
+def evaluate(num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, init_lr=INIT_LR, ratio=RATIO):
 	"""Model testing function + MLFlow tracking
 	Args: None
 	"""
@@ -121,12 +125,12 @@ def evaluate():
 	# )
 	mlflow.start_run()
 	mlflow.log_params({
-		"NUM_EPOCHS":	NUM_EPOCHS,
-		"BATCH_SIZE":	BATCH_SIZE,
-		"INIT_LR":		INIT_LR,
-		"RATIO":		RATIO
+		"NUM_EPOCHS":	num_epochs,
+		"BATCH_SIZE":	batch_size,
+		"INIT_LR":		init_lr,
+		"RATIO":		ratio
 	})
-	model, pth = get_saved_model()
+	model, pth = get_saved_model(num_epochs, batch_size, init_lr, ratio)
 	mlflow.set_tag("mlflow.runName", pth)
 	mlflow.pytorch.log_model(model, pth)
 	if model:
@@ -162,10 +166,10 @@ def evaluate():
 				if not np.all(testMasks[i] == 0)
 			])
 		}
-		print('RUNNED: NUM_EPOCHS: ' + str(NUM_EPOCHS))
-		print('RUNNED: BATCH_SIZE: ' + str(BATCH_SIZE))
-		print('RUNNED: INIT_LR: ' + str(INIT_LR))
-		print('RUNNED: RATIO: ' + str(RATIO))
+		print('RUNNED: NUM_EPOCHS: ' + str(num_epochs))
+		print('RUNNED: BATCH_SIZE: ' + str(batch_size))
+		print('RUNNED: INIT_LR: ' + str(init_lr))
+		print('RUNNED: RATIO: ' + str(ratio))
 		print(''.join(['> ' for i in range(25)]))
 		print(f'\n{"METRIC":<20}{"ALL":<18}{"NO_BLACK":<18}\n')
 		print(''.join(['> ' for i in range(25)]))
@@ -186,8 +190,8 @@ def evaluate():
 		)
 		mlflow.end_run()
 		try:
-			fn = (str(NUM_EPOCHS) + '_' + str(BATCH_SIZE) +
-				'_' + str(INIT_LR) + '_' + str(RATIO))
+			fn = (str(num_epochs) + '_' + str(batch_size) +
+				'_' + str(init_lr) + '_' + str(ratio))
 			with open(METRICS_PATH + fn + '.metrics', 'w', encoding='utf-8') as fd:
 				fd.write(f'MEAN_AUC: {accuracy["unet"].mean():4f}\n')
 				fd.write(f'MEAN_AUC_NOBLACK: {accuracy["unet_redu"].mean():4f}\n')
@@ -206,18 +210,13 @@ if __name__ == "__main__":
 	if len(args) == 0:
 		for s in PARAMS_SEARCH['BATCH_SIZE']:
 			for r in PARAMS_SEARCH['INIT_LR']:
-				BATCH_SIZE = s
-				INIT_LR = r
-				evaluate()
+				evaluate(batch_size=s, init_lr=r)
 	else:
 		keys = [i.split('=')[0].upper() for i in args]
 		values = [float(i.split('=')[1]) for i in args]
-		if 'NUM_EPOCHS' in keys:
-			NUM_EPOCHS = values[keys.index('NUM_EPOCHS')]
-		if 'BATCH_SIZE' in keys:
-			BATCH_SIZE = values[keys.index('BATCH_SIZE')]
-		if 'INIT_LR' in keys:
-			INIT_LR = values[keys.index('INIT_LR')]
-		if 'RATIO' in keys:
-			RATIO = values[keys.index('RATIO')]
-		evaluate()
+		evaluate(
+			num_epochs=values[keys.index('NUM_EPOCHS')] if 'NUM_EPOCHS' in keys else NUM_EPOCHS,
+			batch_size=values[keys.index('BATCH_SIZE')] if 'BATCH_SIZE' in keys else BATCH_SIZE,
+			init_lr=values[keys.index('INIT_LR')] if 'INIT_LR' in keys else INIT_LR,
+			ratio=values[keys.index('RATIO')] if 'RATIO' in keys else RATIO
+		)

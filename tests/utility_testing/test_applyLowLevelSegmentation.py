@@ -1,11 +1,7 @@
+import pytest
 import numpy as np
-import os
-import sys
+from src.utils import applyLowLevelSegmentation
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_directory, '..', '..', 'src'))
-
-from utils import applyLowLevelSegmentation
 
 def test_applyLowLevelSegmentation():
     # Create a list of dummy images of size 100x100
@@ -19,3 +15,7 @@ def test_applyLowLevelSegmentation():
 
     assert len(labels_clustering) == 5
     assert len(labels_thresholding) == 5
+
+
+if __name__ == "__main__":
+	pytest.main()

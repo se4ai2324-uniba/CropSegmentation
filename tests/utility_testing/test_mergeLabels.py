@@ -1,10 +1,7 @@
+import pytest
 import numpy as np
-import os
-import sys
+from src.utils import merge_labels
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_directory, '..', '..', 'src'))
-from utils import merge_labels
 
 def test_merge_labels():
     # Create a dummy mask
@@ -15,3 +12,7 @@ def test_merge_labels():
 
     assert merged_mask.shape == (100, 100, 1)
     assert np.sum(merged_mask) == 255 * 50 * 50
+
+
+if __name__ == "__main__":
+	pytest.main()

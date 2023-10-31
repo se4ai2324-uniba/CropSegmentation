@@ -6,12 +6,14 @@ import sys
 sys.path.append('src')
 from pathlib import Path
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import jaccard_score, accuracy_score
 import torch
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from torch.nn import BCEWithLogitsLoss
 from torch.optim import Adam
 import torch.multiprocessing
+import numpy as np
 from tqdm import tqdm
 from model import MyCustomDataset, UNet
 from utils import getDevice
@@ -30,9 +32,7 @@ BATCH_SIZE = config.get('BATCH_SIZE')
 INIT_LR = config.get('INIT_LR')
 RATIO = config.get('RATIO')
 PARAMS_SEARCH = config.get('PARAMS_SEARCH')
-
 DEVICE = getDevice()
-PIN_MEMORY = DEVICE == 'cuda'
 
 
 def compute_iou(pred, target):
@@ -65,12 +65,21 @@ def train_single_batch(unet, lossFunc, opt, x, y):
 	opt.zero_grad()
 	loss.backward()
 	opt.step()
-	# assuming 0.5 as threshold for binary segmentation
-	iou = compute_iou(pred > 0.5, y)
-	return loss.item(), iou.item()
+	unet.eval()
+	with torch.no_grad():
+		predMask = pred.squeeze()
+		predMask = torch.sigmoid(predMask)
+		predMask = predMask.cpu().numpy()
+		# assuming 0.5 as threshold for binary segmentation
+		predMask = (predMask > 0.5) * 255
+		predMask = predMask.astype(np.uint8)
+	y = y.cpu().numpy()
+	y = y.astype(np.uint8)
+	acc = accuracy_score(predMask.flatten(), y.flatten())
+	return loss, acc
 
 
-def prepare_data():
+def prepare_data(batch_size=BATCH_SIZE, ratio=RATIO):
 	"""Returns training and validation sets
 	Args: None
 	"""
@@ -93,8 +102,8 @@ def prepare_data():
 		test_size=.2,
 		random_state=3,
 		shuffle=True)
-	sampleT = int(len(X_train) * RATIO)
-	sampleV = int(len(X_val) * RATIO)
+	sampleT = int(len(X_train) * ratio)
+	sampleV = int(len(X_val) * ratio)
 	trainingDS = MyCustomDataset(
 		imagePaths=X_train[:sampleT],
 		maskPaths=y_train[:sampleT],
@@ -108,21 +117,21 @@ def prepare_data():
 	trainLoader = DataLoader(
 		trainingDS,
 		shuffle=True,
-		batch_size=int(BATCH_SIZE),
-		pin_memory=PIN_MEMORY,
+		batch_size=int(batch_size),
+		pin_memory=(DEVICE == 'cuda'),
 		num_workers=os.cpu_count()
 	)
 	valLoader = DataLoader(
 		validationDS,
 		shuffle=False,
-		batch_size=int(BATCH_SIZE),
-		pin_memory=PIN_MEMORY,
+		batch_size=int(batch_size),
+		pin_memory=(DEVICE == 'cuda'),
 		num_workers=os.cpu_count()
 	)
 	return trainingDS, validationDS, trainLoader, valLoader
 
 
-def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt):
+def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt, device=DEVICE):
 	"""Returns the average losses
 	Args:
 	trainLoader: training data
@@ -137,7 +146,7 @@ def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt):
 	trainSteps = len(trainLoader.dataset) // len(trainLoader)
 	testSteps = len(valLoader.dataset) // len(valLoader)
 	for (_, (x, y)) in enumerate(trainLoader):
-		(x, y) = (x.to(DEVICE), y.to(DEVICE))
+		(x, y) = (x.to(device), y.to(device))
 		pred = unet(x)
 		loss = lossFunc(pred, y)
 		opt.zero_grad()
@@ -147,7 +156,7 @@ def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt):
 	with torch.no_grad():
 		unet.eval()
 		for (x, y) in valLoader:
-			(x, y) = (x.to(DEVICE), y.to(DEVICE))
+			(x, y) = (x.to(device), y.to(device))
 			pred = unet(x)
 			totalValLoss += lossFunc(pred, y)
 		avgTrainLoss = totalTrainLoss / trainSteps
@@ -155,46 +164,50 @@ def run_training_epoch(trainLoader, valLoader, unet, lossFunc, opt):
 	return avgTrainLoss, avgValLoss
 
 
-def train():
+def train(
+		num_epochs=NUM_EPOCHS,
+		batch_size=BATCH_SIZE,
+		init_lr=INIT_LR,
+		ratio=RATIO,
+		device=DEVICE
+	):
 	"""Model training function, returns the loss history,
 	final learning rate and the model save path
 	Args: None
 	"""
 	if not os.path.isdir(SAVED_MODEL_PATH):
 		Path(SAVED_MODEL_PATH).mkdir(parents=True, exist_ok=True)
-	pth = (str(int(NUM_EPOCHS)) + '_' + str(int(BATCH_SIZE)) + \
-		'_' + str(INIT_LR) + '_' + str(RATIO))
+	pth = (str(int(num_epochs)) + '_' + str(int(batch_size)) + \
+		'_' + str(init_lr) + '_' + str(ratio))
 	pth = pth + '_unet_model.pth'
-
 	H = {'train_loss': [], 'val_loss': [], 'test_loss': []}
-	final_lr = None
+	final_lr = .0
 	model_save_path = os.path.join(SAVED_MODEL_PATH, pth)
-
 	if not os.path.isfile(SAVED_MODEL_PATH + pth):
-		trainingDS, validationDS, trainLoader, valLoader = prepare_data()
+		trainingDS, validationDS, trainLoader, valLoader = prepare_data(batch_size, ratio)
 
 		print('\n' + ''.join(['> ' for i in range(25)]))
 		print(f'\n{"CONFIG":<20}{"VALUE":<18}{"IS_PARAM":<18}\n')
 		print(''.join(['> ' for i in range(25)]))
 		print(f'{"TRAIN_SIZE":<20}{len(trainingDS):<18}{"NO":<18}')
 		print(f'{"EVAL_SIZE":<20}{len(validationDS):<18}{"NO":<18}')
-		print(f'{"DEVICE":<20}{DEVICE.upper():<18}{"NO":<18}')
-		print(f'{"NUM_EPOCHS":<20}{int(NUM_EPOCHS):<18}{"YES":<18}')
-		print(f'{"BATCH_SIZE":<20}{int(BATCH_SIZE):<18}{"YES":<18}')
-		print(f'{"INIT_LR":<20}{INIT_LR:<18}{"YES":<18}')
-		print(f'{"RATIO":<20}{RATIO:<18}{"YES":<18}')
+		print(f'{"DEVICE":<20}{device.upper():<18}{"NO":<18}')
+		print(f'{"NUM_EPOCHS":<20}{int(num_epochs):<18}{"YES":<18}')
+		print(f'{"BATCH_SIZE":<20}{int(batch_size):<18}{"YES":<18}')
+		print(f'{"INIT_LR":<20}{init_lr:<18}{"YES":<18}')
+		print(f'{"RATIO":<20}{ratio:<18}{"YES":<18}')
 		print(''.join(['> ' for i in range(25)]) + '\n')
 
-		unet = UNet(outSize=(INPUT_IMAGE_HEIGHT, INPUT_IMAGE_WIDTH)).to(DEVICE)
+		unet = UNet(outSize=(INPUT_IMAGE_HEIGHT, INPUT_IMAGE_WIDTH)).to(device)
 		lossFunc = BCEWithLogitsLoss()
-		opt = Adam(unet.parameters(), lr=INIT_LR)
+		opt = Adam(unet.parameters(), lr=init_lr)
 
-		for e in tqdm(range(int(NUM_EPOCHS))):
+		for e in tqdm(range(int(num_epochs))):
 			avgTrainLoss, avgValLoss = run_training_epoch(
-				trainLoader, valLoader, unet, lossFunc, opt)
+				trainLoader, valLoader, unet, lossFunc, opt, device)
 			H['train_loss'].append(avgTrainLoss.cpu().detach().numpy())
 			H['val_loss'].append(avgValLoss.cpu().detach().numpy())
-			print(f'EPOCH: {str(e+1)}/{str(int(NUM_EPOCHS))}')
+			print(f'EPOCH: {str(e+1)}/{str(int(num_epochs))}')
 			print(f'Train loss: {avgTrainLoss:.6f}, Test loss: {avgValLoss:.4f}')
 		torch.save(unet, model_save_path)
 		final_lr = opt.param_groups[0]['lr']
@@ -210,18 +223,13 @@ if __name__ == "__main__":
 	if len(args) == 0:
 		for s in PARAMS_SEARCH['BATCH_SIZE']:
 			for r in PARAMS_SEARCH['INIT_LR']:
-				BATCH_SIZE = s
-				INIT_LR = r
-				train()
+				train(batch_size=s, init_lr=r)
 	else:
 		keys = [i.split('=')[0].upper() for i in args]
 		values = [float(i.split('=')[1]) for i in args]
-		if 'NUM_EPOCHS' in keys:
-			NUM_EPOCHS = values[keys.index('NUM_EPOCHS')]
-		if 'BATCH_SIZE' in keys:
-			BATCH_SIZE = values[keys.index('BATCH_SIZE')]
-		if 'INIT_LR' in keys:
-			INIT_LR = values[keys.index('INIT_LR')]
-		if 'RATIO' in keys:
-			RATIO = values[keys.index('RATIO')]
-		train()
+		train(
+			num_epochs=values[keys.index('NUM_EPOCHS')] if 'NUM_EPOCHS' in keys else NUM_EPOCHS,
+			batch_size=values[keys.index('BATCH_SIZE')] if 'BATCH_SIZE' in keys else BATCH_SIZE,
+			init_lr=values[keys.index('INIT_LR')] if 'INIT_LR' in keys else INIT_LR,
+			ratio=values[keys.index('RATIO')] if 'RATIO' in keys else RATIO
+		)

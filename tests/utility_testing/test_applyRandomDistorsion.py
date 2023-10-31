@@ -1,12 +1,9 @@
+import pytest
 import os
-import sys
 import numpy as np
 from skimage import io
+from src.utils import applyRandomDistorsion
 
-
-current_directory = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_directory, '..', '..', 'src'))
-from utils import applyRandomDistorsion
 
 def test_applyRandomDistorsion(tmpdir):
     # Create a temporary directory to store dummy masks
@@ -26,3 +23,7 @@ def test_applyRandomDistorsion(tmpdir):
 
     assert len(distorted_imgs) == 10
     assert len(distorted_masks) == 10
+
+
+if __name__ == "__main__":
+	pytest.main()

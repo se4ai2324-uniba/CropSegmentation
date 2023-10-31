@@ -1,13 +1,7 @@
-import os
-import sys
 import pytest
 import numpy as np
-import cv2
+from src.utils import getTiles
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_directory, '..', '..', 'src'))
-
-from utils import getTiles
 
 def test_getTiles():
     # Create a dummy image of size 100x100
@@ -32,3 +26,7 @@ def test_getTiles():
     # Check the shape of each tile
     for tile in tiles:
         assert tile.shape == (20, 20, 3)  # Each tile should be 20x20 with 3 color channels
+
+
+if __name__ == "__main__":
+	pytest.main()
