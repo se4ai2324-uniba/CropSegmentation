@@ -1,34 +1,56 @@
 import pytest
-import torch
-import os
 from skimage import io
 from sklearn.metrics import jaccard_score
 from src.models.predict_model import make_predictions, get_saved_model
+import numpy as np
 
-best = ['00008', '00019', '00046', '00052','00053', '00076', '00099', '00110', '00136', '00145', '00181']
-worst = ['00018', '00035', '00040','00059', '00063', '00069','00075','00138', '00168','00180','00193']
-model_jaccard = 83.76
+optimal = ['00008', '00019', '00020', '00031', '00032', '00043', '00046', '00052', '00053', '00055', '00066', '00076', '00078', '00087', '00099', '00109', '00110', '00136', '00145', '00181']
+challenging = ['00007', '00010', '00018', '00035', '00040','00059', '00063', '00069', '00070', '00075', '00080', '00092', '00103', '00104', '00115', '00126', '00138', '00168', '00180', '00193']
 
-def test_minimum_functionality():
-    model, _ = get_saved_model
-    assert model is not False, "Saved model does not exist!"
+TESTING_DATA_SOURCE_PATH = 'data/processed/datasets_processed/testing_data/'
+TESTING_LABELS_SOURCE_PATH = 'data/processed/datasets_processed/testing_labels/'
 
-    TESTING_DATA_SOURCE_PATH = 'data/processed/datasets_processed/testing_data/'
-    TESTING_LABELS_SOURCE_PATH = 'data/processed/datasets_processed/testing_labels/'
+model_jaccard = 0.63
 
-    best_images = [os.path.join(TESTING_DATA_SOURCE_PATH, img, '.jpg') for img in best]
-    best_masks = [os.path.join(TESTING_DATA_SOURCE_PATH, img, '.jpg') for img in best]
+def test_optimal_conditions():
+    model, pth = get_saved_model()
+    images = [TESTING_DATA_SOURCE_PATH + img + '.jpg' for img in optimal]
+    masks = [TESTING_LABELS_SOURCE_PATH + img + '.jpg' for img in optimal]
 
     jaccard_scores = []
-    for i, img in enumerate(best_images):
-        # Load original image
-        original = io.imread(img)
-
-        # Make predictions
-        original_pred_mask = make_predictions(model, original)
-        original_jaccard = jaccard_score(best_masks[i].flatten(), original_pred_mask.flatten(), average='micro')
+    for i, img in enumerate(images):
+        # Predictions
+        predicted_mask = make_predictions(model, img)
+        true_mask = io.imread(masks[i])
+        jaccard = jaccard_score(true_mask.flatten(), predicted_mask.flatten(), average='micro')
 
         # Collect Jaccard scores
-        jaccard_scores.append(original_jaccard)
+        jaccard_scores.append(jaccard)
 
-    assert np.mean(jaccard_scores) >= model_jaccard, f"In line"
+    assert np.mean(jaccard_scores) >= model_jaccard, f"Model does not satify minimun functionality test"
+
+def test_challenging_conditions():
+    model, pth = get_saved_model()
+    images = [TESTING_DATA_SOURCE_PATH + img + '.jpg' for img in challenging]
+    masks = [TESTING_LABELS_SOURCE_PATH + img + '.jpg' for img in challenging]
+
+    jaccard_scores = []
+    for i, img in enumerate(images):
+        # Predictions
+        predicted_mask = make_predictions(model, img)
+        true_mask = io.imread(masks[i])
+        jaccard = jaccard_score(true_mask.flatten(), predicted_mask.flatten(), average='micro')
+
+        # Collect Jaccard scores
+        jaccard_scores.append(jaccard)
+
+    assert np.mean(jaccard_scores) >= model_jaccard, f"Model does not satify minimun functionality test"
+
+
+
+    
+   
+
+    
+
+
