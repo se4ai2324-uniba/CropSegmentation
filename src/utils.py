@@ -59,7 +59,7 @@ def applyRandomDistorsion(imgList, maskList, percentage, maskFolder):
 
 	for i, filename in enumerate(sampleMasks):
 		if filename != '.DS_Store':
-			mask = io.imread(maskFolder + filename)
+			mask = io.imread(os.path.join(maskFolder, filename))
 			imgList[randomId[i]] = cv2.bitwise_and(
 				imgList[randomId[i]], imgList[randomId[i]], mask=mask)
 			maskList[randomId[i]] = cv2.bitwise_and(
