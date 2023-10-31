@@ -84,14 +84,14 @@ Project Organization
     |   │   ├── test_overfit_batch.py  
     |   │   └── test_training_completion.py  
     |   ├── behavioral_testing  
-│   │   └── test_minimum_functionality.py
-│   └── utility_testing  
-│       ├── test_applyGreenFilter.py
-│       ├── test_applyLowLevelSegmentation.py
-│       ├── test_applyRandomDistorsion.py
-│       ├── test_get2Dmask.py
-│       ├── test_getTiles.py
-│       └── test_merge_labels.py
+    │   │   └── test_minimum_functionality.py
+    │   └── utility_testing  
+    │       ├── test_applyGreenFilter.py
+    │       ├── test_applyLowLevelSegmentation.py
+    │       ├── test_applyRandomDistorsion.py
+    │       ├── test_get2Dmask.py
+    │       ├── test_getTiles.py
+    │       └── test_merge_labels.py
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
 
