@@ -84,6 +84,8 @@ Project Organization
     |   │   ├── test_overfit_batch.py  
     |   │   └── test_training_completion.py  
     |   ├── behavioral_testing  
+    |   │   ├── test_directional.py
+    |   │   ├── test_invariance.py  
     │   │   └── test_minimum_functionality.py
     │   └── utility_testing  
     │       ├── test_applyGreenFilter.py
