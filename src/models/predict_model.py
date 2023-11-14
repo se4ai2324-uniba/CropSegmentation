@@ -195,8 +195,8 @@ def evaluate(num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, init_lr=INIT_LR, rati
 			with open(METRICS_PATH + fn + '.metrics', 'w', encoding='utf-8') as fd:
 				fd.write(f'MEAN_AUC: {accuracy["unet"].mean():4f}\n')
 				fd.write(f'MEAN_AUC_NOBLACK: {accuracy["unet_redu"].mean():4f}\n')
-				fd.write(f'MEAN_IOU: {accuracy["unet"].mean():4f}\n')
-				fd.write(f'MEAN_IOU_NOBLACK: {accuracy["unet_redu"].mean():4f}\n')
+				fd.write(f'MEAN_IOU: {jaccard["unet"].mean():4f}\n')
+				fd.write(f'MEAN_IOU_NOBLACK: {jaccard["unet_redu"].mean():4f}\n')
 		except OSError as e:
 			print(e)
 	else:

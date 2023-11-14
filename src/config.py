@@ -34,7 +34,7 @@ CONFIG = {
 	'SAVED_MODEL_PATH':					'models/saved/',
 	'NUM_EPOCHS':						10,
 	'BATCH_SIZE':						50,
-	'INIT_LR':							.1,
+	'INIT_LR':							.001,
 	'RATIO':							.25,
 	'PARAMS_SEARCH':					{
 											'BATCH_SIZE':	[25, 50],
@@ -43,7 +43,11 @@ CONFIG = {
 
 	# predict_model.py
 	'THRESHOLD':						.5,
-	'METRICS_BASE_PATH':				'models/metrics/'
+	'METRICS_BASE_PATH':				'models/metrics/',
+
+	# server.py
+	'BEST_MODEL_PATH':					'models/saved/10_50_0.001_0.25_unet_model.pth',
+	'TEMP_PATH':						'temp/'
 }
 
 

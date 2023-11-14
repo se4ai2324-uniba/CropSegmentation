@@ -170,6 +170,19 @@ def get2Dmask(mask):
 	return binary_mask
 
 
+def get3Dmask(mask):
+	"""Returns a RGB mask given a binary mask
+	Args:
+	mask: Black and White mask
+	"""
+	colored_mask = np.zeros((mask.shape[0], mask.shape[1], 3), dtype='uint8')
+	for i in range(mask.shape[0]):
+		for j in range(mask.shape[1]):
+			if mask[i][j] != 0:
+				colored_mask[i][j] = [0, 255, 0]
+	return colored_mask
+
+
 def getDevice():
 	"""Returns the device available on the current machine
 	Args: None
