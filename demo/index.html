@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The system is designed to segment crops from the background in images collected by Unmanned Aerial Vehicles (UAVs).">
+        <title>Crop Segmentation Tool | Features Overview</title>
+        <link rel="icon" href="images/favicon.svg" type="image/svg+xml"/>
+        <link rel="stylesheet" href="css/default.css">
+    </head>
+
+    <body class="app" onload="showImageSample()">
+
+		<!-- Start Menu Mobile -->
+		<div class="mobile-menu md:hidden">
+			<div class="mobile-menu-bar">
+				<a href="index.html" class="flex mr-auto" title="Home">
+					<img alt="logo" src="images/logo_w.svg" width="80">
+				</a>
+				<a href="javascript:;" id="mobile-menu-toggler">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white transform -rotate-90"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+				</a>
+			</div>
+			<ul class="border-t border-theme-24 py-5 hidden">
+				<li>
+					<a href="index.html" class="menu menu--active" title="Dashboard">
+						<div class="menu__icon"> <i data-feather="home"></i> </div>
+						<div class="menu__title"> Dashboard </div>
+					</a>
+				</li>
+				<li class="menu__devider my-6"></li>
+			</ul>
+		</div>
+		<!-- End Menu Mobile -->
+
+        <div class="flex">
+
+			<!-- Start Menu Desktop -->
+            <nav class="side-nav">
+				<a href="index.html" class="intro-x flex items-center pl-5 pt-4" title="Home">
+					<img alt="logo" src="images/logo_w.svg">
+				</a>
+				<div class="side-nav__devider my-6"></div>
+				<ul>
+					<li>
+						<a href="index.html" class="side-menu side-menu--active" title="Dashboard">
+							<div class="side-menu__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+							</div>
+							<div class="side-menu__title"> Dashboard </div>
+						</a>
+					</li>
+					<li class="side-nav__devider my-6"></li>
+				</ul>
+			</nav>
+			<!-- End Menu Desktop -->
+
+            <div class="content">
+
+				<!-- Start Topbar -->
+				<div class="top-bar">
+					<div class="-intro-x breadcrumb mr-auto hidden sm:flex">
+						<a href="index.html">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="breadcrumb__icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+						</a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="breadcrumb__icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+						<a aria-current="page" class="breadcrumb--active active" href="/">Dashboard</a>
+					</div>
+				</div>
+				<!-- End Topbar -->
+
+				<!-- Start Main Content -->
+				<div class="intro-y grid grid-cols-12 gap-6 mt-5">
+					<div class="col-span-12 lg:col-span-6">
+						<div class="intro-y box h-full">
+							<div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+								<h2 class="font-medium text-base mr-auto">Select an image</h2>
+							</div>
+							<div class="p-5">
+								<div class="text-center lg:text-left">
+									<ul id="tablist-selection" class="nav nav-boxed-tabs" role="tablist">
+										<li id="example-1-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
+											<button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="example-tab-1" type="button" role="tab" aria-controls="example-tab-1" aria-selected="true" > Select Sample Image </button>
+										</li>
+										<li id="example-2-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
+											<button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="example-tab-2" type="button" role="tab" aria-controls="example-tab-2" aria-selected="false" > Upload Your File </button>
+										</li>
+									</ul>
+									<div id="tabpanel-selection" class="tab-content mt-5">
+										<div id="example-tab-1" class="tab-pane leading-relaxed active" role="tabpanel" aria-labelledby="example-1-tab">
+											<div id="sample-container" class="grid grid-cols-12 gap-5 my-5 pt-5 border-t"></div>
+											<button type="button" id="sample-submit" class="btn btn-outline-secondary cursor-no-drop w-full inline-block mt-5 mb-2" onclick="submitPrediction(event)">Get prediction</button>
+										</div>
+										<div id="example-tab-2" class="tab-pane leading-relaxed" role="tabpanel" aria-labelledby="example-2-tab">
+											<div class="grid grid-cols-1 gap-5 mt-5 pt-5 border-t">
+												<div class="alert alert-secondary show block w-full" role="alert"><strong>NOTE:</strong> this model has been trained on a very specific target images, collected by Unmanned Aerial Vehicles (UAVs), so to obtain significant results consequent images must be used!</div>
+												<form class="dropzone cursor-pointer my-2 block" enctype="multipart/form-data" onclick="triggerUpload()">
+													<input id="upload" name="file" type="file" accept="image/jpeg" onchange="uploadImage(event)" />
+													<div class="dz-message">
+														<div class="text-lg font-medium">Click here to upload.</div>
+														<div class="text-slate-500">Only JPG files allowed! Max file size 1MB!</div>
+													</div>
+												</form>
+												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block w-full">
+													<div class="relative mx-auto image-fit h-70">
+														<img id="preview-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/preview-placeholder.jpg">
+													</div>
+												</div>
+												<button type="button" id="upload-submit" class="btn btn-outline-secondary cursor-no-drop w-full inline-block mt-5 mb-2" onclick="submitPrediction(event)">Get prediction</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-span-12 lg:col-span-6">
+						<div class="intro-y box h-full">
+							<div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+								<h2 class="font-medium text-base mr-auto">Get prediction</h2>
+							</div>
+							<div class="p-5">
+								<div class="text-center lg:text-left">
+									<ul id="tablist-prediction" class="nav nav-boxed-tabs" role="tablist">
+										<li id="example-3-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
+											<button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="example-tab-3" type="button" role="tab" aria-controls="example-tab-3" aria-selected="true" > Segmented Mask </button>
+										</li>
+										<li id="example-4-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
+											<button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="example-tab-4" type="button" role="tab" aria-controls="example-tab-4" aria-selected="false" > Metrics </button>
+										</li>
+									</ul>
+									<div id="tabpanel-prediction" class="tab-content mt-5">
+										<div id="example-tab-3" class="tab-pane leading-relaxed active" role="tabpanel" aria-labelledby="example-3-tab">
+											<div class="grid grid-cols-1 gap-5 mt-5 pt-5 border-t">
+												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block col-span-12">
+													<div class="relative mx-auto image-fit h-70">
+														<img id="original-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="original image" src="images/original-placeholder.jpg">
+													</div>
+												</div>
+												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block col-span-12">
+													<div class="relative mx-auto image-fit h-70">
+														<img id="predicted-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/mask-placeholder.jpg">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="example-tab-4" class="tab-pane leading-relaxed" role="tabpanel" aria-labelledby="example-4-tab">
+											<div class="overflow-x-auto mb-5">
+												<table class="table my-5">
+													<thead class="table-light">
+														<tr>
+															<th class="whitespace-nowrap">Metric</th>
+															<th class="whitespace-nowrap text-center">Value</th>
+															<th class="whitespace-nowrap text-center">On Avg.</th>
+														</tr>
+													</thead>
+													<tbody id="metrics-body"></tbody>
+												</table>
+											</div>
+											<div class="overflow-x-auto mb-5">
+												<table class="table my-5">
+													<thead class="table-light">
+														<tr>
+															<th class="whitespace-nowrap text-center">Groundtruth</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="p-0">
+																<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block w-full my-5">
+																	<div class="relative mx-auto image-fit h-70">
+																		<img id="truth-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="truth image" src="images/truth-placeholder.jpg">
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-span-12 lg:col-span-6">
+						<div class="intro-y box h-full">
+							<div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+								<h2 class="font-medium text-base mr-auto">Model description</h2>
+							</div>
+							<div class="p-5">
+								<div class="text-center lg:text-left">
+									<p class="mb-2">The system is designed to <strong>segment crops from the background</strong> in images collected by Unmanned Aerial Vehicles, (UAVs).</p>
+									<p class="mb-2">It employs a Deep Neural Network (DNN) with a <strong>U-NET model</strong>, an encoder-decoder cascade structure, for semantic segmentation. The system also utilizes the K-means algorithm for further segmentation of crops in RGB color images.</p>
+									<p class="mb-2">It is capable of processing images from different datasets and generalizing its performance across them.</p>
+									<p class="mb-2">The system has demonstrated more accurate segmentation and convincing results compared to traditional approaches, making it a valuable tool for precision farming and sustainable agriculture.</p>
+								</div>
+								<div class="text-center lg:text-left pt-3">
+									<div class="flex items-center justify-center lg:justify-start my-4">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+										<p>The model card is available <a href="https://github.com/se4ai2324-uniba/CropSegmentation/blob/main/models/README.md" target="_blank" title="Model Card" class="text-primary underline ">here</a>.</p>
+									</div>
+									<div class="flex items-center justify-center lg:justify-start my-4">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+										<p>The data card is available <a href="https://github.com/se4ai2324-uniba/CropSegmentation/blob/main/data/README.md" target="_blank" title="Data Card" class="text-primary underline ">here</a>.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-span-12 lg:col-span-6">
+						<div class="intro-y box h-full">
+							<div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+								<h2 class="font-medium text-base mr-auto">Team members</h2>
+							</div>
+							<div class="p-5">
+								<div class="flex items-start px-5 mb-4">
+									<div class="w-full flex flex-col lg:flex-row items-center">
+										<div class="w-16 h-16 image-fit">
+											<img alt="Eleonora Ghizzota" class="rounded-full" src="images/eleonora-ghizzota.jpg">
+										</div>
+										<div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+											<span class="font-medium">Eleonora Ghizzota</span>
+											<div class="text-slate-500 text-xs mt-0.5">Master's Degree Student in Computer Science</div>
+										</div>
+										<div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="mailto:e.ghizzota@studenti.uniba.it" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+											</a>
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="https://github.com/Midorilly" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-start px-5 my-4">
+									<div class="w-full flex flex-col lg:flex-row items-center">
+										<div class="w-16 h-16 image-fit">
+											<img alt="Mariangela Panunzio" class="rounded-full" src="images/mariangela-panunzio.jpg">
+										</div>
+										<div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+											<span class="font-medium">Mariangela Panunzio</span>
+											<div class="text-slate-500 text-xs mt-0.5">Master's Degree Student in Computer Science</div>
+										</div>
+										<div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="mailto:m.panunzio13@studenti.uniba.it" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+											</a>
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="https://github.com/mariangelapanunzio" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-start px-5 my-4">
+									<div class="w-full flex flex-col lg:flex-row items-center">
+										<div class="w-16 h-16 image-fit">
+											<img alt="Katya Trufanova" class="rounded-full" src="images/katya-trufanova.jpg">
+										</div>
+										<div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+											<span class="font-medium">Katya Trufanova</span>
+											<div class="text-slate-500 text-xs mt-0.5">Master's Degree Student in Computer Science</div>
+										</div>
+										<div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="mailto:k.trufanova@studenti.uniba.it" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+											</a>
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="https://github.com/katyatrufanova" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-start px-5 my-4">
+									<div class="w-full flex flex-col lg:flex-row items-center">
+										<div class="w-16 h-16 image-fit">
+											<img alt="Alberto G. Valerio" class="rounded-full" src="images/alberto-valerio.jpg">
+										</div>
+										<div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+											<span class="font-medium">Alberto G. Valerio</span>
+											<div class="text-slate-500 text-xs mt-0.5">Master's Degree Student in Computer Science</div>
+										</div>
+										<div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="mailto:a.valerio31@studenti.uniba.it" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+											</a>
+											<a class="w-8 h-8 rounded-full flex items-center justify-center border ml-2 text-slate-400 zoom-in" href="https://github.com/albertovalerio" target="_blank">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="text-center lg:text-left mt-5">
+									<div class="mb-3">This demo-tool has been realized as a lab activity for the exam in <strong>Software Engineering for AI-Enabled Systems</strong> with <strong>Professor Filippo Lanubile</strong> at <strong>University of Bari "<em>Aldo Moro</em>", Italy</strong>.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Main Content -->
+
+            </div>
+        </div>
+
+		<!-- Start Notify -->
+		<div id="danger-notification" class="toastify toastify-right toastify-top" aria-live="polite">
+			<div class="toastify-content flex">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="alert-triangle" data-lucide="alert-triangle" class="lucide lucide-alert-triangle w-6 h-6 mr-2 text-danger"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+				<div class="ml-4 mr-4">
+					<div class="font-medium text-danger">A server error occurred!</div>
+					<div id="danger-notification-msg" class="text-slate-500 mt-1"></div>
+				</div>
+			</div>
+		</div>
+		<!-- End Notify -->
+
+        <script type="text/javascript" src="js/scripts.js" async defer></script>
+    </body>
+</html>
