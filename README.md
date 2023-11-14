@@ -27,20 +27,27 @@ For further details on U-NET, read __U-Net: Convolutional Networks for Biomedica
 Project Organization
 ------------
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── .dvc               <- Data Version Control configurations.
+    │
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── raw            <- The original, immutable data dump.
+    │   └── README.md      <- The data card.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    ├── demo
+    │   ├── css            <- The style sheets.
+    │   ├── images         <- The public images folder.
+    │   ├── js             <- The scripts folder.
+    │   └── index.html     <- A frontend demo application.
     │
-    ├── models             
-    │   ├── saved          <- Trained and serialized models
-    │   └── metrics        <- Model predictions or model summaries
+    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details.
+    │
+    ├── models
+    │   ├── metrics        <- Model predictions or model summaries.
+    │   ├── saved          <- Trained and serialized models.
+    │   └── README.md      <- The model card.
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -49,51 +56,56 @@ Project Organization
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   ├── linters        <- Report analysis of Pylint, Pynblint, Flake8, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │   ├── figures        <- Generated graphics and figures to be used in reporting.
+    │   └── linters        <- Report analysis of Pylint, Pynblint, Flake8, etc.
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
+    │   ├── api            <- FastAPI + Uvicorn server.
+    │   │   ├── redoc.py
+    │   │   └── server.py
     │   │
-    │   ├── data           <- Scripts to download or generate data
+    │   ├── data           <- Scripts to download or generate data.
+    │   │   ├── extract_data.py
     │   │   └── make_dataset.py
     │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
+    │   ├── features       <- Scripts to turn raw data into features for modeling.
     │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
+    │   ├── models         <- Scripts to train models and then use trained models to make predictions.
     │   │   ├── model.py
     │   │   ├── predict_model.py
     │   │   └── train_model.py
     │   │
-    │   │── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │   │    └── visualize.py
-    │   │   
-    │   │── config.py      <- Global configurations
-    │   └── utils.py       <- Utility functions
-    │   
-    ├── tests              <- Code for testing 
-    |   ├── test_model_training  
-    |   │   ├── test_device_training.py  
-    |   │   ├── test_loss_decrease.py  
-    |   │   ├── test_overfit_batch.py  
-    |   │   └── test_training_completion.py  
-    |   ├── behavioral_testing  
-    |   │   ├── test_directional.py
-    |   │   ├── test_invariance.py  
+    │   │── visualization  <- Scripts to create exploratory and results oriented visualizations.
+    │   │
+    │   │── config.py      <- Global configurations.
+    │   └── utils.py       <- Utility functions.
+    │
+    ├── tests              <- Code for testing.
+    │   ├── test_model_training
+    │   │   ├── test_device_training.py
+    │   │   ├── test_loss_decrease.py
+    │   │   ├── test_overfit_batch.py
+    │   │   └── test_training_completion.py
+    │   │
+    │   ├── behavioral_testing
+    │   │   ├── test_directional.py
+    │   │   ├── test_invariance.py
     │   │   └── test_minimum_functionality.py
-    │   └── utility_testing  
+    │   │
+    │   └── utility_testing
     │       ├── test_applyGreenFilter.py
     │       ├── test_applyLowLevelSegmentation.py
     │       ├── test_applyRandomDistorsion.py
     │       ├── test_get2Dmask.py
     │       ├── test_getTiles.py
     │       └── test_merge_labels.py
+    │
+    ├── LICENSE
+    ├── Makefile           <- Makefile with commands like `make data` or `make train`.
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    │                         generated with `pip freeze > requirements.txt`.
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
 
