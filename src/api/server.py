@@ -75,7 +75,15 @@ def main():
 				if len(para_list) != 2:
 					continue
 				req[para_list[0]] = para_list[1]
-		return {"App Requirements": req}
+		return {
+			'Name': 'Crop Segmentation',
+			'Description': 'A simple tool to showcase the functionalities of the ML model.',
+			'Version': '1.0.0',
+			'Requirements': req,
+			'Github': 'https://github.com/se4ai2324-uniba/CropSegmentation',
+			'DagsHub': 'https://dagshub.com/se4ai2324-uniba/CropSegmentation',
+			'Authors': ['Eleonora Ghizzota', 'Mariangela Panunzio', 'Katya Trufanova', 'Alberto G. Valerio']
+		}
 
 
 @app.get("/images")
