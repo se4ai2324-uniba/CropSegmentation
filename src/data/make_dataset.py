@@ -58,6 +58,7 @@ def training_set_preprocessing():
 						name = str(f'{len(os.listdir(TRAINING_DATA_DEST_PATH)):05d}.jpg')
 						cv2.imwrite(TRAINING_DATA_DEST_PATH + name, v)
 						cv2.imwrite(TRAINING_LABELS_DEST_PATH + name, y[j])
+		shutil.make_archive(ARCHIVE_PATH, 'zip', ARCHIVE_PATH)
 	else:
 		print('\n' + ''.join(['> ' for i in range(25)]))
 		print(f'\n{"WARNING: Training folders already exist!":<35}\n')
@@ -87,6 +88,7 @@ def testing_set_preprocessing():
 				name = str(f'{len(os.listdir(TESTING_DATA_DEST_PATH)):05d}.jpg')
 				cv2.imwrite(TESTING_DATA_DEST_PATH + name, img)
 				cv2.imwrite(TESTING_LABELS_DEST_PATH + name, mask)
+		shutil.make_archive(ARCHIVE_PATH, 'zip', ARCHIVE_PATH)
 	else:
 		print('\n' + ''.join(['> ' for i in range(25)]))
 		print(f'\n{"WARNING: Testing folders already exist!":<35}\n')
@@ -96,4 +98,3 @@ def testing_set_preprocessing():
 if __name__ == "__main__":
 	training_set_preprocessing()
 	testing_set_preprocessing()
-	shutil.make_archive(ARCHIVE_PATH, 'zip', ARCHIVE_PATH)

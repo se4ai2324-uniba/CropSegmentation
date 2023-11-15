@@ -3,9 +3,15 @@ The API module
 """
 import os
 import sys
-sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
-sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
-sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
+from sys import platform
+if platform == 'win32':
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models\model')
+else:
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
 from io import BytesIO
 import PIL.Image as Img
 from skimage import io
@@ -38,11 +44,16 @@ app.add_middleware(
 )
 
 config = get_global_config()
-BASE_PATH = '/'.join(os.getcwd().split('/')[:-2])
+BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
 TEST_DATA_PATH = os.path.join(BASE_PATH, config.get('PROCESSED_TESTING_DATA_PATH'))
 TEST_LABELS_PATH = os.path.join(BASE_PATH, config.get('PROCESSED_TESTING_LABELS_PATH'))
 TEMP_PATH = config.get('TEMP_PATH')
 SAVED_MODEL_PATH = os.path.join(BASE_PATH, config.get('BEST_MODEL_PATH'))
+if platform == 'win32':
+	TEST_DATA_PATH = TEST_DATA_PATH.replace('/', '\\')
+	TEST_LABELS_PATH = TEST_LABELS_PATH.replace('/', '\\')
+	TEMP_PATH = TEMP_PATH.replace('/', '\\')
+	SAVED_MODEL_PATH = SAVED_MODEL_PATH.replace('/', '\\')
 DEVICE = getDevice()
 
 
@@ -54,7 +65,7 @@ class Image(BaseModel):
 @app.get("/")
 def main():
 	req = {}
-	file = BASE_PATH + '/requirements.txt'
+	file = BASE_PATH + 'requirements.txt'
 	if not os.path.isfile(file):
 		raise HTTPException(status_code=404, detail='File "'+file+'" not found!')
 	else:
@@ -69,6 +80,7 @@ def main():
 
 @app.get("/images")
 def samples(limit: Union[int, None] = None):
+	print('PATH: ', TEST_DATA_PATH)
 	if not os.path.isdir(TEST_DATA_PATH):
 		raise HTTPException(
 			status_code=422,
@@ -145,4 +157,4 @@ def metrics(image: Image):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+	uvicorn.run(app, host="127.0.0.1", port=8000)
