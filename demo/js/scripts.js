@@ -68,10 +68,13 @@ const selectImage = (e) => {
 
 
 const showImageSample = async () => {
+	const loader = document.getElementById('sample-loader')
 	container.innerHTML = ''
+	loader.classList.toggle('hidden')
 	await fetch(SAMPLE_PATH + '?limit=' + SAMPLE_LIMIT)
 		.then(res => res.json())
 		.then(data => {
+			loader.classList.toggle('hidden')
 			data.samples.forEach((img) => {
 				container.innerHTML += '<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block col-span-6 md:col-span-4"><div class="h-32 relative image-fit cursor-pointer zoom-in mx-auto"><img class="rounded-md" alt="image sample" src="'+IMAGES_PATH+img+'" onclick="selectImage(event)"></div></div>'
 			})
@@ -84,6 +87,14 @@ const showImageSample = async () => {
 
 const submitPrediction = async (e) => {
 	if (e.target.classList.contains('btn-primary')) {
+		const loaders = document.querySelectorAll('.pred-loader')
+		originalImgCont.classList.toggle('hidden')
+		maskImgCont.classList.toggle('hidden')
+		loaders.forEach((l) => l.classList.toggle('hidden'))
+		setActiveTab(
+			document.querySelector('#example-3-tab button'),
+			document.getElementById('example-tab-3')
+		)
 		let originalImg = ''
 		document.querySelectorAll('#sample-container img').forEach((img) => {
 			if (img.classList.contains('my-selection')) {
@@ -93,11 +104,6 @@ const submitPrediction = async (e) => {
 		if (originalImg === '') {
 			originalImg = previewImgCont.src
 		}
-		originalImgCont.src = ''
-		originalImgCont.src = originalImg
-		originalImgCont.classList.add('zoom-in')
-		originalImgCont.classList.remove('opacity-50')
-		originalImgCont.parentNode.classList.remove('image-fit')
 		await fetch(PREDICT_PATH, {
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},
@@ -106,14 +112,23 @@ const submitPrediction = async (e) => {
 		.then(res => res.json())
 		.then(data => {
 			maskImgCont.src = ''
+			originalImgCont.src = ''
+			loaders.forEach((l) => l.classList.toggle('hidden'))
+			originalImgCont.classList.toggle('hidden')
+			maskImgCont.classList.toggle('hidden')
+			originalImgCont.src = originalImg
+			originalImgCont.classList.add('zoom-in')
+			originalImgCont.classList.remove('opacity-50')
+			originalImgCont.parentNode.classList.remove('image-fit')
 			maskImgCont.src = IMAGES_PATH + data.mask
 			maskImgCont.classList.add('zoom-in')
 			maskImgCont.classList.remove('opacity-50')
 			maskImgCont.parentNode.classList.remove('image-fit')
-			setActiveTab(
-				document.querySelector('#example-3-tab button'),
-				document.getElementById('example-tab-3')
-			)
+			if (window.screen.width < 1024) {
+				document.getElementById('example-tab-3').scrollIntoView(
+					{ behavior: "smooth", block: "end", inline: "nearest" }
+				)
+			}
 		})
 		.catch((err) => {
 			showNotification(err.message)
@@ -131,6 +146,9 @@ const triggerUpload = () => {
 const uploadImage = async (e) => {
 	const file = e.target.files[0]
 	if(file && file.size <= 1000000){
+		const loader = document.getElementById('upload-loader')
+		loader.classList.toggle('hidden')
+		previewImgCont.classList.toggle('hidden')
 		let formData = new FormData()
 		formData.append('file', file)
 		await fetch(UPLOAD_PATH, {
@@ -140,6 +158,8 @@ const uploadImage = async (e) => {
 		.then(res => res.json())
 		.then(_ => {
 			previewImgCont.src = ''
+			loader.classList.toggle('hidden')
+			previewImgCont.classList.toggle('hidden')
 			buttonUpload.classList.add('btn-primary')
 			buttonUpload.classList.remove('btn-outline-secondary', 'cursor-no-drop')
 			previewImgCont.src = IMAGES_PATH + 'upload.jpg'
@@ -152,9 +172,11 @@ const uploadImage = async (e) => {
 		})
 	} else {
 		previewImgCont.src = ''
-		setToDefault(['original', 'mask', 'preview', 'truth'])
-		showNotification("Attention! File missing or too big!")
 		e.target.value = ''
+		setToDefault(['original', 'mask', 'preview', 'truth'])
+		if (file.size > 1000000) {
+			showNotification("Attention, file too big! Max file size is 1MB!")
+		}
 	}
 }
 
@@ -207,6 +229,9 @@ const getMetrics = async () => {
 	table.innerHTML = ''
 	setToDefault(['truth'])
 	if (p === 'preview-placeholder.jpg' && o !== 'original-placeholder.jpg' && m !== 'mask-placeholder.jpg') {
+		const loaders = document.querySelectorAll('.metrics-loader')
+		truthImgCont.classList.toggle('hidden')
+		loaders.forEach((l) => l.classList.toggle('hidden'))
 		await fetch(METRICS_PATH, {
 			method: 'POST',
 			headers: {"Content-Type": "application/json"},
@@ -214,6 +239,8 @@ const getMetrics = async () => {
 		})
 		.then(res => res.json())
 		.then(data => {
+			loaders.forEach((l) => l.classList.toggle('hidden'))
+			truthImgCont.classList.toggle('hidden')
 			truthImgCont.src = IMAGES_PATH + data.truth
 			truthImgCont.classList.add('zoom-in')
 			truthImgCont.classList.remove('opacity-50')

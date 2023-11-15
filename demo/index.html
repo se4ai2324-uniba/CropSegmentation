@@ -15,21 +15,9 @@
 		<div class="mobile-menu md:hidden">
 			<div class="mobile-menu-bar">
 				<a href="index.html" class="flex mr-auto" title="Home">
-					<img alt="logo" src="images/logo_w.svg" width="80">
-				</a>
-				<a href="javascript:;" id="mobile-menu-toggler">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white transform -rotate-90"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+					<img alt="logo" src="images/logo_w.svg" width="60">
 				</a>
 			</div>
-			<ul class="border-t border-theme-24 py-5 hidden">
-				<li>
-					<a href="index.html" class="menu menu--active" title="Dashboard">
-						<div class="menu__icon"> <i data-feather="home"></i> </div>
-						<div class="menu__title"> Dashboard </div>
-					</a>
-				</li>
-				<li class="menu__devider my-6"></li>
-			</ul>
 		</div>
 		<!-- End Menu Mobile -->
 
@@ -55,7 +43,7 @@
 			</nav>
 			<!-- End Menu Desktop -->
 
-            <div class="content">
+            <div class="content sm:mt-60">
 
 				<!-- Start Topbar -->
 				<div class="top-bar">
@@ -80,7 +68,7 @@
 								<div class="text-center lg:text-left">
 									<ul id="tablist-selection" class="nav nav-boxed-tabs" role="tablist">
 										<li id="example-1-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
-											<button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="example-tab-1" type="button" role="tab" aria-controls="example-tab-1" aria-selected="true" > Select Sample Image </button>
+											<button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="example-tab-1" type="button" role="tab" aria-controls="example-tab-1" aria-selected="true" > Select Sample </button>
 										</li>
 										<li id="example-2-tab" class="nav-item flex-1" role="presentation" onclick="toggleTab(event)">
 											<button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="example-tab-2" type="button" role="tab" aria-controls="example-tab-2" aria-selected="false" > Upload Your File </button>
@@ -88,6 +76,18 @@
 									</ul>
 									<div id="tabpanel-selection" class="tab-content mt-5">
 										<div id="example-tab-1" class="tab-pane leading-relaxed active" role="tabpanel" aria-labelledby="example-1-tab">
+											<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" id="sample-loader" class="loader w-8 h-8 block mx-auto hidden">
+												<g fill="none" fill-rule="evenodd" stroke-width="4">
+													<circle cx="22" cy="22" r="1">
+														<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+														<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+													</circle>
+													<circle cx="22" cy="22" r="1">
+														<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+														<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+													</circle>
+												</g>
+											</svg>
 											<div id="sample-container" class="grid grid-cols-12 gap-5 my-5 pt-5 border-t"></div>
 											<button type="button" id="sample-submit" class="btn btn-outline-secondary cursor-no-drop w-full inline-block mt-5 mb-2" onclick="submitPrediction(event)">Get prediction</button>
 										</div>
@@ -102,8 +102,20 @@
 													</div>
 												</form>
 												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block w-full">
+													<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" id="upload-loader" class="loader w-8 h-8 block mx-auto hidden">
+														<g fill="none" fill-rule="evenodd" stroke-width="4">
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+														</g>
+													</svg>
 													<div class="relative mx-auto image-fit h-70">
-														<img id="preview-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/preview-placeholder.jpg">
+														<img id="preview-img" class="h-70 sm:h-auto w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/preview-placeholder.jpg">
 													</div>
 												</div>
 												<button type="button" id="upload-submit" class="btn btn-outline-secondary cursor-no-drop w-full inline-block mt-5 mb-2" onclick="submitPrediction(event)">Get prediction</button>
@@ -133,13 +145,37 @@
 										<div id="example-tab-3" class="tab-pane leading-relaxed active" role="tabpanel" aria-labelledby="example-3-tab">
 											<div class="grid grid-cols-1 gap-5 mt-5 pt-5 border-t">
 												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block col-span-12">
+													<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" class="loader pred-loader w-8 h-8 block mx-auto hidden">
+														<g fill="none" fill-rule="evenodd" stroke-width="4">
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+														</g>
+													</svg>
 													<div class="relative mx-auto image-fit h-70">
-														<img id="original-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="original image" src="images/original-placeholder.jpg">
+														<img id="original-img" class="h-70 sm:h-auto w-auto mx-auto cursor-default opacity-50 rounded-md" alt="original image" src="images/original-placeholder.jpg">
 													</div>
 												</div>
 												<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block col-span-12">
+													<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" class="loader pred-loader w-8 h-8 block mx-auto hidden">
+														<g fill="none" fill-rule="evenodd" stroke-width="4">
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+															<circle cx="22" cy="22" r="1">
+																<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+															</circle>
+														</g>
+													</svg>
 													<div class="relative mx-auto image-fit h-70">
-														<img id="predicted-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/mask-placeholder.jpg">
+														<img id="predicted-img" class="h-70 sm:h-auto w-auto mx-auto cursor-default opacity-50 rounded-md" alt="predicted image" src="images/mask-placeholder.jpg">
 													</div>
 												</div>
 											</div>
@@ -156,6 +192,18 @@
 													</thead>
 													<tbody id="metrics-body"></tbody>
 												</table>
+												<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" class="loader metrics-loader w-8 h-8 block mx-auto hidden">
+													<g fill="none" fill-rule="evenodd" stroke-width="4">
+														<circle cx="22" cy="22" r="1">
+															<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+															<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+														</circle>
+														<circle cx="22" cy="22" r="1">
+															<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+															<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+														</circle>
+													</g>
+												</svg>
 											</div>
 											<div class="overflow-x-auto mb-5">
 												<table class="table my-5">
@@ -168,8 +216,20 @@
 														<tr>
 															<td class="p-0">
 																<div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 block w-full my-5">
+																	<svg width="25" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="rgb(30, 41, 59)" class="loader metrics-loader w-8 h-8 block mx-auto hidden">
+																		<g fill="none" fill-rule="evenodd" stroke-width="4">
+																			<circle cx="22" cy="22" r="1">
+																				<animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																				<animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+																			</circle>
+																			<circle cx="22" cy="22" r="1">
+																				<animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite"></animate>
+																				<animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"></animate>
+																			</circle>
+																		</g>
+																	</svg>
 																	<div class="relative mx-auto image-fit h-70">
-																		<img id="truth-img" class="h-70 w-auto mx-auto cursor-default opacity-50 rounded-md" alt="truth image" src="images/truth-placeholder.jpg">
+																		<img id="truth-img" class="h-70 sm:h-auto w-auto mx-auto cursor-default opacity-50 rounded-md" alt="truth image" src="images/truth-placeholder.jpg">
 																	</div>
 																</div>
 															</td>
