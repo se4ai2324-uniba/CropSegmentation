@@ -88,7 +88,6 @@ def main():
 
 @app.get("/images")
 def samples(limit: Union[int, None] = None):
-	print('PATH: ', TEST_DATA_PATH)
 	if not os.path.isdir(TEST_DATA_PATH):
 		raise HTTPException(
 			status_code=422,
