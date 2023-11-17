@@ -46,7 +46,7 @@ CONFIG = {
 	'METRICS_BASE_PATH':				'models/metrics/',
 
 	# server.py
-	'BEST_MODEL_PATH':					'models/saved/10_50_0.001_0.25_unet_model.pth',
+	'BEST_MODEL_PATH':					'models/saved/sd_10_50_0.001_0.25_unet_model.pth',
 	'TEMP_PATH':						'src/api/temp/'
 }
 

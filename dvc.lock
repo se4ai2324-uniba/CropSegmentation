@@ -9,8 +9,8 @@ stages:
       size: 2332182734
     - path: src/data/extract_data.py
       hash: md5
-      md5: a162d8cfc5ffa79fd9b9b703109fd098
-      size: 727
+      md5: 8a9f003b9031d639a14896f40be6c6b4
+      size: 733
     outs:
     - path: data/raw/datasets
       hash: md5
@@ -27,8 +27,8 @@ stages:
       nfiles: 1549
     - path: src/data/make_dataset.py
       hash: md5
-      md5: a97010e40c436ff9ffbfb9dfe137acf2
-      size: 3986
+      md5: 8a7b03ebc34735a39b6ee54664dcfd4d
+      size: 3713
     outs:
     - path: data/processed/datasets_processed.zip
       hash: md5
@@ -43,8 +43,8 @@ stages:
       size: 2048543648
     - path: src/models/train_model.py
       hash: md5
-      md5: c5362d4aae749afb8eb7c1800dedd600
-      size: 6560
+      md5: edb665e8e3a0abf23bfaca9262479683
+      size: 7196
     outs:
     - path: models/saved/10_25_0.001_0.25_unet_model.pth
       hash: md5
@@ -62,6 +62,22 @@ stages:
       hash: md5
       md5: 07b0301a7d21796b54563e4c84bdad62
       size: 484607
+    - path: models/saved/sd_10_25_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: d1d3bc90b6581fa60f981ac4d2939775
+      size: 477851
+    - path: models/saved/sd_10_25_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: b459f973cbbb6b4e53511fcff1c33ccd
+      size: 477795
+    - path: models/saved/sd_10_50_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: 21bf70c37e777b2577325bca8fc3882e
+      size: 477851
+    - path: models/saved/sd_10_50_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 086ae0d8a03c02b0640984d8c6e2c2f4
+      size: 477795
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
@@ -83,8 +99,8 @@ stages:
       size: 484607
     - path: src/models/predict_model.py
       hash: md5
-      md5: d9a17520105710b7dc7117dd04e57511
-      size: 6722
+      md5: 20b4d7f048475f050ebc5e72bcd37c9f
+      size: 6802
     outs:
     - path: models/metrics/10_25_0.001_0.25.metrics
       hash: md5

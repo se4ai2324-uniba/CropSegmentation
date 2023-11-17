@@ -13,7 +13,8 @@ stages:
     - data/raw/datasets
     - src/data/make_dataset.py
     outs:
-    - data/processed/datasets_processed.zip
+    - data/processed/datasets_processed.zip:
+        persist: true
   train_model:
     cmd: python3 src/models/train_model.py
     deps:
@@ -27,6 +28,14 @@ stages:
     - models/saved/10_50_0.1_0.25_unet_model.pth:
         persist: true
     - models/saved/10_25_0.1_0.25_unet_model.pth:
+        persist: true
+    - models/saved/sd_10_50_0.001_0.25_unet_model.pth:
+        persist: true
+    - models/saved/sd_10_25_0.001_0.25_unet_model.pth:
+        persist: true
+    - models/saved/sd_10_50_0.1_0.25_unet_model.pth:
+        persist: true
+    - models/saved/sd_10_25_0.1_0.25_unet_model.pth:
         persist: true
   predict_model:
     cmd: python3 src/models/predict_model.py

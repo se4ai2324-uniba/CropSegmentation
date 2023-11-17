@@ -25,7 +25,7 @@ import random
 from pathlib import Path
 from utils import getDevice, get3Dmask, get2Dmask
 from models.predict_model import make_predictions, pixelAccuracy
-from models.model import *
+from models.model import UNet
 from config import get_global_config
 from sklearn.metrics import jaccard_score
 import torch
@@ -127,7 +127,8 @@ def predict(image: Image):
 	elif not os.path.isfile(TEMP_PATH + image.og_name):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH + image.og_name+'" not found!')
 	else:
-		saved_model = torch.load(SAVED_MODEL_PATH, map_location=torch.device(DEVICE))
+		saved_model = UNet(outSize=(360, 480)).to(DEVICE)
+		saved_model.load_state_dict(torch.load(SAVED_MODEL_PATH))
 		orig = io.imread(TEMP_PATH + image.og_name)
 		mask = make_predictions(saved_model, orig)
 		colored_mask = get3Dmask(mask)
