@@ -47,7 +47,7 @@ CONFIG = {
 
 	# server.py
 	'BEST_MODEL_PATH':					'models/saved/10_50_0.001_0.25_unet_model.pth',
-	'TEMP_PATH':						'temp/'
+	'TEMP_PATH':						'src/api/temp/'
 }
 
 

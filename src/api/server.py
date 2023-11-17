@@ -47,7 +47,7 @@ config = get_global_config()
 BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
 TEST_DATA_PATH = os.path.join(BASE_PATH, config.get('PROCESSED_TESTING_DATA_PATH'))
 TEST_LABELS_PATH = os.path.join(BASE_PATH, config.get('PROCESSED_TESTING_LABELS_PATH'))
-TEMP_PATH = config.get('TEMP_PATH')
+TEMP_PATH = os.path.join(BASE_PATH, config.get('TEMP_PATH'))
 SAVED_MODEL_PATH = os.path.join(BASE_PATH, config.get('BEST_MODEL_PATH'))
 if platform == 'win32':
 	TEST_DATA_PATH = TEST_DATA_PATH.replace('/', '\\')
