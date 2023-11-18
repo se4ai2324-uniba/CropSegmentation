@@ -46,9 +46,8 @@ def get_saved_model(num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, init_lr=INIT_L
 			saved_model = torch.load(
 				SAVED_MODEL_PATH + pth,
 				map_location=torch.device(DEVICE)
-			)
-			if not os.path.isfile(SAVED_MODEL_PATH + 'sd_' + pth):
-				torch.save(saved_model.state_dict(), SAVED_MODEL_PATH + 'sd_' + pth)
+			)			
+			torch.save(saved_model.state_dict(), SAVED_MODEL_PATH + 'sd_' + pth)
 			saved_model = UNet(outSize=(360, 480)).to(DEVICE)
 			saved_model.load_state_dict(torch.load(SAVED_MODEL_PATH + 'sd_' + pth))
 		except OSError as e:
