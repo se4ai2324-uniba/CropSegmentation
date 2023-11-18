@@ -118,3 +118,19 @@ stages:
       hash: md5
       md5: 939af9571960a911ae97f4b5700080ed
       size: 96
+    - path: models/saved/sd_10_25_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: d1d3bc90b6581fa60f981ac4d2939775
+      size: 477851
+    - path: models/saved/sd_10_25_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: b459f973cbbb6b4e53511fcff1c33ccd
+      size: 477795
+    - path: models/saved/sd_10_50_0.001_0.25_unet_model.pth
+      hash: md5
+      md5: 21bf70c37e777b2577325bca8fc3882e
+      size: 477851
+    - path: models/saved/sd_10_50_0.1_0.25_unet_model.pth
+      hash: md5
+      md5: 086ae0d8a03c02b0640984d8c6e2c2f4
+      size: 477795
