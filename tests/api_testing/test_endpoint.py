@@ -64,3 +64,21 @@ def test_post_predict(image_name):
     # Assertions based on your expected behavior
     assert response.status_code == 200
     assert "mask" in response.json()
+
+@pytest.mark.parametrize('mask_name', ['00045.jpg', '00183.jpg'])
+def test_post_metrics(mask_name):
+    data = {"mask_name": mask_name}
+
+    # Simulate a POST request to the /metrics endpoint
+    response = client.post('/metrics', json=data)
+
+    # Assertions based on your expected behavior
+    assert response.status_code == 200
+
+    # Assuming your response contains 'truth', 'acc', and 'iou' fields
+    assert 'truth' in response.json()
+    assert 'acc' in response.json()
+    assert 'iou' in response.json()
+
+
+#def test_post_upload():
