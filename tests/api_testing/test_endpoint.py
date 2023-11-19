@@ -3,6 +3,10 @@ from sys import platform
 import pytest
 from src.api.server import app
 from fastapi.testclient import TestClient
+from fastapi import UploadFile
+from PIL import Image
+import io
+from io import BytesIO
 
 BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
 client = TestClient(app)
@@ -34,6 +38,7 @@ def test_get_main():
 @pytest.mark.parametrize('limit', [2, 5, 10, 20, 0])
 def test_get_samples(limit):
     response = client.get('/images?limit='+str(limit))
+
     assert response.status_code == 200
     assert response.request.method == 'GET'
     if limit != 0:
@@ -49,36 +54,39 @@ With this test we make sure that, given wrong image names, a 404 error is return
 @pytest.mark.parametrize('image_name', ['test01.jpg', 'abcde.jpg'])
 def test_get_image(image_name):
     response = client.get('/temp/{image_name}')
+
     assert response.status_code == 404
     assert response.request.method == "GET"
 
 
 @pytest.mark.parametrize('image_name', ['00045.jpg', '00183.jpg'])
 def test_post_predict(image_name):
-
     client.get('/images?limit=0')
-
-    # Simulate a POST request to the /predict endpoint
     response = client.post('/predict', json={'og_name': image_name})
 
-    # Assertions based on your expected behavior
     assert response.status_code == 200
     assert "mask" in response.json()
 
 @pytest.mark.parametrize('mask_name', ['00045.jpg', '00183.jpg'])
 def test_post_metrics(mask_name):
     data = {"mask_name": mask_name}
-
-    # Simulate a POST request to the /metrics endpoint
     response = client.post('/metrics', json=data)
 
-    # Assertions based on your expected behavior
     assert response.status_code == 200
-
-    # Assuming your response contains 'truth', 'acc', and 'iou' fields
     assert 'truth' in response.json()
     assert 'acc' in response.json()
     assert 'iou' in response.json()
 
+def test_post_upload():
+    image = Image.new("RGB", (100, 100), color=(255, 0, 0))
+    buffer = BytesIO()
+    image.save(buffer, format="JPEG")
+    buffer.seek(0)
 
-#def test_post_upload():
+    file_content = buffer.read()
+    print('sono nel testing: prima di cient.post')
+    files = {"file": ("test.jpg", io.BytesIO(file_content).read(), "image/jpeg")}
+    response = client.post("/upload/image", files=files)
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "File successfully saved!"}
