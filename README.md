@@ -81,16 +81,19 @@ Project Organization
     │   └── utils.py       <- Utility functions.
     │
     ├── tests              <- Code for testing.
-    │   ├── test_model_training
-    │   │   ├── test_device_training.py
-    │   │   ├── test_loss_decrease.py
-    │   │   ├── test_overfit_batch.py
-    │   │   └── test_training_completion.py
+    │   ├── api_testing
+    │   │   └── test_endpoint.py
     │   │
     │   ├── behavioral_testing
     │   │   ├── test_directional.py
     │   │   ├── test_invariance.py
     │   │   └── test_minimum_functionality.py
+    │   │
+    │   ├── model_training_testing
+    │   │   ├── test_device_training.py
+    │   │   ├── test_loss_decrease.py
+    │   │   ├── test_overfit_batch.py
+    │   │   └── test_training_completion.py
     │   │
     │   └── utility_testing
     │       ├── test_applyGreenFilter.py
