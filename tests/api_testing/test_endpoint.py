@@ -3,7 +3,6 @@ from sys import platform
 import pytest
 from src.api.server import app
 from fastapi.testclient import TestClient
-from fastapi import UploadFile
 from PIL import Image
 import io
 from io import BytesIO
@@ -67,8 +66,10 @@ def test_post_predict(image_name):
     assert response.status_code == 200
     assert "mask" in response.json()
 
+
 @pytest.mark.parametrize('mask_name', ['00045.jpg', '00183.jpg'])
 def test_post_metrics(mask_name):
+    client.get('/images?limit=0')
     data = {"mask_name": mask_name}
     response = client.post('/metrics', json=data)
 
@@ -77,6 +78,7 @@ def test_post_metrics(mask_name):
     assert 'acc' in response.json()
     assert 'iou' in response.json()
 
+
 def test_post_upload():
     image = Image.new("RGB", (100, 100), color=(255, 0, 0))
     buffer = BytesIO()
@@ -84,7 +86,6 @@ def test_post_upload():
     buffer.seek(0)
 
     file_content = buffer.read()
-    print('sono nel testing: prima di cient.post')
     files = {"file": ("test.jpg", io.BytesIO(file_content).read(), "image/jpeg")}
     response = client.post("/upload/image", files=files)
 

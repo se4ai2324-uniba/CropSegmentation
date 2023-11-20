@@ -141,7 +141,7 @@ def predict(image: Image):
 async def upload(file: UploadFile):
 	contents = await file.read()
 	image = Img.open(BytesIO(contents))
-	image.save('temp/upload.jpg')
+	image.save(TEMP_PATH + 'upload.jpg')
 	return {"status": 'File successfully saved!'}
 
 
