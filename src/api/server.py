@@ -1,17 +1,9 @@
 """
-The API module
+The API module for Crop Segmentation using FastAPI. This module sets up the API endpoints for various tasks including retrieving system information, sampling images, image upload, prediction, and calculating metrics. It also includes configurations for handling file paths across different operating systems.
 """
 import os
 import sys
 from sys import platform
-if platform == 'win32':
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src')
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models')
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models\model')
-else:
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
 from io import BytesIO
 import PIL.Image as Img
 from skimage import io
@@ -31,9 +23,21 @@ from sklearn.metrics import jaccard_score
 import torch
 import cv2
 
+# Adjust the system path to include necessary directories based on the operating system
+if platform == 'win32':
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models\model')
+else:
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
+
+# Set a deterministic behaviour for reproducibility
 torch.manual_seed(0)
 torch.multiprocessing.set_sharing_strategy('file_system')
 
+# Initialize FastAPI app with CORS middleware for cross-origin requests
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -43,6 +47,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Global configuration and path setup
 config = get_global_config()
 BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
 TEST_DATA_PATH = os.path.join(BASE_PATH, config.get('PROCESSED_TESTING_DATA_PATH'))
@@ -54,16 +59,25 @@ if platform == 'win32':
 	TEST_LABELS_PATH = TEST_LABELS_PATH.replace('/', '\\')
 	TEMP_PATH = TEMP_PATH.replace('/', '\\')
 	SAVED_MODEL_PATH = SAVED_MODEL_PATH.replace('/', '\\')
+
+# Device configuration for model execution
 DEVICE = getDevice()
 
 
 class Image(BaseModel):
+	"""
+	Pydantic model for image input, defining the structure of image data
+	"""
 	og_name: str | None = None
 	mask_name: str | None = None
 
 
 @app.get("/")
 def main():
+	"""
+	Main endpoint to provide API information and system dependencies.
+	Returns a JSON containing API details and dependencies.
+	"""
 	req = {}
 	file = BASE_PATH + 'requirements.txt'
 	if not os.path.isfile(file):
@@ -88,6 +102,11 @@ def main():
 
 @app.get("/images")
 def samples(limit: Union[int, None] = None):
+	"""
+	Endpoint to get a sample of images from the test dataset.
+	The 'limit' query parameter controls the number of images returned.
+	Returns a list of image filenames.
+	"""
 	if not os.path.isdir(TEST_DATA_PATH):
 		raise HTTPException(
 			status_code=422,
@@ -114,6 +133,11 @@ def samples(limit: Union[int, None] = None):
 
 @app.get("/temp/{image_name}")
 def image(image_name: str):
+	"""
+	Endpoint to retrieve a specific image from the server's temporary cache.
+	Requires 'image_name' as a path parameter.
+	Returns the requested image file.
+	"""
 	if image_name not in os.listdir(TEMP_PATH):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH + image_name+'" not found!')
 	else:
@@ -122,6 +146,11 @@ def image(image_name: str):
 
 @app.post("/predict")
 def predict(image: Image):
+	"""
+	Endpoint to perform image segmentation prediction.
+	Requires an 'Image' object containing the name of the image to be processed.
+	Returns the filename of the generated segmentation mask.
+	"""
 	if not os.path.isfile(SAVED_MODEL_PATH):
 		raise HTTPException(status_code=422, detail='Saved model not found!')
 	elif not os.path.isfile(TEMP_PATH + image.og_name):
@@ -139,6 +168,11 @@ def predict(image: Image):
 
 @app.post("/upload/image")
 async def upload(file: UploadFile):
+	"""
+	Endpoint to upload an image to the server.
+	Accepts an image file and saves it to a temporary path.
+	Returns a confirmation message upon successful upload.
+	"""
 	contents = await file.read()
 	image = Img.open(BytesIO(contents))
 	image.save(TEMP_PATH + 'upload.jpg')
@@ -147,6 +181,11 @@ async def upload(file: UploadFile):
 
 @app.post("/metrics")
 def metrics(image: Image):
+	"""
+	Endpoint to calculate metrics (accuracy and Jaccard index) for a given image.
+	Requires an 'Image' object with names of the mask and original image.
+	Returns calculated metrics for the provided image.
+	"""
 	filename = ''.join(image.mask_name.split('_mask'))
 	if not os.path.isfile(TEMP_PATH + image.mask_name):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH+image.mask_name+'" not found!')
@@ -165,4 +204,5 @@ def metrics(image: Image):
 
 
 if __name__ == "__main__":
+	# Run the API server when the script is executed directly
 	uvicorn.run(app, host="127.0.0.1", port=8000)
