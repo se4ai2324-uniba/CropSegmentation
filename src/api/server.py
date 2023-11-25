@@ -4,6 +4,17 @@ The API module for Crop Segmentation using FastAPI. This module sets up the API 
 import os
 import sys
 from sys import platform
+
+# Adjust the system path to include necessary directories based on the operating system
+if platform == 'win32':
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models')
+	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models\model')
+else:
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
+	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
+
 from io import BytesIO
 import PIL.Image as Img
 from skimage import io
@@ -22,16 +33,6 @@ from config import get_global_config
 from sklearn.metrics import jaccard_score
 import torch
 import cv2
-
-# Adjust the system path to include necessary directories based on the operating system
-if platform == 'win32':
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src')
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models')
-	sys.path.append('\\'.join(os.getcwd().split('\\')[:-2])+'\src\models\model')
-else:
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src')
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models')
-	sys.path.append('/'.join(os.getcwd().split('/')[:-2])+'/src/models/model')
 
 # Set a deterministic behaviour for reproducibility
 torch.manual_seed(0)
