@@ -75,9 +75,14 @@ class Image(BaseModel):
 @app.get("/")
 def main():
 	"""
-	Main endpoint to provide API information and system dependencies.
-	Returns a JSON containing API details and dependencies.
-	"""
+    Main endpoint to provide API information and system dependencies.
+    
+    **Parameters**
+    - None
+
+    **Returns**
+    - A JSON object containing API details, including its name, description, version, requirements, GitHub URL, DagsHub URL, and authors.
+    """
 	req = {}
 	file = BASE_PATH + 'requirements.txt'
 	if not os.path.isfile(file):
@@ -103,10 +108,15 @@ def main():
 @app.get("/images")
 def samples(limit: Union[int, None] = None):
 	"""
-	Endpoint to get a sample of images from the test dataset.
-	The 'limit' query parameter controls the number of images returned.
-	Returns a list of image filenames.
-	"""
+    Endpoint to get a sample of images from the test dataset.
+    The 'limit' query parameter controls the number of images returned.
+    
+    **Parameters**
+    - 'limit' (int, optional): The maximum number of images to return. If unspecified, all images are returned.
+
+    **Returns**
+    - A JSON object with a key 'samples' containing a list of filenames of the sampled images.
+    """
 	if not os.path.isdir(TEST_DATA_PATH):
 		raise HTTPException(
 			status_code=422,
@@ -134,10 +144,14 @@ def samples(limit: Union[int, None] = None):
 @app.get("/temp/{image_name}")
 def image(image_name: str):
 	"""
-	Endpoint to retrieve a specific image from the server's temporary cache.
-	Requires 'image_name' as a path parameter.
-	Returns the requested image file.
-	"""
+    Endpoint to retrieve a specific image from the server's temporary cache.
+    
+    **Parameters**
+    - 'image_name' (str): The name of the image to retrieve.
+
+    **Returns**
+    - A FileResponse object containing the requested image.
+    """
 	if image_name not in os.listdir(TEMP_PATH):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH + image_name+'" not found!')
 	else:
@@ -147,10 +161,14 @@ def image(image_name: str):
 @app.post("/predict")
 def predict(image: Image):
 	"""
-	Endpoint to perform image segmentation prediction.
-	Requires an 'Image' object containing the name of the image to be processed.
-	Returns the filename of the generated segmentation mask.
-	"""
+    Endpoint to perform image segmentation prediction.
+    
+    **Parameters**
+    - 'image' (Image): An object containing the name of the original image ('og_name') and the name of the mask image ('mask_name').
+
+    **Returns**
+    - A JSON object with a key 'mask' containing the filename of the generated segmentation mask.
+    """
 	if not os.path.isfile(SAVED_MODEL_PATH):
 		raise HTTPException(status_code=422, detail='Saved model not found!')
 	elif not os.path.isfile(TEMP_PATH + image.og_name):
@@ -169,10 +187,14 @@ def predict(image: Image):
 @app.post("/upload/image")
 async def upload(file: UploadFile):
 	"""
-	Endpoint to upload an image to the server.
-	Accepts an image file and saves it to a temporary path.
-	Returns a confirmation message upon successful upload.
-	"""
+    Endpoint to upload an image to the server.
+    
+    **Parameters**
+    - 'file' (UploadFile): The image file to be uploaded.
+
+    **Returns**
+    - A JSON object with a key 'status' indicating the success of the file upload.
+    """
 	contents = await file.read()
 	image = Img.open(BytesIO(contents))
 	image.save(TEMP_PATH + 'upload.jpg')
@@ -182,10 +204,14 @@ async def upload(file: UploadFile):
 @app.post("/metrics")
 def metrics(image: Image):
 	"""
-	Endpoint to calculate metrics (accuracy and Jaccard index) for a given image.
-	Requires an 'Image' object with names of the mask and original image.
-	Returns calculated metrics for the provided image.
-	"""
+    Endpoint to calculate metrics (accuracy and Jaccard index) for a given image.
+    
+    **Parameters**
+    - 'image' (Image): An object containing the names of the mask image ('mask_name') and the corresponding original image.
+
+    **Returns**
+    - A JSON object with keys 'truth', 'acc', and 'iou' containing the filename of the ground truth image, the accuracy score, and the Jaccard index score, respectively.
+    """
 	filename = ''.join(image.mask_name.split('_mask'))
 	if not os.path.isfile(TEMP_PATH + image.mask_name):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH+image.mask_name+'" not found!')
