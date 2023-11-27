@@ -77,7 +77,7 @@ class Image(BaseModel):
 def main():
 	"""
     Main endpoint to provide API information and system dependencies.
-    
+
     **Parameters**
     - None
 
@@ -111,7 +111,7 @@ def samples(limit: Union[int, None] = None):
 	"""
     Endpoint to get a sample of images from the test dataset.
     The 'limit' query parameter controls the number of images returned.
-    
+
     **Parameters**
     - 'limit' (int, optional): The maximum number of images to return. If unspecified, all images are returned.
 
@@ -146,7 +146,7 @@ def samples(limit: Union[int, None] = None):
 def image(image_name: str):
 	"""
     Endpoint to retrieve a specific image from the server's temporary cache.
-    
+
     **Parameters**
     - 'image_name' (str): The name of the image to retrieve.
 
@@ -163,7 +163,7 @@ def image(image_name: str):
 def predict(image: Image):
 	"""
     Endpoint to perform image segmentation prediction.
-    
+
     **Parameters**
     - 'image' (Image): An object containing the name of the original image ('og_name') and the name of the mask image ('mask_name').
 
@@ -176,7 +176,7 @@ def predict(image: Image):
 		raise HTTPException(status_code=404, detail='File "'+TEMP_PATH + image.og_name+'" not found!')
 	else:
 		saved_model = UNet(outSize=(360, 480)).to(DEVICE)
-		saved_model.load_state_dict(torch.load(SAVED_MODEL_PATH))
+		saved_model.load_state_dict(torch.load(SAVED_MODEL_PATH, map_location="cpu"))
 		orig = io.imread(TEMP_PATH + image.og_name)
 		mask = make_predictions(saved_model, orig)
 		colored_mask = get3Dmask(mask)
@@ -189,7 +189,7 @@ def predict(image: Image):
 async def upload(file: UploadFile):
 	"""
     Endpoint to upload an image to the server.
-    
+
     **Parameters**
     - 'file' (UploadFile): The image file to be uploaded.
 
@@ -206,7 +206,7 @@ async def upload(file: UploadFile):
 def metrics(image: Image):
 	"""
     Endpoint to calculate metrics (accuracy and Jaccard index) for a given image.
-    
+
     **Parameters**
     - 'image' (Image): An object containing the names of the mask image ('mask_name') and the corresponding original image.
 
@@ -232,4 +232,4 @@ def metrics(image: Image):
 
 if __name__ == "__main__":
 	# Run the API server when the script is executed directly
-	uvicorn.run(app, host="127.0.0.1", port=8000)
+	uvicorn.run(app, host="127.0.0.1", port=5500)

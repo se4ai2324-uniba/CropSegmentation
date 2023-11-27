@@ -1,4 +1,4 @@
-const SERVER_PATH = 'http://127.0.0.1:8000/'
+const SERVER_PATH = 'http://0.0.0.0:80/'
 const SAMPLE_PATH = SERVER_PATH + 'images'
 const IMAGES_PATH = SERVER_PATH + 'temp/'
 const SAMPLE_LIMIT = '9'
@@ -149,6 +149,7 @@ const uploadImage = async (e) => {
 		const loader = document.getElementById('upload-loader')
 		loader.classList.toggle('hidden')
 		previewImgCont.classList.toggle('hidden')
+		setToDefault(['original','mask','preview'])
 		let formData = new FormData()
 		formData.append('file', file)
 		await fetch(UPLOAD_PATH, {
