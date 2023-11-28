@@ -1,0 +1,9 @@
+-e .
+
+-r requirements-prod.txt
+coverage==7.3.2
+mlflow==2.8.1
+pylint==3.0.2
+flake8==6.1.0
+flake8-json==23.7.0
+pytest==7.4.3
