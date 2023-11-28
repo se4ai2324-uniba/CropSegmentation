@@ -25,8 +25,8 @@ RUN apt-get update -y && apt-get install gcc ffmpeg libsm6 libxext6 -y
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
 RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+    --mount=type=bind,source=requirements-prod.txt,target=requirements-prod.txt \
+    python -m pip install -r requirements-prod.txt
 
 
 # Copy the source code into the container.
