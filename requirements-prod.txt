@@ -9,11 +9,10 @@ scikit-learn==1.2.2
 tqdm==4.65.0
 numpy==1.23.5
 dagshub==0.3.8.post2
-deepchecks==0.17.5
-deepchecks[vision]==0.17.5
 matplotlib==3.7.1
 matplotlib-inline==0.1.6
 pandas==2.0.2
 fastapi==0.104.1
 uvicorn==0.24.0.post1
 python-multipart==0.0.6
+mlflow==2.8.1
