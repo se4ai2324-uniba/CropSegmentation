@@ -85,7 +85,7 @@ def main():
     - A JSON object containing API details, including its name, description, version, requirements, GitHub URL, DagsHub URL, and authors.
     """
 	req = {}
-	file = BASE_PATH + 'requirements.txt'
+	file = BASE_PATH + 'requirements-dev.txt'
 	if not os.path.isfile(file):
 		raise HTTPException(status_code=404, detail='File "'+file+'" not found!')
 	else:
