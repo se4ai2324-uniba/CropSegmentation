@@ -1,4 +1,4 @@
-const SERVER_PATH = 'http://0.0.0.0:80/'
+const SERVER_PATH = 'http://localhost:80/'
 const SAMPLE_PATH = SERVER_PATH + 'images'
 const IMAGES_PATH = SERVER_PATH + 'temp/'
 const SAMPLE_LIMIT = '9'
