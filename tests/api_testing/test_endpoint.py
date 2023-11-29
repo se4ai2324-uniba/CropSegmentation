@@ -15,7 +15,7 @@ def test_get_main():
     response = client.get('/')
 
     req = {}
-    file = os.path.join(BASE_PATH, 'requirements.txt')
+    file = os.path.join(BASE_PATH, 'requirements-dev.txt')
     with open(file, 'r') as fp:
         for line in fp:
             para_list = line.strip().split('==')
