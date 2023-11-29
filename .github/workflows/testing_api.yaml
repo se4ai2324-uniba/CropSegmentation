@@ -36,4 +36,5 @@ jobs:
 
     - name: Deactivate virtual env
       run: |
+        cd ../..
         deactivate
