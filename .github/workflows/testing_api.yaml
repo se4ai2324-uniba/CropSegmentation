@@ -21,6 +21,8 @@ jobs:
 
     - name: Activate virtual env
       run: |
+        cd CropSegmentation
+        ls -la
         python -m pip install --upgrade pip
         python -m venv .env
         source .env/bin/activate
@@ -32,6 +34,7 @@ jobs:
     - name: Test with pytest
       run: |
         cd tests/api_testing
+        ls -la
         pytest
 
     - name: Deactivate virtual env

@@ -1,12 +1,18 @@
 import pytest
+import os
+from sys import platform
 from src.models.train_model import prepare_data, UNet, BCEWithLogitsLoss, Adam, train_single_batch
 from src.utils import getDevice
 from src.config import get_global_config
 
+BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
+config = get_global_config()
+TRAIN_DATA_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_DATA_PATH')
+TRAIN_LABELS_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_LABELS_PATH')
+
 
 @pytest.fixture
 def setup_model():
-    config = get_global_config()
     unet = UNet(outSize=(360, 480)).to(getDevice())
     lossFunc = BCEWithLogitsLoss()
     opt = Adam(unet.parameters(), lr=config.get('INIT_LR'))
@@ -14,7 +20,11 @@ def setup_model():
 
 def test_overfit_batch(setup_model):
     unet, lossFunc, opt = setup_model
-    _, _, trainLoader, _ = prepare_data()
+    _, _, trainLoader, _ = prepare_data(
+        ratio=.02,
+        train_data_path=TRAIN_DATA_PATH,
+        train_labels_path=TRAIN_LABELS_PATH
+    )
     x, y = next(iter(trainLoader))  # Get the first batch
     for epoch in range(100):  # Train for 50 epochs on the same batch
         _, acc = train_single_batch(unet, lossFunc, opt, x, y)

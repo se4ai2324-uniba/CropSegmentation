@@ -1,9 +1,23 @@
 import pytest
 import os
+from sys import platform
 from src.models.train_model import train
+from src.config import get_global_config
+
+BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
+config = get_global_config()
+TRAIN_DATA_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_DATA_PATH')
+TRAIN_LABELS_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_LABELS_PATH')
+
 
 def test_training_completion():
-    loss_history, final_lr, model_save_path = train(num_epochs=5, ratio=.01)  # Capture the model_save_path return value
+    # Capture the model_save_path return value
+    loss_history, final_lr, model_save_path = train(
+        num_epochs=5,
+        ratio=.01,
+        train_data_path=TRAIN_DATA_PATH,
+        train_labels_path=TRAIN_LABELS_PATH
+    )
 
     # Assert that the training has likely completed by checking the final learning rate
     min_learning_rate = 0.00001  # Define a minimum learning rate threshold

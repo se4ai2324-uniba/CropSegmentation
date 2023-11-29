@@ -4,6 +4,7 @@ The model prediction
 import os
 import sys
 sys.path.append('src')
+from sys import platform
 import torch
 import torch.multiprocessing
 from torchvision import transforms
@@ -19,8 +20,9 @@ from config import get_global_config
 torch.manual_seed(0)
 torch.multiprocessing.set_sharing_strategy('file_system')
 
+BASE_PATH = '\\'.join(os.getcwd().split('\\')) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')) + '/'
 config = get_global_config()
-SAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')
+SAVED_MODEL_PATH = BASE_PATH + config.get('SAVED_MODEL_PATH')
 NUM_EPOCHS = config.get('NUM_EPOCHS')
 BATCH_SIZE = config.get('BATCH_SIZE')
 INIT_LR = config.get('INIT_LR')
@@ -46,7 +48,7 @@ def get_saved_model(num_epochs=NUM_EPOCHS, batch_size=BATCH_SIZE, init_lr=INIT_L
 			saved_model = torch.load(
 				SAVED_MODEL_PATH + pth,
 				map_location=torch.device(DEVICE)
-			)			
+			)
 			torch.save(saved_model.state_dict(), SAVED_MODEL_PATH + 'sd_' + pth)
 			saved_model = UNet(outSize=(360, 480)).to(DEVICE)
 			saved_model.load_state_dict(torch.load(SAVED_MODEL_PATH + 'sd_' + pth))

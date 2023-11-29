@@ -4,9 +4,10 @@ The model training
 import os
 import sys
 sys.path.append('src')
+from sys import platform
 from pathlib import Path
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import jaccard_score, accuracy_score
+from sklearn.metrics import accuracy_score
 import torch
 from torchvision import transforms
 from torch.utils.data import DataLoader
@@ -21,12 +22,13 @@ from config import get_global_config
 torch.multiprocessing.set_sharing_strategy('file_system')
 torch.manual_seed(0)
 
+BASE_PATH = '\\'.join(os.getcwd().split('\\')) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')) + '/'
 config = get_global_config()
-TRAIN_DATA_PATH = config.get('PROCESSED_TRAINING_DATA_PATH')
-TRAIN_LABELS_PATH = config.get('PROCESSED_TRAINING_LABELS_PATH')
+TRAIN_DATA_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_DATA_PATH')
+TRAIN_LABELS_PATH = BASE_PATH + config.get('PROCESSED_TRAINING_LABELS_PATH')
 INPUT_IMAGE_WIDTH = config.get('TILE_WIDTH')
 INPUT_IMAGE_HEIGHT = config.get('TILE_HEIGHT')
-SAVED_MODEL_PATH = config.get('SAVED_MODEL_PATH')
+SAVED_MODEL_PATH = BASE_PATH + config.get('SAVED_MODEL_PATH')
 NUM_EPOCHS = config.get('NUM_EPOCHS')
 BATCH_SIZE = config.get('BATCH_SIZE')
 INIT_LR = config.get('INIT_LR')
@@ -79,7 +81,12 @@ def train_single_batch(unet, lossFunc, opt, x, y):
 	return loss, acc
 
 
-def prepare_data(batch_size=BATCH_SIZE, ratio=RATIO):
+def prepare_data(
+		batch_size=BATCH_SIZE,
+		ratio=RATIO,
+		train_data_path=TRAIN_DATA_PATH,
+		train_labels_path=TRAIN_LABELS_PATH
+	):
 	"""Returns training and validation sets
 	Args: None
 	"""
@@ -90,10 +97,10 @@ def prepare_data(batch_size=BATCH_SIZE, ratio=RATIO):
 	])
 	ko = '.DS_Store'
 	imagePaths = [
-		TRAIN_DATA_PATH + i for i in os.listdir(TRAIN_DATA_PATH) if i != ko
+		train_data_path + i for i in os.listdir(train_data_path) if i != ko
 	]
 	maskPaths = [
-		TRAIN_LABELS_PATH + i for i in os.listdir(TRAIN_LABELS_PATH) if i != ko
+		train_labels_path + i for i in os.listdir(train_labels_path) if i != ko
 	]
 	X_train, X_val, y_train, y_val = train_test_split(
 		imagePaths,
@@ -169,22 +176,26 @@ def train(
 		batch_size=BATCH_SIZE,
 		init_lr=INIT_LR,
 		ratio=RATIO,
-		device=DEVICE
+		device=DEVICE,
+		train_data_path=TRAIN_DATA_PATH,
+		train_labels_path=TRAIN_LABELS_PATH,
+		saved_model_path=SAVED_MODEL_PATH
 	):
 	"""Model training function, returns the loss history,
 	final learning rate and the model save path
 	Args: None
 	"""
-	if not os.path.isdir(SAVED_MODEL_PATH):
-		Path(SAVED_MODEL_PATH).mkdir(parents=True, exist_ok=True)
+	if not os.path.isdir(saved_model_path):
+		Path(saved_model_path).mkdir(parents=True, exist_ok=True)
 	pth = (str(int(num_epochs)) + '_' + str(int(batch_size)) + \
 		'_' + str(init_lr) + '_' + str(ratio))
 	pth = pth + '_unet_model.pth'
 	H = {'train_loss': [], 'val_loss': [], 'test_loss': []}
 	final_lr = .0
-	model_save_path = os.path.join(SAVED_MODEL_PATH, pth)
-	if not os.path.isfile(SAVED_MODEL_PATH + pth):
-		trainingDS, validationDS, trainLoader, valLoader = prepare_data(batch_size, ratio)
+	model_save_path = os.path.join(saved_model_path, pth)
+	if not os.path.isfile(saved_model_path + pth):
+		trainingDS, validationDS, trainLoader, valLoader = prepare_data(
+			batch_size, ratio, train_data_path, train_labels_path)
 
 		print('\n' + ''.join(['> ' for i in range(25)]))
 		print(f'\n{"CONFIG":<20}{"VALUE":<18}{"IS_PARAM":<18}\n')

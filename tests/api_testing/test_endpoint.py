@@ -7,12 +7,7 @@ from PIL import Image
 import io
 from io import BytesIO
 
-if platform == "linux" or platform == "linux2":
-	BASE_PATH = '/'.join(os.getcwd().split('/')[:-3]) + '/'
-elif platform == "darwin":
-	BASE_PATH = '/'.join(os.getcwd().split('/')[:-2]) + '/'
-elif platform == "win32":
-	BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\'
+BASE_PATH = '\\'.join(os.getcwd().split('\\')[:-2]) + '\\' if platform == 'win32' else '/'.join(os.getcwd().split('/')[:-2]) + '/'
 client = TestClient(app)
 
 
