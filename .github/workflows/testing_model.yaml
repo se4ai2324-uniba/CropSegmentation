@@ -1,9 +1,10 @@
-name: Testing API
+name: Testing Model
 
 on:
   push:
     paths:
-      - 'src/api/**'
+      - 'src/**'
+      - '!src/api/**'
 
 jobs:
   build:
@@ -30,9 +31,9 @@ jobs:
       run: |
         pip install -r requirements-dev.txt
 
-    - name: Test with pytest
+    - name: Behavioral testing with pytest
       run: |
-        cd tests/api_testing
+        cd tests/behavioral_testing
         pytest
 
     - name: Deactivate virtual env
