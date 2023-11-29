@@ -28,6 +28,9 @@ Project Organization
 ------------
 
     ├── .dvc               <- Data Version Control configurations.
+    ├── .github
+    │   └── workflows
+    │       └── main.yaml       <- GitHub Actions workflow for the project.
     │
     ├── data
     │   ├── external       <- Data from third party sources.
@@ -40,7 +43,9 @@ Project Organization
     │   ├── css            <- The style sheets.
     │   ├── images         <- The public images folder.
     │   ├── js             <- The scripts folder.
-    │   └── index.html     <- A frontend demo application.
+    │   ├── Dockerfile          <- Docker file for the frontend.
+    │   ├── nginx.conf          <- Configuration file for nginx.
+    │   └── index.html          <- A frontend demo application.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details.
     │
@@ -103,11 +108,17 @@ Project Organization
     │       ├── test_getTiles.py
     │       └── test_merge_labels.py
     │
+    ├── .dockerignore           <- Docker ignore file.
+    ├── .gitignore              <- Specifications of files to be ignored by Git.
+    ├── .pylintrc               <- Configuration for Pylint.
+    ├── Dockerfile              <- Docker file for the backend.
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`.
     ├── README.md          <- The top-level README for developers using this project.
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`.
+    ├── compose.yaml            <- Docker Compose configuration.
+    ├── pytest.ini              <- Configuration for Pytest.
+    ├── requirements-dev.txt    <- The requirements file for development environment.
+    ├── requirements-prod.txt   <- The requirements file for production environment.
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
