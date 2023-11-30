@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -20,23 +20,22 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Activate virtual env
-      run: |
-        cd CropSegmentation
-        python -m pip install --upgrade pip
-        python -m venv .env
-        source .env/bin/activate
-
     - name: Install dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
+
+    - name: Set up Data
+      run: |
+      apt-get install wget unzip
+      . getdata.sh
 
     - name: Behavioral testing with pytest
       run: |
         cd tests/behavioral_testing
         pytest
 
-    - name: Deactivate virtual env
+    - name: Utility testing with pytest
       run: |
-        cd ../..
-        deactivate
+        cd ../tests/utility_testing
+        pytest
