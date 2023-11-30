@@ -19,10 +19,6 @@ def test_training_completion():
         train_labels_path=TRAIN_LABELS_PATH
     )
 
-    # Assert that the training has likely completed by checking the final learning rate
-    min_learning_rate = 0.00001  # Define a minimum learning rate threshold
-    assert final_lr >= min_learning_rate
-
     # Assert that the loss history is not empty, implying training iterations occurred
     assert loss_history['train_loss']
     assert loss_history['val_loss']

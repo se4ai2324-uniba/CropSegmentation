@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - 'src/api/**'
+      - 'tests/api_testing/**'
 
 jobs:
   build:
