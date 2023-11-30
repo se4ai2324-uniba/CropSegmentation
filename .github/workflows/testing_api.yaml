@@ -1,4 +1,6 @@
 name: Testing API
+run-name: Testing model when api folder changes
+
 
 on:
   push:

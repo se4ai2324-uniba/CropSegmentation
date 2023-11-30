@@ -1,4 +1,5 @@
 name: Testing Model
+run-name: Testing model when src folder changes
 
 on:
   push:
