@@ -1,5 +1,5 @@
 name: Testing API
-run-name: Testing model when api folder changes
+run-name: Testing server endpoints when api folder changes
 
 
 on:
