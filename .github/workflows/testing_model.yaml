@@ -35,7 +35,12 @@ jobs:
         cd tests/behavioral_testing
         pytest
 
+    - name: Model training testing with pytest
+      run: |
+        cd ../model_training_testing
+        pytest
+
     - name: Utility testing with pytest
       run: |
-        cd ../tests/utility_testing
+        cd ../utility_testing
         pytest

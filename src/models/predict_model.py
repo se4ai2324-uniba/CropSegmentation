@@ -1,5 +1,5 @@
 """
-The model prediction module
+The model prediction
 """
 import os
 import sys
