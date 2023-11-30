@@ -20,7 +20,7 @@ DEVICE = getDevice()
 
 def test_flip_invariance():
     model = UNet(outSize=(360, 480)).to(DEVICE)
-    model.load_state_dict(torch.load(SAVED_MODEL_PATH))
+    model.load_state_dict(torch.load(SAVED_MODEL_PATH, map_location="cpu"))
     assert model is not False, "Saved model does not exist!"
 
     test_images = [TESTING_DATA_SOURCE_PATH+i for i in os.listdir(TESTING_DATA_SOURCE_PATH) if i != '.DS_Store']
