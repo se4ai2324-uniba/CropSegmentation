@@ -27,8 +27,8 @@ jobs:
 
     - name: Set up Data
       run: |
-      apt-get install wget unzip
-      . getdata.sh
+        sudo apt-get install -y wget unzip
+        . getdata.sh
 
     - name: Behavioral testing with pytest
       run: |

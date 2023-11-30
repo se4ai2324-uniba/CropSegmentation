@@ -228,8 +228,3 @@ def metrics(image: Image):
 			"acc": str(round(pixelAccuracy(pred, truth), 3)),
 			"iou": str(round(jaccard_score(pred.flatten(), truth.flatten(), average='micro')*100, 3))
 		}
-
-
-if __name__ == "__main__":
-	# Run the API server when the script is executed directly
-	uvicorn.run(app, host="127.0.0.1", port=5500)
