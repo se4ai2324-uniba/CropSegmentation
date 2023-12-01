@@ -27,10 +27,10 @@ jobs:
 
     - name: Run Flake8
       run: |
-        flake8 src/ --output-file=flake8_report.txt || true
+        flake8 src/ --output-format=json > pylint_report.json || true
 
     - name: Upload Flake8 Report
       uses: actions/upload-artifact@v3
       with:
         name: flake8-report
-        path: flake8_report.txt
+        path: flake8_report.json
