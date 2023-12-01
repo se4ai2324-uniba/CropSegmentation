@@ -27,10 +27,10 @@ jobs:
 
     - name: Run Pynblint
       run: |
-        pynblint 'notebooks/1.0-mp-initial-data-exploration.ipynb' > pynblint_report.txt
+        pynblint 'notebooks/1.0-mp-initial-data-exploration.ipynb' -o pynblint_report.json
 
     - name: Upload Pynblint Report
       uses: actions/upload-artifact@v3
       with:
         name: pynblint-report
-        path: pynblint_report.txt
+        path: pynblint_report.json
