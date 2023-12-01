@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Pynblint
       run: |
-        pynblint 'notebooks/1.0-mp-initial-data-exploration.ipynb' --format=json > pynblint_report.json || true
+        pynblint 'notebooks/1.0-mp-initial-data-exploration.ipynb' --format=json > pynblint_report.json
 
     - name: Upload Pynblint Report
       uses: actions/upload-artifact@v3
