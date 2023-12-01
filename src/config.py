@@ -40,6 +40,7 @@ CONFIG = {
 											'BATCH_SIZE':	[25, 50],
 											'INIT_LR':		[0.1, 0.001]
 										},
+	'EMISSION_FILE_PATH':				'reports/carbon/emissions.csv',
 
 	# predict_model.py
 	'THRESHOLD':						.5,

@@ -5,6 +5,8 @@ import os
 import sys
 sys.path.append('src')
 from sys import platform
+import calendar
+import time
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -19,6 +21,8 @@ from tqdm import tqdm
 from model import MyCustomDataset, UNet
 from utils import getDevice
 from config import get_global_config
+from codecarbon import EmissionsTracker
+
 torch.multiprocessing.set_sharing_strategy('file_system')
 torch.manual_seed(0)
 
@@ -35,6 +39,7 @@ INIT_LR = config.get('INIT_LR')
 RATIO = config.get('RATIO')
 PARAMS_SEARCH = config.get('PARAMS_SEARCH')
 DEVICE = getDevice()
+EMISSIONS_FILE = BASE_PATH + config.get('EMISSION_FILE_PATH')
 
 
 def compute_iou(pred, target):
@@ -238,9 +243,31 @@ if __name__ == "__main__":
 	else:
 		keys = [i.split('=')[0].upper() for i in args]
 		values = [float(i.split('=')[1]) for i in args]
-		train(
-			num_epochs=values[keys.index('NUM_EPOCHS')] if 'NUM_EPOCHS' in keys else NUM_EPOCHS,
-			batch_size=values[keys.index('BATCH_SIZE')] if 'BATCH_SIZE' in keys else BATCH_SIZE,
-			init_lr=values[keys.index('INIT_LR')] if 'INIT_LR' in keys else INIT_LR,
-			ratio=values[keys.index('RATIO')] if 'RATIO' in keys else RATIO
-		)
+		num_epochs=values[keys.index('NUM_EPOCHS')] if 'NUM_EPOCHS' in keys else NUM_EPOCHS
+		batch_size=values[keys.index('BATCH_SIZE')] if 'BATCH_SIZE' in keys else BATCH_SIZE
+		init_lr=values[keys.index('INIT_LR')] if 'INIT_LR' in keys else INIT_LR
+		ratio=values[keys.index('RATIO')] if 'RATIO' in keys else RATIO
+		pth = (str(int(num_epochs)) + '_' + str(int(batch_size)) +
+		'_' + str(init_lr) + '_' + str(ratio))
+		if 'CO2' in keys and int(values[keys.index('CO2')]) == 1:
+			with EmissionsTracker(
+				project_name=pth + '_EMISSION_TRAINING_' + str(calendar.timegm(time.gmtime())),
+				output_file=EMISSIONS_FILE,
+				tracking_mode='process',
+				on_csv_write='update'
+			) as tracker:
+				tracker.start()
+				train(
+					num_epochs=num_epochs,
+					batch_size=batch_size,
+					init_lr=init_lr,
+					ratio=ratio
+				)
+				tracker.stop()
+		else:
+			train(
+				num_epochs=num_epochs,
+				batch_size=batch_size,
+				init_lr=init_lr,
+				ratio=ratio
+			)
