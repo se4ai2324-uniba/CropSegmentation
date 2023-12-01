@@ -42,7 +42,6 @@ def applyLowLevelSegmentation(imgList, algorithm='clustering'):
 	return dummyLabels
 
 
-
 def applyRandomDistorsion(imgList, maskList, percentage, maskFolder):
 	"""Returns a sample of distorted images by applying
 	a black mask (see Weedmap dataset for details)
