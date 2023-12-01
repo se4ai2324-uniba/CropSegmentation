@@ -1,0 +1,36 @@
+name: Pynblint Notebook Quality Check
+run-name: Checking notebook quality with Pynblint when notebooks folder changes
+
+on:
+  push:
+    paths:
+      - 'notebooks/**'
+
+jobs:
+  pynblint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pynblint
+        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+    - name: Run Pynblint
+      run: |
+        pynblint notebooks/ --format=json > pynblint_report.json || true
+
+    - name: Upload Pynblint Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: pynblint-report
+        path: pynblint_report.json
