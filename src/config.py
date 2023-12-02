@@ -38,9 +38,10 @@ CONFIG = {
 	'RATIO':							.25,
 	'PARAMS_SEARCH':					{
 											'BATCH_SIZE':	[25, 50],
-											'INIT_LR':		[0.1, 0.001]
+											'INIT_LR':		[0.1, 0.01, 0.001, 0.0001, 0.0005, 0.00001]
 										},
 	'EMISSION_FILE_PATH':				'reports/carbon/emissions.csv',
+	'TRACK_CO2':						0,
 
 	# predict_model.py
 	'THRESHOLD':						.5,

@@ -43,93 +43,141 @@ stages:
       size: 2048543648
     - path: src/models/train_model.py
       hash: md5
-      md5: edb665e8e3a0abf23bfaca9262479683
-      size: 7196
+      md5: d02e2b451f9d033252f532b86f398299
+      size: 8351
     outs:
+    - path: models/saved/10_25_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: ef8b46d94fa9b4453f6a890ea442b457
+      size: 484579
     - path: models/saved/10_25_0.001_0.25_unet_model.pth
       hash: md5
       md5: e0883c89036d602b899ed7d0f90d1181
       size: 484663
+    - path: models/saved/10_25_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 00647fdec719b82366118c9aa0e0a020
+      size: 484523
     - path: models/saved/10_25_0.1_0.25_unet_model.pth
       hash: md5
       md5: 18d96310dd0ccc55276e5a63b74d5cd4
       size: 484607
+    - path: models/saved/10_50_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: 5be83bd893ffbdfd8f03dece5ea7adc6
+      size: 484579
     - path: models/saved/10_50_0.001_0.25_unet_model.pth
       hash: md5
       md5: 197a00f11f159bc60bf7eff86339105e
       size: 484479
+    - path: models/saved/10_50_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 3267ff6bd40708a31ecd4db65fc72820
+      size: 484523
     - path: models/saved/10_50_0.1_0.25_unet_model.pth
       hash: md5
       md5: 07b0301a7d21796b54563e4c84bdad62
       size: 484607
-    - path: models/saved/sd_10_25_0.001_0.25_unet_model.pth
-      hash: md5
-      md5: d1d3bc90b6581fa60f981ac4d2939775
-      size: 477851
-    - path: models/saved/sd_10_25_0.1_0.25_unet_model.pth
-      hash: md5
-      md5: b459f973cbbb6b4e53511fcff1c33ccd
-      size: 477795
-    - path: models/saved/sd_10_50_0.001_0.25_unet_model.pth
-      hash: md5
-      md5: 21bf70c37e777b2577325bca8fc3882e
-      size: 477851
-    - path: models/saved/sd_10_50_0.1_0.25_unet_model.pth
-      hash: md5
-      md5: 086ae0d8a03c02b0640984d8c6e2c2f4
-      size: 477795
   predict_model:
     cmd: python3 src/models/predict_model.py
     deps:
+    - path: models/saved/10_25_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: ef8b46d94fa9b4453f6a890ea442b457
+      size: 484579
     - path: models/saved/10_25_0.001_0.25_unet_model.pth
       hash: md5
       md5: e0883c89036d602b899ed7d0f90d1181
       size: 484663
+    - path: models/saved/10_25_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 00647fdec719b82366118c9aa0e0a020
+      size: 484523
     - path: models/saved/10_25_0.1_0.25_unet_model.pth
       hash: md5
       md5: 18d96310dd0ccc55276e5a63b74d5cd4
       size: 484607
+    - path: models/saved/10_50_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: 5be83bd893ffbdfd8f03dece5ea7adc6
+      size: 484579
     - path: models/saved/10_50_0.001_0.25_unet_model.pth
       hash: md5
       md5: 197a00f11f159bc60bf7eff86339105e
       size: 484479
+    - path: models/saved/10_50_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 3267ff6bd40708a31ecd4db65fc72820
+      size: 484523
     - path: models/saved/10_50_0.1_0.25_unet_model.pth
       hash: md5
       md5: 07b0301a7d21796b54563e4c84bdad62
       size: 484607
     - path: src/models/predict_model.py
       hash: md5
-      md5: 20b4d7f048475f050ebc5e72bcd37c9f
-      size: 6802
+      md5: 0f5cd09541051894b1926747461607aa
+      size: 6908
     outs:
+    - path: models/metrics/10_25_0.0001_0.25.metrics
+      hash: md5
+      md5: 2e7666fc025031b06d102bf76e8aa83a
+      size: 96
     - path: models/metrics/10_25_0.001_0.25.metrics
       hash: md5
       md5: 9ad5f736e882fc5da7827d3885f11189
+      size: 96
+    - path: models/metrics/10_25_0.01_0.25.metrics
+      hash: md5
+      md5: 939af9571960a911ae97f4b5700080ed
       size: 96
     - path: models/metrics/10_25_0.1_0.25.metrics
       hash: md5
       md5: 939af9571960a911ae97f4b5700080ed
       size: 96
+    - path: models/metrics/10_50_0.0001_0.25.metrics
+      hash: md5
+      md5: dc8f441b7f527773facb481a9305ff15
+      size: 96
     - path: models/metrics/10_50_0.001_0.25.metrics
       hash: md5
       md5: 5f68c5398b0bcc8d7a82f7ba962d4eb0
+      size: 96
+    - path: models/metrics/10_50_0.01_0.25.metrics
+      hash: md5
+      md5: 939af9571960a911ae97f4b5700080ed
       size: 96
     - path: models/metrics/10_50_0.1_0.25.metrics
       hash: md5
       md5: 939af9571960a911ae97f4b5700080ed
       size: 96
+    - path: models/saved/sd_10_25_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: cfc04c3dbd95abe6489d9124cbce04fe
+      size: 477879
     - path: models/saved/sd_10_25_0.001_0.25_unet_model.pth
       hash: md5
       md5: d1d3bc90b6581fa60f981ac4d2939775
       size: 477851
+    - path: models/saved/sd_10_25_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 0182c48e353d7ad23e51ce7c5c65cfb3
+      size: 477823
     - path: models/saved/sd_10_25_0.1_0.25_unet_model.pth
       hash: md5
       md5: b459f973cbbb6b4e53511fcff1c33ccd
       size: 477795
+    - path: models/saved/sd_10_50_0.0001_0.25_unet_model.pth
+      hash: md5
+      md5: 426c35c60b750576575c372ee974ff46
+      size: 477879
     - path: models/saved/sd_10_50_0.001_0.25_unet_model.pth
       hash: md5
       md5: 21bf70c37e777b2577325bca8fc3882e
       size: 477851
+    - path: models/saved/sd_10_50_0.01_0.25_unet_model.pth
+      hash: md5
+      md5: 2734939b1f2f4fa6d996b9e84144ab31
+      size: 477823
     - path: models/saved/sd_10_50_0.1_0.25_unet_model.pth
       hash: md5
       md5: 086ae0d8a03c02b0640984d8c6e2c2f4
