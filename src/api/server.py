@@ -231,5 +231,4 @@ def metrics(image: Image):
 
 
 if __name__ == "__main__":
-	# Run the API server when the script is executed directly
 	uvicorn.run(app, host="127.0.0.1", port=5500)
