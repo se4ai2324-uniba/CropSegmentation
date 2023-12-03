@@ -1,5 +1,5 @@
 """
-The model training module
+The model training
 """
 import os
 import sys
