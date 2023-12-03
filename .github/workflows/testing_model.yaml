@@ -39,6 +39,11 @@ jobs:
         dvc remote modify myremote gdrive_use_service_account true
         dvc pull -r myremote
 
+    - name: Extract data
+      run: |
+        sudo apt-get install -y unzip
+        unzip data/processed/datasets_processed.zip -d data/processed
+
     - name: Behavioral testing with pytest
       run: |
         cd tests/behavioral_testing
