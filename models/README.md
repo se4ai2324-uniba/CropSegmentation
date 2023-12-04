@@ -46,6 +46,13 @@ model-index:
       - type: intersection_over_union
         value: 83.76
         name: Mean IoU
+
+co2_eq_emissions:
+	emissions: 2.04
+	source: "CodeCarbon"
+	training_type: "pre-training"
+	geographical_location: "Apulia, Italy"
+	hardware_used: "Apple M2 Max"
 ---
 
 U-NET for Semantic Crop Segmentation - Model Card
@@ -138,3 +145,9 @@ Any semantic segmentation system, including this U-NET model, should be used res
 ## Caveats and Recommendations
 The model’s performance may be influenced by the quality and diversity of the training data. Factors such as lighting conditions, image resolution, and the presence of occlusions could potentially affect the model’s performance. Users should be aware that while the model has been trained to perform semantic segmentation tasks accurately, it may still make mistakes or fail to generalize well to new, unseen data. It’s recommended to perform additional tests and validations when applying this model to new datasets or use cases. This will help ensure that the model meets specific needs and expectations.
 
+## Carbon Footprint
+The model has a reported carbon footprint of 2.04g CO2e for its pre-training phase, as estimated by CodeCarbon. This metric reflects the environmental impact associated with the computational resources used during the model’s development. Specifically, the training was conducted in Apulia, Italy, utilizing a hardware configuration of Apple M2 Max. It is essential for users to be aware of these details to make informed decisions regarding the sustainability of their machine learning operations.
+
+<p align="center">
+  <img src="https://cdn.albertovalerio.com/datasets/crop_segmentation/dataset/emissions.jpg" alt="U-NET Model Carbon Footprint" title="Carbon Footprint Infographic" width="400"/>
+</p>
