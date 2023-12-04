@@ -48,11 +48,11 @@ model-index:
         name: Mean IoU
 
 co2_eq_emissions:
-	emissions: 2.04
-	source: "CodeCarbon"
-	training_type: "pre-training"
-	geographical_location: "Apulia, Italy"
-	hardware_used: "Apple M2 Max"
+- emissions: 2.04
+- source: "CodeCarbon"
+- training_type: "pre-training"
+- geographical_location: "Apulia, Italy"
+- hardware_used: "Apple M2 Max"
 ---
 
 U-NET for Semantic Crop Segmentation - Model Card
