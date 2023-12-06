@@ -46,8 +46,13 @@ Project Organization
     │   ├── Dockerfile          <- Docker file for the frontend.
     │   ├── nginx.conf          <- Configuration file for nginx.
     │   └── index.html          <- A frontend demo application.
+    |
+    ├── deps
+    │   └── codecarbon-apple-silicon-chips    <- CodeCarbon integration.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details.
+    |
+    ├── log                <- CodeCarbon log.
     │
     ├── models
     │   ├── metrics        <- Model predictions or model summaries.
@@ -58,9 +63,10 @@ Project Organization
     │                         the creator's initials, and a short `-` delimited description, e.g.
     │                         `1.0-jqp-initial-data-exploration`.
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── references         <- Data dictionaries, manuals, documentations and other explanatory materials.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    |   ├── carbon         <- Generated emissions report for Carbon Emissions Tracking.
     │   ├── figures        <- Generated graphics and figures to be used in reporting.
     │   └── linters        <- Report analysis of Pylint, Pynblint, Flake8, etc.
     │
@@ -109,18 +115,23 @@ Project Organization
     │       └── test_merge_labels.py
     │
     ├── .dockerignore           <- Docker ignore file.
+    ├── .dvcignore              <- Data Version Control ignore file.
+    ├── .flake8                 <- Flake8 ignore file.
     ├── .gitignore              <- Specifications of files to be ignored by Git.
-    ├── .pylintrc               <- Configuration for Pylint.
+    ├── .pylintrc               <- Configuration for Pylint.  
     ├── Dockerfile              <- Docker file for the backend.
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`.
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── Makefile                <- Makefile with commands like `make data` or `make train`.
+    ├── README.md               <- The top-level README for developers using this project.
     ├── compose.yaml            <- Docker Compose configuration.
+    ├── dvc.lock                <- Data Version Control record file.
+    ├── dvc.yaml                <- Data Version Control pipeline file.
     ├── pytest.ini              <- Configuration for Pytest.
     ├── requirements-dev.txt    <- The requirements file for development environment.
     ├── requirements-prod.txt   <- The requirements file for production environment.
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+    ├── setup.py                <- Makes project pip installable (pip install -e .) so src can be imported.
+    ├── test_environment.py     <- Checks python version.
+    └── tox.ini                 <- tox file with settings for running tox; see tox.readthedocs.io.
 
 
 --------
