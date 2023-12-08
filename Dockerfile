@@ -17,7 +17,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /
 
 # Fix: ERROR failed building wheel for psutil
-RUN apt-get update -y && apt-get install gcc ffmpeg libsm6 libxext6 -y
+RUN apt-get update -y && apt-get install gcc ffmpeg libsm6 libxext6 wget unzip -y
 
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
