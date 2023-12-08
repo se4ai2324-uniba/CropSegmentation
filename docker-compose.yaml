@@ -13,6 +13,8 @@ services:
       context: .
     ports:
       - 80:80
+    volumes:
+      - data:/data
   app:
     build:
       context: demo
@@ -20,7 +22,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - .:/demo
+      - demo:/demo
 
 
 # The commented out section below is an example of how to define a PostgreSQL
