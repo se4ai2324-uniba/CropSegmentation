@@ -1,4 +1,4 @@
-const SERVER_PATH = 'https://api-albertovalerio.cloud.okteto.net'
+const SERVER_PATH = 'https://api-albertovalerio.cloud.okteto.net/'
 const SAMPLE_PATH = SERVER_PATH + 'images'
 const IMAGES_PATH = SERVER_PATH + 'temp/'
 const SAMPLE_LIMIT = '9'

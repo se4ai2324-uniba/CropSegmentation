@@ -17,7 +17,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /
 
 # Fix: ERROR failed building wheel for psutil
-RUN apt-get update -y && apt-get install gcc ffmpeg libsm6 libxext6 unzip -y
+RUN apt-get update -y && apt-get install gcc ffmpeg libsm6 libxext6 -y
 
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
@@ -32,12 +32,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy the source code into the container.
 COPY . .
 
-# Setup a Google Drive DVC Remote and pull data.
-RUN dvc pull -r myremote
-RUN unzip data/processed/datasets_processed.zip -d data/processed/datasets_processed
-
-
-# Change workdir
 WORKDIR /src/api
 
 # Expose the port that the application listens on.

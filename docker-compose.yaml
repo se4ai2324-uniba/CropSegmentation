@@ -14,7 +14,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - data:/data
+      - .:/data
   app:
     build:
       context: demo
@@ -22,8 +22,14 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - demo:/demo
-
+      - .:/demo
+  data:
+    build:
+      context: .
+    environment:
+      - REMOTE_DATA=${REMOTE_DATA}
+      - REMOTE_MODEL=${REMOTE_MODEL}
+    command: /bin/sh -c "wget -P data/processed ${REMOTE_DATA} && wget -P models/saved ${REMOTE_MODEL} && unzip data/processed/datasets_processed.zip -d data/processed/datasets_processed"
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to

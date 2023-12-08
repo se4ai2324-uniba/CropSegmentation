@@ -45,8 +45,11 @@ README.md
 **/reports
 **/src.egg-info
 **/tests
+.dvcignore
 .flake8
 .pylintrc
+dvc.lock
+dvc.yaml
 Makefile
 pytest.ini
 test_environments.py
