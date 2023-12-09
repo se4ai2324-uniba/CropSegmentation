@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
-
+ARG REMOTE_DATA
+ARG REMOTE_MODEL
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/engine/reference/builder/
@@ -31,6 +32,14 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Copy the source code into the container.
 COPY . .
+
+ARG REMOTE_DATA
+ARG REMOTE_MODEL
+ENV REMOTE_DATA=${REMOTE_DATA}
+ENV REMOTE_MODEL=${REMOTE_MODEL}
+RUN wget -P data/processed ${REMOTE_DATA}
+RUN wget -P models/saved ${REMOTE_MODEL}
+RUN unzip -o data/processed/datasets_processed.zip
 
 WORKDIR /src/api
 

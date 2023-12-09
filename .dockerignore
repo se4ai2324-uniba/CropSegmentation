@@ -38,7 +38,9 @@ README.md
 **/data
 !/data/processed/datasets_processed/testing_data
 !/data/processed/datasets_processed/testing_labels
+**/deps
 **/docs
+**/log
 **/mlruns
 **/notebooks
 **/references
