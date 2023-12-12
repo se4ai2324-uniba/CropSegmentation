@@ -131,14 +131,13 @@ def samples(limit: Union[int, None] = None):
 	else:
 		testImages = [i for i in os.listdir(TEST_DATA_PATH) if i != '.DS_Store']
 		testImagesNoBlack = [i for i in testImages if io.imread(TEST_DATA_PATH + i).any()]
-		sampleNames = random.sample(testImagesNoBlack, limit) if limit else testImagesNoBlack
-		sampleImages = [io.imread(TEST_DATA_PATH + i) for i in sampleNames]
 		if (not os.path.isdir(TEMP_PATH)):
 			Path(TEMP_PATH).mkdir(parents=True, exist_ok=True)
-		for i in os.listdir(TEMP_PATH):
-			os.unlink(TEMP_PATH + i)
-		for i, v in enumerate(sampleNames):
-			io.imsave(TEMP_PATH + v, sampleImages[i])
+		for _, v in enumerate(testImagesNoBlack):
+			if not os.path.isfile(TEMP_PATH + v):
+				img = io.imread(TEST_DATA_PATH + v)
+				io.imsave(TEMP_PATH + v, img)
+		sampleNames = random.sample(testImagesNoBlack, limit) if limit else testImagesNoBlack
 		return {"samples": sampleNames}
 
 
@@ -198,7 +197,13 @@ async def upload(file: UploadFile):
     """
 	contents = await file.read()
 	image = Img.open(BytesIO(contents))
-	image.save(TEMP_PATH + 'upload.jpg')
+	filename = 'upload'
+	ext = '.jpg'
+	counter = 0
+	while filename + ext in os.listdir(TEMP_PATH):
+		filename = filename.split('-')[0] + '-' + str(counter)
+		counter = counter + 1
+	image.save(TEMP_PATH + filename + ext)
 	return {"status": 'File successfully saved!'}
 
 
