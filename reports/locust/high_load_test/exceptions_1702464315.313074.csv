@@ -1,0 +1,37 @@
+Count,Message,Traceback,Nodes
+45,Metrics computation failed for mask 00045.jpg,"  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 343, in run
+    self.execute_next_task()
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 376, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 497, in execute_task
+    task(self.user)
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\locustfile.py"", line 86, in get_metrics
+    raise Exception(f""Metrics computation failed for mask {mask_name}"")
+",local
+93,Prediction failed for image 00045.jpg,"  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 343, in run
+    self.execute_next_task()
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 376, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 497, in execute_task
+    task(self.user)
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\locustfile.py"", line 73, in predict_image
+    raise Exception(f""Prediction failed for image {og_name}"")
+",local
+40,Failed to get the main endpoint,"  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 343, in run
+    self.execute_next_task()
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 376, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 497, in execute_task
+    task(self.user)
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\locustfile.py"", line 24, in main_endpoint
+    raise Exception(""Failed to get the main endpoint"")
+",local
+80,Image upload failed for image 00148.jpg,"  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 343, in run
+    self.execute_next_task()
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 376, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\myenv\lib\site-packages\locust\user\task.py"", line 497, in execute_task
+    task(self.user)
+  File ""C:\Users\User\Desktop\backup\SE4AI\CropSegmentation\locustfile.py"", line 59, in upload_image
+    raise Exception(f""Image upload failed for image {img_name}"")
+",local

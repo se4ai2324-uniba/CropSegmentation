@@ -1,0 +1,14 @@
+Method,Name,Error,Occurrences
+POST,/upload/image,"ChunkedEncodingError(ProtocolError(""Connection broken: InvalidChunkLength(got length b'', 0 bytes read)"", InvalidChunkLength(got length b'', 0 bytes read)))",39
+GET,/,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/metrics,HTTPError('502 Server Error: Bad Gateway for url: /metrics'),3
+GET,/,HTTPError('503 Server Error: Service Temporarily Unavailable for url: /'),39
+POST,/metrics,HTTPError('503 Server Error: Service Temporarily Unavailable for url: /metrics'),27
+POST,/metrics,HTTPError('504 Server Error: Gateway Time-out for url: /metrics'),15
+POST,/predict,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/upload/image,HTTPError('503 Server Error: Service Temporarily Unavailable for url: /upload/image'),40
+POST,/predict,HTTPError('502 Server Error: Bad Gateway for url: /predict'),3
+GET,/images?limit=9,HTTPError('503 Server Error: Service Temporarily Unavailable for url: /images?limit=9'),96
+POST,/predict,HTTPError('503 Server Error: Service Temporarily Unavailable for url: /predict'),66
+POST,/predict,HTTPError('504 Server Error: Gateway Time-out for url: /predict'),23
+POST,/upload/image,HTTPError('502 Server Error: Bad Gateway for url: /upload/image'),1
