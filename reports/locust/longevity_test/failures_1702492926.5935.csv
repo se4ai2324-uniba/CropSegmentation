@@ -1,0 +1,8 @@
+Method,Name,Error,Occurrences
+POST,/upload/image,"ChunkedEncodingError(ProtocolError(""Connection broken: InvalidChunkLength(got length b'', 0 bytes read)"", InvalidChunkLength(got length b'', 0 bytes read)))",1
+GET,/,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/metrics,HTTPError('504 Server Error: Gateway Time-out for url: /metrics'),68
+POST,/upload/image,HTTPError('504 Server Error: Gateway Time-out for url: /upload/image'),12
+GET,/images?limit=9,HTTPError('504 Server Error: Gateway Time-out for url: /images?limit=9'),17
+GET,/temp/00077.jpg,HTTPError('504 Server Error: Gateway Time-out for url: /temp/00077.jpg'),1
+POST,/predict,HTTPError('504 Server Error: Gateway Time-out for url: /predict'),137
