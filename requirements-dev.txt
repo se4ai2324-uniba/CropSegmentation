@@ -9,3 +9,4 @@ flake8-json==23.7.0
 pytest==7.4.3
 deepchecks==0.17.5
 deepchecks[vision]==0.17.5
+alibi-detect==0.11.4
