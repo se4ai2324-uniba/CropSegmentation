@@ -68,7 +68,8 @@ Project Organization
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     |   ├── carbon         <- Generated emissions report for Carbon Emissions Tracking.
     │   ├── figures        <- Generated graphics and figures to be used in reporting.
-    │   └── linters        <- Report analysis of Pylint, Pynblint, Flake8, etc.
+    │   ├── linters        <- Report analysis of Pylint, Pynblint, Flake8, etc.
+    |   └── locust         <- Generated reports and outputs for Load Testing with Locust.
     │
     ├── src                <- Source code for use in this project.
     │   ├── api            <- FastAPI + Uvicorn server.
@@ -126,10 +127,11 @@ Project Organization
     ├── compose.yaml            <- Docker Compose configuration.
     ├── dvc.lock                <- Data Version Control record file.
     ├── dvc.yaml                <- Data Version Control pipeline file.
+    ├── locustfile.py           <- Defines user behavior in load testing.
     ├── pytest.ini              <- Configuration for Pytest.
     ├── requirements-dev.txt    <- The requirements file for development environment.
     ├── requirements-prod.txt   <- The requirements file for production environment.
-    ├── setup.py                <- Makes project pip installable (pip install -e .) so src can be imported.
+    ├── setup.py                <- Makes project pip installable (pip install -e .) so src can be 
     ├── test_environment.py     <- Checks python version.
     └── tox.ini                 <- tox file with settings for running tox; see tox.readthedocs.io.
 
