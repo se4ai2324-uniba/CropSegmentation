@@ -54,3 +54,7 @@ jspm_packages
 # Serverless directories
 .serverless
 
+data/raw
+data/processed/datasets_processed/training_data
+data/processed/datasets_processed/training_labels
+data/processed/datasets_processed.zip
