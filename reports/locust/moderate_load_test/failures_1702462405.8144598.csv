@@ -1,0 +1,8 @@
+Method,Name,Error,Occurrences
+GET,/temp/00112.jpg,RemoteDisconnected('Remote end closed connection without response'),1
+GET,/temp/00181.jpg,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/upload/image,RemoteDisconnected('Remote end closed connection without response'),3
+GET,/temp/00088.jpg,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/predict,RemoteDisconnected('Remote end closed connection without response'),1
+POST,/predict,HTTPError('502 Server Error: Bad Gateway for url: /predict'),2
+POST,/metrics,RemoteDisconnected('Remote end closed connection without response'),2
