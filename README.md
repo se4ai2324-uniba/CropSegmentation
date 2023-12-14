@@ -131,7 +131,7 @@ Project Organization
     ├── pytest.ini              <- Configuration for Pytest.
     ├── requirements-dev.txt    <- The requirements file for development environment.
     ├── requirements-prod.txt   <- The requirements file for production environment.
-    ├── setup.py                <- Makes project pip installable (pip install -e .) so src can be 
+    ├── setup.py                <- Makes project pip installable (pip install -e .) so src can be imported.
     ├── test_environment.py     <- Checks python version.
     └── tox.ini                 <- tox file with settings for running tox; see tox.readthedocs.io.
 
