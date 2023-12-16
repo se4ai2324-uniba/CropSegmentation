@@ -34,12 +34,15 @@ from sklearn.metrics import jaccard_score
 import torch
 import cv2
 
+from monitoring import instrumentator
+
 # Set a deterministic behaviour for reproducibility
 torch.manual_seed(0)
 torch.multiprocessing.set_sharing_strategy('file_system')
 
 # Initialize FastAPI app with CORS middleware for cross-origin requests
 app = FastAPI()
+instrumentator.instrument(app).expose(app, include_in_schema=False, should_gzip=True)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -233,7 +236,8 @@ def metrics(image: Image):
 			"acc": str(round(pixelAccuracy(pred, truth), 3)),
 			"iou": str(round(jaccard_score(pred.flatten(), truth.flatten(), average='micro')*100, 3))
 		}
-
-
+	
 if __name__ == "__main__":
 	uvicorn.run(app, host="127.0.0.1", port=5500)
+
+
