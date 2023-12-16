@@ -24,6 +24,11 @@ For further details on U-NET, read __U-Net: Convolutional Networks for Biomedica
 }
 ```
 
+## Uptime Monitoring
+
+We use Better Uptime to monitor the status of our website. You can check the current status and past incidents at our [Better Uptime status page](https://crop-segmentation.betteruptime.com/).
+
+
 Project Organization
 ------------
 
@@ -139,3 +144,6 @@ Project Organization
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+
+[https://crop-segmentation.betteruptime.com/]: https://crop-segmentation.betteruptime.com/
