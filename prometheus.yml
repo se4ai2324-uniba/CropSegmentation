@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+  external_labels:
+    monitor: 'codelab-monitor'
+
+scrape_configs:
+
+  - job_name: 'fastapi'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['127.0.0.1:5500']
