@@ -11,3 +11,4 @@ deepchecks==0.17.5
 deepchecks[vision]==0.17.5
 alibi-detect==0.11.4
 locust==2.18.4
+prometheus==2.48.1

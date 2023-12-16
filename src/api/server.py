@@ -34,7 +34,7 @@ from sklearn.metrics import jaccard_score
 import torch
 import cv2
 
-from monitoring import instrumentator
+from api.monitoring import instrumentator
 
 # Set a deterministic behaviour for reproducibility
 torch.manual_seed(0)
