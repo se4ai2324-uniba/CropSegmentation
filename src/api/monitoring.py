@@ -64,6 +64,31 @@ instrumentator.add(
     )
 )
 
+instrumentator.add(
+    metrics.duration(
+        should_include_handler=True,
+        should_include_method=True,
+        should_include_status=True,
+        metric_name="request_duration_seconds",
+        metric_doc="Duration of image segmentation requests",
+        metric_namespace=NAMESPACE,
+        metric_subsystem=SUBSYSTEM,
+    )
+)
+
+instrumentator.add(
+    metrics.error_rate(
+        should_include_handler=True,
+        should_include_method=True,
+        should_include_status=True,
+        metric_name="error_rate",
+        metric_doc="Error rate of image segmentation requests",
+        metric_namespace=NAMESPACE,
+        metric_subsystem=SUBSYSTEM,
+    )
+)
+
+
 def segmentation_result_metric(
     metric_name: str = "segmentation_result",
     metric_doc: str = "Outcome of image segmentation",
