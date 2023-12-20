@@ -5,6 +5,8 @@ from prometheus_client import Histogram
 from prometheus_fastapi_instrumentator import Instrumentator, metrics
 from prometheus_fastapi_instrumentator.metrics import Info
 
+import logging
+
 NAMESPACE = os.environ.get("METRICS_NAMESPACE", "fastapi")
 SUBSYSTEM = os.environ.get("METRICS_SUBSYSTEM", "model")
 
@@ -14,7 +16,7 @@ instrumentator = Instrumentator(
     should_instrument_requests_inprogress=True,
     excluded_handlers=["/metrics"],
     inprogress_name="fastapi_inprogress",
-    inprogress_labels=True,
+    inprogress_labels=True
 )
 
 # Metrics
@@ -89,6 +91,5 @@ def segmentation_result_metric(
                 METRIC.labels(result_type).observe(1.0)
 
     return instrumentation
-
 
 instrumentator.add(segmentation_result_metric(metric_namespace=NAMESPACE, metric_subsystem=SUBSYSTEM))
