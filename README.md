@@ -37,6 +37,8 @@ Project Organization
     │   └── workflows
     │       └── main.yaml       <- GitHub Actions workflow for the project.
     │
+    ├── dashboards        <- Project dashboards
+    │
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
@@ -78,6 +80,7 @@ Project Organization
     │
     ├── src                <- Source code for use in this project.
     │   ├── api            <- FastAPI + Uvicorn server.
+    │   │   ├── monitoring.py
     │   │   ├── redoc.py
     │   │   └── server.py
     │   │
@@ -124,7 +127,8 @@ Project Organization
     ├── .dvcignore              <- Data Version Control ignore file.
     ├── .flake8                 <- Flake8 ignore file.
     ├── .gitignore              <- Specifications of files to be ignored by Git.
-    ├── .pylintrc               <- Configuration for Pylint.  
+    ├── .pylintrc               <- Configuration for Pylint.
+    ├── .stignore               <- SyncThing ignore file.  
     ├── Dockerfile              <- Docker file for the backend.
     ├── LICENSE
     ├── Makefile                <- Makefile with commands like `make data` or `make train`.
@@ -133,6 +137,7 @@ Project Organization
     ├── dvc.lock                <- Data Version Control record file.
     ├── dvc.yaml                <- Data Version Control pipeline file.
     ├── locustfile.py           <- Defines user behavior in load testing.
+    ├── prometheus.yml          <- Prometheus configuration file.
     ├── pytest.ini              <- Configuration for Pytest.
     ├── requirements-dev.txt    <- The requirements file for development environment.
     ├── requirements-prod.txt   <- The requirements file for production environment.
