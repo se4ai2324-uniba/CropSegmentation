@@ -24,9 +24,19 @@ For further details on U-NET, read __U-Net: Convolutional Networks for Biomedica
 }
 ```
 
+## Application Links
+
+You can access the frontend and backend of the application using the following links:
+- Frontend: [https://app-albertovalerio.cloud.okteto.net/](https://app-albertovalerio.cloud.okteto.net/)
+- Backend: [https://api-albertovalerio.cloud.okteto.net/](https://api-albertovalerio.cloud.okteto.net/)
+
 ## Uptime Monitoring
 
 We use Better Uptime to monitor the status of our website. You can check the current status and past incidents at our [Better Uptime status page](https://crop-segmentation.betteruptime.com/).
+
+## Project Context
+
+This project was developed for the 2023-2024 “Software Engineering for AI-enabled Systems” course. Each phase of the project is detailed in the final report that can be found [here](https://github.com/se4ai2324-uniba/CropSegmentation/blob/main/references/final-report.pdf).
 
 
 Project Organization
