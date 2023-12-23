@@ -49,7 +49,11 @@ CONFIG = {
 
 	# server.py
 	'BEST_MODEL_PATH':					'models/saved/sd_10_50_0.0001_0.25_unet_model.pth',
-	'TEMP_PATH':						'src/api/temp/'
+	'TEMP_PATH':						'src/api/temp/',
+
+	# drift detection
+	'EMB_PATH':							'src/features/embeddings',
+	'DRIFT_LOG':						'log/drift-detection.log'
 }
 
 

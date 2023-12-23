@@ -6,6 +6,9 @@ import numpy as np
 import cv2
 from skimage import io
 import torch
+from datetime import datetime
+import calendar
+import time
 
 
 def getTiles(img, H, W):
@@ -193,3 +196,16 @@ def getDevice():
 	elif torch.cuda.is_available():
 		device = 'cuda'
 	return device
+
+
+def get_date_time():
+	"""Convert the current date in standard datetime format.
+	Args:
+		None.
+	Returns:
+		str: The datetime formatted.
+		float: The timestamp in milliseconds.
+	"""
+	ts = datetime.timestamp(datetime.now())
+	date_time = datetime.fromtimestamp(ts)
+	return date_time.strftime("%Y-%m-%d %H:%M:%S"), calendar.timegm(time.gmtime())
