@@ -58,8 +58,8 @@ jobs:
         path: log/drift-detection.log
 
     - name: Commit report
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -am "Automated drift detection logs"
-          git push
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git commit -am "Automated drift detection logs"
+        git push
