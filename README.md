@@ -69,7 +69,7 @@ Project Organization
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details.
     |
-    ├── log                <- CodeCarbon log.
+    ├── log                <- CodeCarbon + Drift detection logs.
     │
     ├── models
     │   ├── metrics        <- Model predictions or model summaries.
@@ -99,6 +99,8 @@ Project Organization
     │   │   └── make_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling.
+    │   │   ├── embeddings <- Datasets embeddings for Alibi drift detection.
+    │   │   └── drift_detection.py
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make predictions.
     │   │   ├── model.py
@@ -138,7 +140,7 @@ Project Organization
     ├── .flake8                 <- Flake8 ignore file.
     ├── .gitignore              <- Specifications of files to be ignored by Git.
     ├── .pylintrc               <- Configuration for Pylint.
-    ├── .stignore               <- SyncThing ignore file.  
+    ├── .stignore               <- SyncThing ignore file.
     ├── Dockerfile              <- Docker file for the backend.
     ├── LICENSE
     ├── Makefile                <- Makefile with commands like `make data` or `make train`.
