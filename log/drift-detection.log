@@ -18,3 +18,4 @@
 [2023-12-25 16:08:19] ALIBI.DETECT: drift detected on testing set.
 [2023-12-25 17:10:32] ALIBI.DETECT: drift detected on testing set.
 [2023-12-25 17:10:57] ALIBI.DETECT: no drift detected.  
+[2023-12-25 16:17:56] ALIBI.DETECT: no drift detected.  
