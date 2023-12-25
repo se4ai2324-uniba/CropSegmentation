@@ -93,27 +93,28 @@ def detect(debug=False):
 
 	is_drift = np.array([train_preds_low['data']['is_drift'], test_preds_low['data']['is_drift']])
 
-	if debug == True:
-		log = open(LOG_FILE, 'a', encoding='utf-8')
-		if is_drift.any():
-			if train_preds_low['data']['is_drift']:
+	log = open(LOG_FILE, 'a', encoding='utf-8')
+	if is_drift.any():
+		if train_preds_low['data']['is_drift']:
+			if debug == True:
 				file = [txt for txt in feat_files if 'train' in txt]
 				os.unlink(EMB_PATH + '/' + file[0])
 				with open(EMB_PATH + '/' + str(ts) + '-alibi-detect-train-features.txt', 'w', encoding='utf-8') as f:
 					for value in hist_avg_train:
 						f.write(f"{value}\n")
-				log.write('['+dt+'] ALIBI.DETECT: drift detected on training set.\n')
-			if test_preds_low['data']['is_drift']:
+			log.write('['+dt+'] ALIBI.DETECT: drift detected on training set.\n')
+		if test_preds_low['data']['is_drift']:
+			if debug == True:
 				file = [txt for txt in feat_files if 'test' in txt]
 				os.unlink(EMB_PATH + '/' + file[0])
 				with open(EMB_PATH + '/' + str(ts) + '-alibi-detect-test-features.txt', 'w', encoding='utf-8') as f:
 					for value in hist_avg_test:
 						f.write(f"{value}\n")
-				log.write('['+dt+'] ALIBI.DETECT: drift detected on testing set.\n')
-		else:
-			log.write('['+dt+'] ALIBI.DETECT: no drift detected.  \n')
-		log.flush()
-		log.close()
+			log.write('['+dt+'] ALIBI.DETECT: drift detected on testing set.\n')
+	else:
+		log.write('['+dt+'] ALIBI.DETECT: no drift detected.  \n')
+	log.flush()
+	log.close()
 
 	return is_drift.any()
 
