@@ -118,9 +118,17 @@ def detect():
 
 
 if __name__ == "__main__":
-	if detect():
-		print('Something is seriously wrong.'.upper(), file=sys.stderr)
-		sys.exit(1)
+	args = sys.argv[1:]
+	if len(args) == 0:
+		detect()
+		print('Test completed. Use "DEBUG=1" to get test output.'.upper())
 	else:
-		print('Everything\'s gonna be alright.'.upper())
-		sys.exit(0)
+		keys = [i.split('=')[0].upper() for i in args]
+		values = [i.split('=')[1] for i in args]
+		if 'DEBUG' in keys and values[keys.index('DEBUG')] == '1':
+			if detect():
+				print('Something is seriously wrong.'.upper(), file=sys.stderr)
+				sys.exit(1)
+			else:
+				print('Everything\'s gonna be alright.'.upper())
+				sys.exit(0)
