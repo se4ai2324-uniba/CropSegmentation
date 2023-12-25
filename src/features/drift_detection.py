@@ -49,6 +49,15 @@ def get_alibi_features(
 	grays_test = [cv2.cvtColor(i, cv2.COLOR_BGR2GRAY).flatten() for i in samples_test]
 	hists_test = [np.histogram(i, 256, [0, 256])[0] for i in grays_test]
 
+	alpha = .6
+	beta = 3
+
+	fake = {}
+	fake['imgs'] = [cv2.convertScaleAbs(img, alpha=alpha, beta=beta) for img in samples_test]
+	fake['grays'] = [cv2.cvtColor(i, cv2.COLOR_BGR2GRAY).flatten() for i in fake['imgs']]
+	fake['hists'] = [np.histogram(i, 256, [0, 256])[0] for i in fake['grays']]
+	hists_test = fake['hists']
+
 	print('>>> (3/5) Computing training features...')
 	hist_avg_train = [i / len(hists_train) for i in list(map(sum, zip(*hists_train)))]
 	print('>>> (4/5) Computing testing features...')
