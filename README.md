@@ -27,8 +27,8 @@ For further details on U-NET, read __U-Net: Convolutional Networks for Biomedica
 ## Application Links
 
 You can access the frontend and backend of the application using the following links:
-- Frontend: [https://app-albertovalerio.cloud.okteto.net/](https://app-albertovalerio.cloud.okteto.net/)
-- Backend: [https://api-albertovalerio.cloud.okteto.net/](https://api-albertovalerio.cloud.okteto.net/)
+- Frontend: [https://demo-se4ai2024.albertovalerio.com](https://demo-se4ai2024.albertovalerio.com)
+- Backend: [https://demo-se4ai2024.albertovalerio.com/api](https://demo-se4ai2024.albertovalerio.com/api)
 
 ## Uptime Monitoring
 
